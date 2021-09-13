@@ -45,6 +45,11 @@ Thumbs.db
 ###
 .vs/
 
+###
+# Rider cache directory
+###
+.idea/
+
 DH2650/UserSettings/
 UserSettings/
 DH2650/Logs/
