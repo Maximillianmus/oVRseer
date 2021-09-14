@@ -1,84 +1,89 @@
 ﻿using System;
+using System.Collections.Generic;
 using kcp2k;
 using Mirror;
 using UnityEngine;
 
-namespace NetworkThings
+namespace Network
 {
-
-    public enum PlayerType
+    public class CompteurJoueur
     {
-        Tiny,
-        Overseer
-    };
+        public int total;
+        public int ready;
+        public int overseerReady;
+        public int tinyReady;
 
-    struct CreatePlayerMessage : Mirror.NetworkMessage
-    {
-        public PlayerType type;
     }
+
     
     
     public class OVRseerNetworkManager : Mirror.NetworkManager
     {
-        private int NbOverseer;
-        private int NbTiny;
-
         public GameObject overSeerPrefab;
+        public GameObject gamePlayerPrefer;
 
-        private PlayerType PlayerType = PlayerType.Tiny;
-        
-        
-        
-        public override void OnStartServer()
-        {
-            base.OnStartServer();
-            NbOverseer = 0;
-            NbTiny = 0;
-            NetworkServer.RegisterHandler<CreatePlayerMessage>(OnPlayerCreation);
-        }
+        [Scene] public string gameScene;
 
-        public void chooseOverseer()
-        {
-            PlayerType = PlayerType.Overseer;
-            StartClient();
-        }
+        public List<OVRseerRoomPlayer> roomPlayers { get; } = new List<OVRseerRoomPlayer>();
 
-        public void chooseTiny()
+        private bool canLaunch(CompteurJoueur compteurJoueur)
         {
-            PlayerType = PlayerType.Tiny;
-            StartClient();
-        }
-
-        public override void OnClientConnect(NetworkConnection conn)
-        {
-            base.OnClientConnect(conn);
-            CreatePlayerMessage playerMessage = new CreatePlayerMessage
+            int nbPlayer = 0;
+            int nbOverseer = 0;
+            int nbTiny = 0;
+            foreach (OVRseerRoomPlayer roomPlayer in roomPlayers)
             {
-                type = PlayerType,
-            };
-            conn.Send(playerMessage); 
-        }
-
-        void OnPlayerCreation(NetworkConnection conn, CreatePlayerMessage playerMessage)
-        {
-            Log.Error("essai");
-            GameObject ToSpawn = playerMessage.type == PlayerType.Overseer ? overSeerPrefab : playerPrefab;
-            GameObject gameObject = Instantiate(ToSpawn);
-            switch (playerMessage.type)
-            {
-                case PlayerType.Tiny:
-                    NbTiny += 1;
-                    break;
-                case PlayerType.Overseer:
-                    NbOverseer += 1;
-                    break;
-                default:
-                    Log.Warning("Try to spawn of player with no defined type : Tiny spawned by default");
-                    break;
+                if (roomPlayer.isReady)
+                {
+                    nbPlayer += 1;
+                    switch (roomPlayer.type)
+                    {
+                        case PlayerType.Tiny:
+                            nbTiny += 1;
+                            break;
+                        case PlayerType.Overseer:
+                            nbOverseer += 1;
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
 
-            NetworkServer.AddPlayerForConnection(conn, gameObject);
+            compteurJoueur.ready = nbPlayer;
+            compteurJoueur.total = roomPlayers.Count;
+            compteurJoueur.overseerReady = nbOverseer;
+            compteurJoueur.tinyReady = nbTiny;
+            
+            return nbPlayer == roomPlayers.Count && nbTiny >= 1 && nbOverseer >= 1;
         }
 
+        public void ChangeStatusClient()
+        {
+            CompteurJoueur compteur = new CompteurJoueur();
+            if (canLaunch(compteur))
+            {
+                RpcLeaderStartStatus(true, compteur);
+            }
+            else
+            {
+                RpcLeaderStartStatus(false, compteur);
+            }
+
+        }
+
+        public void RpcLeaderStartStatus(bool canStart, CompteurJoueur compteurJoueur)
+        {
+            foreach (OVRseerRoomPlayer roomPlayer in roomPlayers)
+            {
+                    roomPlayer.NotifyCanStart(canStart, compteurJoueur);
+            }
+            
+        }
+
+
+
+
     }
+
 }
