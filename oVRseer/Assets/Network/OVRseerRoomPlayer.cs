@@ -12,32 +12,64 @@ public enum PlayerType
 
 public class OVRseerRoomPlayer : NetworkBehaviour
 {
+    // *** Constante ***
     private const int MAX_OVERSEER = 1;
     
+    [Header("UI")]
     public GameObject lobbyUI;
     [SerializeField] GameObject startButton;
-
-    [SerializeField] public Text nbJoueursReadyText;
-    [SerializeField] public Text nbJoueursTotalText;
-    
     [SerializeField] public Button overseerButton;
     [SerializeField] public Button tinyButton;
+    [SerializeField] public Text nbJoueursReadyText;
+    [SerializeField] public Text nbJoueursTotalText;
     [SerializeField] public GameObject ReadyText;
     
+    // *** Sync Var for number of players ***
     [SyncVar(hook = nameof(HandleCompteurChanged))]
     private int nbTotalReady;
     [SyncVar(hook = nameof(HandleCompteurChanged))]
     private int nbTotalPlayer;
-
     [SyncVar(hook = nameof(HandleCompteurChanged))]
     private int nbOverseer;
-
-    public void HandleCompteurChanged(int oldValue, int newValue) => updateDisplay();
-    public void isReadyChanged(bool oldValue, bool newValue) => updateDisplay();
+    
     
     [SyncVar(hook = nameof(isReadyChanged))]
     public bool isReady;
+    
+    [SyncVar]
+    public PlayerType type = PlayerType.Tiny;
 
+    // *** Handlers *** 
+    public void HandleCompteurChanged(int oldValue, int newValue) => updateDisplay();
+    public void isReadyChanged(bool oldValue, bool newValue) => updateDisplay();
+    
+    
+    
+    
+    private bool isLeader;
+    public bool IsLeader
+    {
+        get
+        {
+            return isLeader;
+        }
+    }
+    
+    
+    private OVRseerNetworkManager room;
+    private OVRseerNetworkManager Room
+    {
+        get
+        {
+            if (room != null) { return room; }
+            return room = NetworkManager.singleton as OVRseerNetworkManager;
+        }
+    }
+    
+
+    /// <summary>
+    /// update the UI function of the state given by numbers and ready
+    /// </summary>
     private void updateDisplay()
     {
         nbJoueursReadyText.text = nbTotalReady.ToString();
@@ -55,35 +87,19 @@ public class OVRseerRoomPlayer : NetworkBehaviour
         }
     }
     
-    [SyncVar]
-    public PlayerType type = PlayerType.Tiny;
 
-    
-    private bool isLeader;
-    public bool IsLeader
-    {
-        get
-        {
-            return isLeader;
-        }
-    }
-
-    private OVRseerNetworkManager room;
-    private OVRseerNetworkManager Room
-    {
-        get
-        {
-            if (room != null) { return room; }
-            return room = NetworkManager.singleton as OVRseerNetworkManager;
-        }
-    }
-
+    /// <summary>
+    /// Active the UI if the program has authority (local player)
+    /// </summary>
     public override void OnStartAuthority()
     {
         lobbyUI.SetActive(true);
         base.OnStartAuthority();
     }
 
+    /// <summary>
+    /// Add the player to the rooms and notify
+    /// </summary>
     public override void OnStartClient()
     {
         if (Room.roomPlayers.Count == 0)
@@ -95,18 +111,20 @@ public class OVRseerRoomPlayer : NetworkBehaviour
             CmdNotifyExist();
     }
 
-    public void ReadyAsOverseer()
+
+    public override void OnStopClient()
     {
-        CmdReadyAsOverseer();
-    }
-    
-    public void ReadyAsTiny()
-    {
-        CmdReadyAsTiny();
+        Room.roomPlayers.Remove(this);
+        if (hasAuthority)
+        {
+            CmdNotifyExist();
+        }
     }
 
+    // *** Ready functions & commands ***
+
     [Command]
-    private void CmdReadyAsOverseer()
+    public void CmdReadyAsOverseer()
     {
         if (isReady)
         {
@@ -123,7 +141,7 @@ public class OVRseerRoomPlayer : NetworkBehaviour
     }
 
     [Command]
-    private void CmdReadyAsTiny()
+    public void CmdReadyAsTiny()
     {
         if (isReady)
         {
@@ -143,13 +161,39 @@ public class OVRseerRoomPlayer : NetworkBehaviour
         Room.ChangeStatusClient();
     }
 
-    public void NotifyCanStart(bool canStart, CompteurJoueur compteurJoueur)
+    
+    public void Disconnect()
     {
-        nbTotalPlayer = compteurJoueur.total;
-        nbTotalReady = compteurJoueur.ready;
-        nbOverseer = compteurJoueur.overseerReady;
-        
-        
+        if (isServer && isClient)
+        {
+            Room.StopHost();
+            return;
+        }
+
+        if (isServer)
+        {
+            Room.StopServer();
+            return;
+        }
+
+        if (isClient)
+        {
+            Room.StopClient();
+            return;
+        }
+    }
+
+    /// <summary>
+    /// Update numbers and active the possibility of starting the game if leader
+    /// Called at each update of ready
+    /// </summary>
+    /// <param name="canStart"></param>
+    /// <param name="countPlayer"></param>
+    public void NotifyCanStart(bool canStart, CountPlayer countPlayer)
+    {
+        nbTotalPlayer = countPlayer.total;
+        nbTotalReady = countPlayer.ready;
+        nbOverseer = countPlayer.overseerReady;
         
         if (isLeader)
         {

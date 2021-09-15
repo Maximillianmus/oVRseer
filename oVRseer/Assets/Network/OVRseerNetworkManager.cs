@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Network
 {
-    public class CompteurJoueur
+    public class CountPlayer
     {
         public int total;
         public int ready;
@@ -19,14 +19,20 @@ namespace Network
     
     public class OVRseerNetworkManager : Mirror.NetworkManager
     {
+        // *** Prefab for overseer and Tiny ***
         public GameObject overSeerPrefab;
-        public GameObject gamePlayerPrefer;
-
+        public GameObject gamePlayerPrefab;
+        
         [Scene] public string gameScene;
 
         public List<OVRseerRoomPlayer> roomPlayers { get; } = new List<OVRseerRoomPlayer>();
 
-        private bool canLaunch(CompteurJoueur compteurJoueur)
+        /// <summary>
+        /// Check if game can be launched and update count
+        /// </summary>
+        /// <param name="countPlayer"></param>
+        /// <returns></returns>
+        private bool canLaunch(CountPlayer countPlayer)
         {
             int nbPlayer = 0;
             int nbOverseer = 0;
@@ -50,33 +56,62 @@ namespace Network
                 }
             }
 
-            compteurJoueur.ready = nbPlayer;
-            compteurJoueur.total = roomPlayers.Count;
-            compteurJoueur.overseerReady = nbOverseer;
-            compteurJoueur.tinyReady = nbTiny;
+            countPlayer.ready = nbPlayer;
+            countPlayer.total = roomPlayers.Count;
+            countPlayer.overseerReady = nbOverseer;
+            countPlayer.tinyReady = nbTiny;
             
             return nbPlayer == roomPlayers.Count && nbTiny >= 1 && nbOverseer >= 1;
         }
+        
+        public override void OnServerDisconnect(NetworkConnection conn)
+        {
+            if (conn.identity != null)
+            {
+                var player = conn.identity.GetComponent<OVRseerRoomPlayer>();
 
+                roomPlayers.Remove(player);
+
+                var count = new CountPlayer();
+                NotifyStartStatus(canLaunch(count), count);
+            }
+
+            base.OnServerDisconnect(conn);
+        }
+
+        public override void OnStopServer()
+        {
+            roomPlayers.Clear();
+        } 
+        
+
+        /// <summary>
+        /// Called each time a client change its ready status
+        /// </summary>
         public void ChangeStatusClient()
         {
-            CompteurJoueur compteur = new CompteurJoueur();
+            CountPlayer compteur = new CountPlayer();
             if (canLaunch(compteur))
             {
-                RpcLeaderStartStatus(true, compteur);
+                NotifyStartStatus(true, compteur);
             }
             else
             {
-                RpcLeaderStartStatus(false, compteur);
+                NotifyStartStatus(false, compteur);
             }
 
         }
 
-        public void RpcLeaderStartStatus(bool canStart, CompteurJoueur compteurJoueur)
+        /// <summary>
+        /// Notify each player of the room for the status of the game and the count 
+        /// </summary>
+        /// <param name="canStart"></param>
+        /// <param name="countPlayer"></param>
+        public void NotifyStartStatus(bool canStart, CountPlayer countPlayer)
         {
             foreach (OVRseerRoomPlayer roomPlayer in roomPlayers)
             {
-                    roomPlayer.NotifyCanStart(canStart, compteurJoueur);
+                    roomPlayer.NotifyCanStart(canStart, countPlayer);
             }
             
         }
