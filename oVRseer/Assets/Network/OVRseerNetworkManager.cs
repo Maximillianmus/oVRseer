@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using kcp2k;
 using Mirror;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Network
 {
@@ -20,8 +21,8 @@ namespace Network
     public class OVRseerNetworkManager : Mirror.NetworkManager
     {
         // *** Prefab for overseer and Tiny ***
-        public GameObject overSeerPrefab;
-        public GameObject gamePlayerPrefab;
+        [SerializeField] GameObject overSeerPrefab;
+        [SerializeField] GameObject gamePlayerPrefab;
         
         [Scene] public string gameScene;
 
@@ -56,11 +57,14 @@ namespace Network
                 }
             }
 
-            countPlayer.ready = nbPlayer;
-            countPlayer.total = roomPlayers.Count;
-            countPlayer.overseerReady = nbOverseer;
-            countPlayer.tinyReady = nbTiny;
-            
+            if (countPlayer != null)
+            {
+                countPlayer.ready = nbPlayer;
+                countPlayer.total = roomPlayers.Count;
+                countPlayer.overseerReady = nbOverseer;
+                countPlayer.tinyReady = nbTiny;
+            }
+
             return nbPlayer == roomPlayers.Count && nbTiny >= 1 && nbOverseer >= 1;
         }
         
@@ -116,9 +120,46 @@ namespace Network
             
         }
 
+        public void StartGame()
+        {
+            if (SceneManager.GetActiveScene().path == onlineScene)
+            {
+                if (!canLaunch(null))
+                {
+                    return;
+                }
 
+                ServerChangeScene(gameScene);
+            }
+        }
 
+        public override void ServerChangeScene(string newSceneName)
+        {
+            // From menu to game
+            if (SceneManager.GetActiveScene().path == onlineScene && newSceneName == gameScene)
+            {
+                for (int i = roomPlayers.Count - 1; i >= 0; --i)
+                {
+                    var conn = roomPlayers[i].connectionToClient;
+                    var roomPlayerComp = roomPlayers[i].GetComponent<OVRseerRoomPlayer>();
+                    GameObject gameplayerInstance;
+                    if (roomPlayerComp.type == PlayerType.Overseer)
+                    {
+                        gameplayerInstance = Instantiate(overSeerPrefab);
 
+                    }
+                    else
+                    {
+                        gameplayerInstance = Instantiate(gamePlayerPrefab);
+                    }
+                    
+                    NetworkServer.Destroy(conn.identity.gameObject);
+                    NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject);
+
+                }
+            }
+            base.ServerChangeScene(newSceneName);
+        }
     }
 
 }

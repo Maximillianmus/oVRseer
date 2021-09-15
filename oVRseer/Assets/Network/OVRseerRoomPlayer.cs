@@ -200,5 +200,10 @@ public class OVRseerRoomPlayer : NetworkBehaviour
             startButton.SetActive(canStart);
         }
     }
-    
+
+    [Command]
+    public void CmdStartGame()
+    {
+        Room.StartGame();
+    }
 }
