@@ -55,4 +55,7 @@ UserSettings/
 DH2650/Logs/
 Logs/
 *.log
+
+*clone_0
+
 DH2650/UserSettings/EditorUserSettings.asset
