@@ -709,7 +709,7 @@ PrefabInstance:
     - target: {fileID: 40773115820775466, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
       propertyPath: transport
       value: 
-      objectReference: {fileID: 1629189005}
+      objectReference: {fileID: 1629189006}
     - target: {fileID: 40773115820775466, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
       propertyPath: onlineScene
       value: Assets/Scenes/Lobby.unity
@@ -802,41 +802,23 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 40773115820775466, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
   m_PrefabInstance: {fileID: 1629189002}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629189004}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b76542121554495b118425d2c7ddf36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1629189004 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4344284539360285766, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
+--- !u!114 &1629189006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5468548874770082290, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
   m_PrefabInstance: {fileID: 1629189002}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1629189005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1629189004}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7424c1070fad4ba2a7a96b02fbeb4bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  port: 7777
-  NoDelay: 1
-  SendTimeout: 5000
-  ReceiveTimeout: 30000
-  serverMaxMessageSize: 16384
-  serverMaxReceivesPerTick: 10000
-  serverSendQueueLimitPerConnection: 10000
-  serverReceiveQueueLimitPerConnection: 10000
-  clientMaxMessageSize: 16384
-  clientMaxReceivesPerTick: 1000
-  clientSendQueueLimit: 10000
-  clientReceiveQueueLimit: 10000
 --- !u!1 &1630234607
 GameObject:
   m_ObjectHideFlags: 0
