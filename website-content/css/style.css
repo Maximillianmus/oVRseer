@@ -1,0 +1,53 @@
+:root {
+  --main-nav-color: #1d1d1d;
+  --main-nav-hover-color: #d4c8ed;
+  --main-header-color: #d4c8ed;
+  --section-title-background: #e4def0;
+}
+
+body {
+
+}
+
+.section-title {
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-align: center;
+    background-color: var(--section-title-background);
+}
+
+.section-content {
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: white;
+}
+
+.nav-bar {
+    background-color: var(--main-nav-color);
+    color: white;
+}
+
+header {
+    text-align: center;
+    line-height: 300px;
+    height: 300px;
+    background-color: var(--main-header-color);
+    color: black;
+}
+
+.nav-button {
+    text-decoration: none;
+}
+
+.nav-button:hover {
+    background-color: var(--main-nav-hover-color);
+    color: black;
+}
+
+#nav-title {
+    text-decoration: none;
+}
