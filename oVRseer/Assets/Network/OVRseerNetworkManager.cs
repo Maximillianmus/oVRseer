@@ -15,16 +15,19 @@ namespace Network
         public int tinyReady;
 
     }
-
+    
     
     
     public class OVRseerNetworkManager : Mirror.NetworkManager
     {
-        // *** Prefab for overseer and Tiny ***
-        [SerializeField] GameObject overSeerPrefab;
         [SerializeField] GameObject gamePlayerPrefab;
         
         [Scene] public string gameScene;
+        [SerializeField] private GameObject playerSpawnSystem = null;
+
+        public static event Action<NetworkConnection> onServerReadied;
+        
+
 
         public List<OVRseerRoomPlayer> roomPlayers { get; } = new List<OVRseerRoomPlayer>();
 
@@ -122,7 +125,7 @@ namespace Network
 
         public void StartGame()
         {
-            if (SceneManager.GetActiveScene().path == onlineScene)
+            if (IsSceneActive(onlineScene))
             {
                 if (!canLaunch(null))
                 {
@@ -136,30 +139,42 @@ namespace Network
         public override void ServerChangeScene(string newSceneName)
         {
             // From menu to game
-            if (SceneManager.GetActiveScene().path == onlineScene && newSceneName == gameScene)
+            if (IsSceneActive(onlineScene) && newSceneName.Contains(gameScene))
             {
-                for (int i = roomPlayers.Count - 1; i >= 0; --i)
+                for (int i = roomPlayers.Count - 1; i >= 0; i--)
                 {
                     var conn = roomPlayers[i].connectionToClient;
-                    var roomPlayerComp = roomPlayers[i].GetComponent<OVRseerRoomPlayer>();
-                    GameObject gameplayerInstance;
-                    if (roomPlayerComp.type == PlayerType.Overseer)
-                    {
-                        gameplayerInstance = Instantiate(overSeerPrefab);
+                    var roomObject = conn.identity.gameObject;
+                    var type = roomPlayers[i].type;
+                    var gameplayerInstance = Instantiate(gamePlayerPrefab);
+                    var gameScript = gameplayerInstance.GetComponent<OVRseerNetworkGamePlayer>();
+                    gameScript.type = type;
 
-                    }
-                    else
-                    {
-                        gameplayerInstance = Instantiate(gamePlayerPrefab);
-                    }
-                    
-                    NetworkServer.Destroy(conn.identity.gameObject);
-                    NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject);
+                    NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject, true);
+                    NetworkServer.Destroy(roomObject);
 
                 }
             }
             base.ServerChangeScene(newSceneName);
+            
+        }
+        
+        
+        public override void OnServerSceneChanged(string sceneName)
+        {
+            if (IsSceneActive(gameScene))
+            {
+                GameObject playerSpawnSystemInstance = Instantiate(playerSpawnSystem);
+                NetworkServer.Spawn(playerSpawnSystemInstance);
+            }
+        }
+
+        public override void OnServerReady(NetworkConnection conn)
+        {
+            base.OnServerReady(conn);
+            onServerReadied?.Invoke(conn);
         }
     }
+    
 
 }

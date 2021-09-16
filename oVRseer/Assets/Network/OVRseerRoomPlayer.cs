@@ -117,7 +117,7 @@ public class OVRseerRoomPlayer : NetworkBehaviour
         Room.roomPlayers.Remove(this);
         if (hasAuthority)
         {
-            CmdNotifyExist();
+            // CmdNotifyExist();
         }
     }
 
