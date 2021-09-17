@@ -1590,3 +1590,5 @@ MonoBehaviour:
   ActionControllerRight: {fileID: 2977353923298218810}
   XRRayInteractorRight: {fileID: 2977353923298218813}
   inputActionManager: {fileID: 1845840976}
+  characterController: {fileID: 0}
+  thirdPersonController: {fileID: 0}

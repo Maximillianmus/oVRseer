@@ -6,6 +6,7 @@ using UnityEngine.XR.Management;
 using UnityEngine.SpatialTracking;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
+using StarterAssets;
 
 public class checkLocalPlayer : NetworkBehaviour
 {
@@ -13,13 +14,18 @@ public class checkLocalPlayer : NetworkBehaviour
     public Transform[] EnableTransforms;
     public bool isVr;
 
-    [Header("leave empty if not VR ")]
+    [Header("leave empty if NOT IN VR ")]
     [SerializeField] XRRig XR_Rig;
     [SerializeField] ActionBasedController ActionControllerLeft;
     [SerializeField] XRRayInteractor XRRayInteractorLeft;
     [SerializeField] ActionBasedController ActionControllerRight;
     [SerializeField] XRRayInteractor XRRayInteractorRight;
     [SerializeField] InputActionManager inputActionManager;
+
+
+    [Header("leave empty if IN VR ")]
+    [SerializeField] CharacterController characterController;
+    [SerializeField] ThirdPersonController thirdPersonController;
 
 
 
@@ -44,6 +50,8 @@ public class checkLocalPlayer : NetworkBehaviour
                 print("Turning of Vr");
                 print(GetComponent<NetworkIdentity>().netId);
                 print(gameObject.name);
+                characterController.enabled = true;
+                thirdPersonController.enabled = true;
             }
             else
             {
