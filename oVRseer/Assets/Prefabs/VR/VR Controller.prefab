@@ -1443,6 +1443,7 @@ GameObject:
   - component: {fileID: 4975331303181516077}
   - component: {fileID: 2162499380523412630}
   - component: {fileID: 8165382757671063903}
+  - component: {fileID: 2162338439114102570}
   m_Layer: 0
   m_Name: VR Controller
   m_TagString: Untagged
@@ -1588,3 +1589,26 @@ MonoBehaviour:
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   target: {fileID: 2977353923298218814}
+--- !u!114 &2162338439114102570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039014550233624782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9970dede5a3e2a34083657ef25603a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disabledTransforms:
+  - {fileID: 2977353922304390822}
+  - {fileID: 2977353922166619963}
+  disabledComponents:
+  - {fileID: 2977353923470306409}
+  - {fileID: 2977353921888867446}
+  - {fileID: 2977353921888867449}
+  - {fileID: 2977353921888867447}
+  - {fileID: 2977353923298218810}
+  - {fileID: 2977353923298218813}
+  - {fileID: 2977353923298218811}
