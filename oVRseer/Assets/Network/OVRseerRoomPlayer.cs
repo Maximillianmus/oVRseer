@@ -111,6 +111,13 @@ public class OVRseerRoomPlayer : NetworkBehaviour
             CmdNotifyExist();
     }
 
+    private void Start()
+    {
+        if (Room.dontDestroyOnLoad)
+        {
+            DontDestroyOnLoad(gameObject);
+        } 
+    }
 
     public override void OnStopClient()
     {

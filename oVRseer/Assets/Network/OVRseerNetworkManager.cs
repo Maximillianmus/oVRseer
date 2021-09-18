@@ -4,6 +4,7 @@ using kcp2k;
 using Mirror;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Network
 {
@@ -24,6 +25,7 @@ namespace Network
         
         [Scene] public string gameScene;
         [SerializeField] private GameObject playerSpawnSystem = null;
+        [SerializeField] public Text serverAdress;
 
         public static event Action<NetworkConnection> onServerReadied;
         
@@ -89,7 +91,17 @@ namespace Network
         public override void OnStopServer()
         {
             roomPlayers.Clear();
-        } 
+        }
+
+        public void StartClientAdress()
+        {
+            if (serverAdress.text.Length != 0)
+            {
+                networkAddress = serverAdress.text;
+            }
+
+            StartClient();
+        }
         
 
         /// <summary>
@@ -136,29 +148,18 @@ namespace Network
             }
         }
 
-        public override void ServerChangeScene(string newSceneName)
-        {
-            // From menu to game
-            if (IsSceneActive(onlineScene) && newSceneName.Contains(gameScene))
-            {
-                for (int i = roomPlayers.Count - 1; i >= 0; i--)
-                {
-                    var conn = roomPlayers[i].connectionToClient;
-                    var roomObject = conn.identity.gameObject;
-                    var type = roomPlayers[i].type;
-                    var gameplayerInstance = Instantiate(gamePlayerPrefab);
-                    var gameScript = gameplayerInstance.GetComponent<OVRseerNetworkGamePlayer>();
-                    gameScript.type = type;
-
-                    NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject, true);
-                    NetworkServer.Destroy(roomObject);
-
-                }
-            }
-            base.ServerChangeScene(newSceneName);
-            
-        }
         
+        public override void OnServerAddPlayer(NetworkConnection conn)
+        {
+            if (IsSceneActive(onlineScene))
+            {
+                bool isLeader = roomPlayers.Count == 0;
+
+                GameObject roomPlayerInstance = Instantiate(playerPrefab);
+
+                NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);
+            }
+        }
         
         public override void OnServerSceneChanged(string sceneName)
         {
@@ -173,6 +174,18 @@ namespace Network
         {
             base.OnServerReady(conn);
             onServerReadied?.Invoke(conn);
+        }
+        
+        public void ReplacePlayer(NetworkConnection conn, GameObject newInstance)
+        {
+            // Cache a reference to the current player object
+            GameObject oldPlayer = conn.identity.gameObject;
+
+            // Instantiate the new player object and broadcast to clients
+            NetworkServer.ReplacePlayerForConnection(conn, newInstance, true);
+
+            // Remove the previous player object that's now been replaced
+            NetworkServer.Destroy(oldPlayer);
         }
     }
     
