@@ -38,6 +38,13 @@ public class checkLocalPlayer : NetworkBehaviour
         Debug.LogWarning("The code in the check loader is currently using a hack to circumvent a bug, please fix bug and then remove circumvention. Bug can be found on git");
         if (netID.isLocalPlayer && netID.netId != 3 && netID.netId != 4)
         {
+
+            if (!isVr)
+            {
+                characterController.enabled = true;
+                thirdPersonController.enabled = true;
+            }
+
             for (int i = 0; i < EnableTransforms.Length; i++)
             {
                 EnableTransforms[i].gameObject.SetActive(true);
@@ -50,8 +57,6 @@ public class checkLocalPlayer : NetworkBehaviour
                 print("Turning of Vr");
                 print(GetComponent<NetworkIdentity>().netId);
                 print(gameObject.name);
-                characterController.enabled = true;
-                thirdPersonController.enabled = true;
             }
             else
             {
