@@ -1583,6 +1583,7 @@ MonoBehaviour:
   EnableTransforms:
   - {fileID: 2977353922166619963}
   - {fileID: 2977353922304390822}
+  EnableMobileTransforms: []
   isVr: 1
   XR_Rig: {fileID: 2977353923470306409}
   ActionControllerLeft: {fileID: 2977353921888867446}

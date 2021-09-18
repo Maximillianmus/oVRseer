@@ -12,7 +12,9 @@ public class checkLocalPlayer : NetworkBehaviour
 {
     //enable these transforms
     public Transform[] EnableTransforms;
+    [SerializeField] Transform[] EnableMobileTransforms;
     public bool isVr;
+
 
     [Header("leave empty if NOT IN VR ")]
     [SerializeField] XRRig XR_Rig;
@@ -39,16 +41,25 @@ public class checkLocalPlayer : NetworkBehaviour
         if (netID.isLocalPlayer && netID.netId != 3 && netID.netId != 4)
         {
 
+
+
+            for (int i = 0; i < EnableTransforms.Length; i++)
+            {
+                EnableTransforms[i].gameObject.SetActive(true);
+            }
+
+            #if UNITY_ANDROID
             if (!isVr)
             {
                 characterController.enabled = true;
                 thirdPersonController.enabled = true;
             }
 
-            for (int i = 0; i < EnableTransforms.Length; i++)
+            for (int i = 0; i < EnableMobileTransforms.Length; i++)
             {
-                EnableTransforms[i].gameObject.SetActive(true);
+                EnableMobileTransforms[i].gameObject.SetActive(true);
             }
+            #endif
 
             if (!isVr)
             {

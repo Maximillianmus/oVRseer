@@ -952,6 +952,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2548235200037687159, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
+      propertyPath: networkAddress
+      value: 78.67.160.222
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548235200037687159, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
       propertyPath: gamePlayerPrefab
       value: 
       objectReference: {fileID: 5760214788905530314, guid: d55f5e8e34b1df54daeede40095faa5c, type: 3}

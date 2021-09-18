@@ -2152,7 +2152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a300d010f57451488aa99000126fbd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starterAssetsInputs: {fileID: 0}
+  starterAssetsInputs: {fileID: 1258274459254405715}
 --- !u!114 &7779516166736045566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2165,6 +2165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901182334643ba1438a25accc6bd0c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 3303415447798998563}
 --- !u!1 &5713462087147648554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2344,6 +2345,9 @@ MonoBehaviour:
   EnableTransforms:
   - {fileID: 7833077837794516776}
   - {fileID: 876341218094363655}
+  EnableMobileTransforms:
+  - {fileID: 1791892561638066304}
+  - {fileID: 9183348227820701404}
   isVr: 0
   XR_Rig: {fileID: 0}
   ActionControllerLeft: {fileID: 0}
