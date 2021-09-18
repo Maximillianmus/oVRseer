@@ -1364,6 +1364,7 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  _mainCamera: {fileID: 7833077837794516781}
 --- !u!114 &4699639803906559199
 MonoBehaviour:
   m_ObjectHideFlags: 0

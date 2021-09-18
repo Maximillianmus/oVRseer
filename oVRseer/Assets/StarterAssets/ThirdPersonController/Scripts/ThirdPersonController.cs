@@ -85,7 +85,7 @@ namespace StarterAssets
 		private Animator _animator;
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
-		private GameObject _mainCamera;
+		[SerializeField] GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
 
@@ -96,7 +96,8 @@ namespace StarterAssets
 			// get a reference to our main camera
 			if (_mainCamera == null)
 			{
-				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+				//commented out as i changed the it so we can set the variable from the editor
+				//_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
 		}
 
@@ -182,7 +183,6 @@ namespace StarterAssets
 
 			float speedOffset = 0.1f;
 			float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
-
 			// accelerate or decelerate to target speed
 			if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
 			{
@@ -213,8 +213,7 @@ namespace StarterAssets
 				transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
 			}
 
-
-			Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
+            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
 			// move the player
 			_controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
