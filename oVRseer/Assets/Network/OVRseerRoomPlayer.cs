@@ -1,6 +1,7 @@
 using System;
 using Mirror;
 using Network;
+using Telepathy;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -110,6 +111,7 @@ public class OVRseerRoomPlayer : NetworkBehaviour
         if (hasAuthority) 
             CmdNotifyExist();
     }
+
 
     private void Start()
     {

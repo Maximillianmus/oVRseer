@@ -16,6 +16,11 @@ namespace Network
         public int tinyReady;
 
     }
+
+    public struct DisplayAlert : NetworkMessage
+    {
+        public bool toDisplay;
+    }
     
     
     
@@ -26,6 +31,7 @@ namespace Network
         [Scene] public string gameScene;
         [SerializeField] private GameObject playerSpawnSystem = null;
         [SerializeField] public Text serverAdress;
+        [SerializeField] public GameObject alertStarted;
 
         public static event Action<NetworkConnection> onServerReadied;
         
@@ -75,7 +81,7 @@ namespace Network
         
         public override void OnServerDisconnect(NetworkConnection conn)
         {
-            if (conn.identity != null)
+            if (conn.identity != null && IsSceneActive(onlineScene))
             {
                 var player = conn.identity.GetComponent<OVRseerRoomPlayer>();
 
@@ -87,6 +93,21 @@ namespace Network
 
             base.OnServerDisconnect(conn);
         }
+        
+        public override void OnServerConnect(NetworkConnection conn)
+        {
+            if (numPlayers >= maxConnections)
+            {
+                conn.Disconnect();
+                return;
+            }
+
+            if (!IsSceneActive(onlineScene))
+            {
+                conn.Disconnect();
+                return;
+            }
+        }
 
         public override void OnStopServer()
         {
@@ -95,6 +116,7 @@ namespace Network
 
         public void StartClientAdress()
         {
+            alertStarted.SetActive(false);
             if (serverAdress.text.Length != 0)
             {
                 networkAddress = serverAdress.text;
