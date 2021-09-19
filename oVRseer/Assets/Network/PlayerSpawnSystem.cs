@@ -91,7 +91,7 @@ namespace Network
 
                     ToSpawn = Instantiate(overSeerPrefab,
                         overseerPositions[overseerIndex % totalOverseerPosition].position,
-                        tinyPositions[overseerIndex % totalOverseerPosition].rotation);
+                        overseerPositions[overseerIndex % totalOverseerPosition].rotation);
                     overseerIndex++;
                     break;
                 default:
