@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Network
 {
@@ -16,6 +17,16 @@ namespace Network
         private int tinyIndex = 0;
         private int overseerIndex = 0;
 
+        private OVRseerNetworkManager room;
+        private OVRseerNetworkManager Room
+        {
+            get
+            {
+                if (room != null) { return room; }
+                return room = NetworkManager.singleton as OVRseerNetworkManager;
+            }
+        }
+        
         public static void AddTinySpawnPoint(Transform tinyPosition)
         {
             tinyPositions.Add(tinyPosition);
@@ -51,7 +62,10 @@ namespace Network
         [Server]
         public void SpawnPlayer(NetworkConnection conn)
         {
-            var roomPlayer= conn.identity.gameObject.GetComponent<OVRseerNetworkGamePlayer>();
+            if (SceneManager.GetActiveScene().name != Room.gameScene &&
+                SceneManager.GetActiveScene().path != Room.gameScene) return;
+            var roomPlayer = conn.identity.gameObject.GetComponent<OVRseerRoomPlayer>();
+            var roomObject = conn.identity.gameObject;
             GameObject ToSpawn = null;
             switch (roomPlayer.type)
             {
@@ -59,29 +73,34 @@ namespace Network
                     var totalTinyPosition = tinyPositions.Count;
                     if (tinyIndex >= totalTinyPosition)
                     {
-                        Debug.LogWarning("There is not enough position for tiny players as players : the position will circle");
+                        Debug.LogWarning(
+                            "There is not enough position for tiny players as players : the position will circle");
                     }
+
                     ToSpawn = Instantiate(tinyPrefab, tinyPositions[tinyIndex % totalTinyPosition].position,
                         tinyPositions[tinyIndex % totalTinyPosition].rotation);
                     tinyIndex++;
                     break;
                 case PlayerType.Overseer:
                     var totalOverseerPosition = overseerPositions.Count;
-                    if (tinyIndex >= totalOverseerPosition)
+                    if (overseerIndex >= totalOverseerPosition)
                     {
-                        Debug.LogWarning("There is not enough position for overseer players as players : the position will circle");
+                        Debug.LogWarning(
+                            "There is not enough position for overseer players as players : the position will circle");
                     }
-                    ToSpawn = Instantiate(overSeerPrefab, overseerPositions[overseerIndex % totalOverseerPosition].position,
-                        tinyPositions[overseerIndex % totalOverseerPosition].rotation);
+
+                    ToSpawn = Instantiate(overSeerPrefab,
+                        overseerPositions[overseerIndex % totalOverseerPosition].position,
+                        overseerPositions[overseerIndex % totalOverseerPosition].rotation);
                     overseerIndex++;
                     break;
                 default:
                     break;
             }
 
-            NetworkServer.Destroy(conn.identity.gameObject);
-            NetworkServer.ReplacePlayerForConnection(conn, ToSpawn, true); 
-            
+            Room.ReplacePlayer(conn, ToSpawn);
+
         }
+
     }
 }

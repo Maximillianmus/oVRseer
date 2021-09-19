@@ -27,17 +27,26 @@ public class OVRseerNetworkGamePlayer : NetworkBehaviour
     }
 
 
-    [Command]
-    public void CmdGoToLobby()
-    {
-        
-    }
 
     void OnGUI()
     {
         if (GUI.Button(new Rect(Screen.width - 120, 40, 120, 20), "Disconnect"))
         {
-            CmdGoToLobby();
+            if (isServer && isClient)
+            {
+                Room.StopHost();
+                return;
+            }
+
+            if (isServer)
+            {
+                Room.StopServer();
+                return;
+            }
+            if (isClient)
+            {
+                Room.StopClient();
+            }
         } 
     }
 }
