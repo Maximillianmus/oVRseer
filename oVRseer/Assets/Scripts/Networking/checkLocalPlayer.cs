@@ -7,6 +7,7 @@ using UnityEngine.SpatialTracking;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 using StarterAssets;
+using UnityEngine.InputSystem;
 
 public class checkLocalPlayer : NetworkBehaviour
 {
@@ -28,7 +29,7 @@ public class checkLocalPlayer : NetworkBehaviour
     [Header("leave empty if IN VR ")]
     [SerializeField] CharacterController characterController;
     [SerializeField] ThirdPersonController thirdPersonController;
-
+    [SerializeField] PlayerInput playerInput;
 
 
     //this only runes if the object it is on is the local player, so we enable all the controlls and cammeras here
@@ -37,7 +38,7 @@ public class checkLocalPlayer : NetworkBehaviour
 
         NetworkIdentity netID = GetComponent<NetworkIdentity>();
 
-        Debug.LogWarning("The code in the check loader is currently using a hack to circumvent a bug, please fix bug and then remove circumvention. Bug can be found on git");
+
         if (netID.isLocalPlayer)
         {
 
@@ -45,6 +46,7 @@ public class checkLocalPlayer : NetworkBehaviour
             {
                 characterController.enabled = true;
                 thirdPersonController.enabled = true;
+                playerInput.enabled = true;
             }
 
             for (int i = 0; i < EnableTransforms.Length; i++)
