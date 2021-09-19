@@ -2356,7 +2356,7 @@ MonoBehaviour:
   inputActionManager: {fileID: 0}
   characterController: {fileID: 3303415447798998565}
   thirdPersonController: {fileID: 3303415447798998564}
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 3303415447798998563}
 --- !u!1 &5783865163521243628
 GameObject:
   m_ObjectHideFlags: 0
