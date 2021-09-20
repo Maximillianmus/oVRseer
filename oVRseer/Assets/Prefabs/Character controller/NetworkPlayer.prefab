@@ -1408,7 +1408,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3303415447798998575}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -2165,7 +2165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901182334643ba1438a25accc6bd0c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 3303415447798998563}
 --- !u!1 &5713462087147648554
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,6 +2239,7 @@ GameObject:
   - component: {fileID: 4409287637027422672}
   - component: {fileID: 783215018388337521}
   - component: {fileID: 4340053256900888946}
+  - component: {fileID: 3371776138410876761}
   m_Layer: 0
   m_Name: NetworkPlayer
   m_TagString: Untagged
@@ -2357,6 +2357,23 @@ MonoBehaviour:
   inputActionManager: {fileID: 0}
   characterController: {fileID: 3303415447798998565}
   thirdPersonController: {fileID: 3303415447798998564}
+  playerInput: {fileID: 3303415447798998563}
+--- !u!114 &3371776138410876761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760214788905530314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  animator: {fileID: 8103078131383232239}
 --- !u!1 &5783865163521243628
 GameObject:
   m_ObjectHideFlags: 0
