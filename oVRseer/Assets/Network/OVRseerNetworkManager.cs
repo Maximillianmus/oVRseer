@@ -21,7 +21,12 @@ namespace Network
     {
         public bool toDisplay;
     }
-    
+
+    public struct RoomPlayersToDestroy
+    {
+        public GameObject roomPlayer;
+        public NetworkConnection conn;
+    }
     
     
     public class OVRseerNetworkManager : Mirror.NetworkManager
@@ -38,6 +43,7 @@ namespace Network
 
 
         public List<OVRseerRoomPlayer> roomPlayers { get; } = new List<OVRseerRoomPlayer>();
+        private List<RoomPlayersToDestroy> _roomPlayersToDestroys = new List<RoomPlayersToDestroy>();
 
         /// <summary>
         /// Check if game can be launched and update count
@@ -196,8 +202,21 @@ namespace Network
         {
             base.OnServerReady(conn);
             onServerReadied?.Invoke(conn);
+            if (_roomPlayersToDestroys.Count == roomPlayers.Count)
+            {
+                DestroyAllRoomPlayers();
+            }
         }
-        
+
+        private void DestroyAllRoomPlayers()
+        {
+            for (int i = _roomPlayersToDestroys.Count - 1; i >= 0; --i)
+            {
+                NetworkServer.Destroy(_roomPlayersToDestroys[i].roomPlayer);
+            }
+            _roomPlayersToDestroys.Clear();
+        }
+
         public void ReplacePlayer(NetworkConnection conn, GameObject newInstance)
         {
             // Cache a reference to the current player object
@@ -206,8 +225,13 @@ namespace Network
             // Instantiate the new player object and broadcast to clients
             NetworkServer.ReplacePlayerForConnection(conn, newInstance, true);
 
-            // Remove the previous player object that's now been replaced
-            NetworkServer.Destroy(oldPlayer);
+            RoomPlayersToDestroy roomPlayersToDestroy = new RoomPlayersToDestroy
+            {
+                conn = conn,
+                roomPlayer = oldPlayer
+            };
+            _roomPlayersToDestroys.Add(roomPlayersToDestroy);
+
         }
     }
     
