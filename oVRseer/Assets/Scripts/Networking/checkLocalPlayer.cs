@@ -21,7 +21,6 @@ public class checkLocalPlayer : NetworkBehaviour
     [SerializeField] XRRig XR_Rig;
     [SerializeField] ActionBasedController ActionControllerLeft;
     [SerializeField] ActionBasedController ActionControllerRight;
-    [SerializeField] XRRayInteractor XRRayInteractorRight;
     [SerializeField] InputActionManager inputActionManager;
     [SerializeField] XRDirectInteractor xRDirectInteractorLeft;
     [SerializeField] XRDirectInteractor xRDirectInteractorRight;
@@ -78,7 +77,6 @@ public class checkLocalPlayer : NetworkBehaviour
                 XR_Rig.enabled = true;
                 ActionControllerLeft.enabled = true;
                 ActionControllerRight.enabled = true;
-                XRRayInteractorRight.enabled = true;
                 inputActionManager.enabled = true;
                 xRDirectInteractorLeft.enabled = true;
                 xRDirectInteractorRight.enabled = true;
