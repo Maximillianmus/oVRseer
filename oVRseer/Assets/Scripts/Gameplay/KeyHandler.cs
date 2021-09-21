@@ -8,10 +8,9 @@ public class KeyHandler : MonoBehaviour
     public int numberOfKeys = 1;
     public Text keyCollectedMessage;
     public Vector3[] keyPositions;
+    public float textFadeTime = 1.5f;
 
     private int maxNumberOfKeys = 4;
-    private bool doorIsLocked;
-    private float textFadeTime = 1f;
     private bool textFadeIn;
     private int keysRemaining;
 
@@ -21,14 +20,16 @@ public class KeyHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        keysRemaining = numberOfKeys;
+        
         textFadeIn = false;
-        doorIsLocked = true;
-        keyCollectedMessage.canvasRenderer.SetAlpha(0);
+
 
         if(numberOfKeys > maxNumberOfKeys) {
             numberOfKeys = maxNumberOfKeys;
         }
+
+        keysRemaining = numberOfKeys;
+        keyCollectedMessage.canvasRenderer.SetAlpha(0);
 
         FillPositions();
         CreateKeys();
@@ -45,12 +46,12 @@ public class KeyHandler : MonoBehaviour
         if (textFadeIn == true) {
             //Fully fade in text with duration of "textFadeTime" 
             keyCollectedMessage.CrossFadeAlpha(1, textFadeTime, false);
-            Invoke("FadeOutText", textFadeTime + 1);
+            Invoke("FadeOutText", textFadeTime);
 
         }
 
         if (textFadeIn == false){
-            keyCollectedMessage.CrossFadeAlpha(0, 1.0f, false);
+            keyCollectedMessage.CrossFadeAlpha(0, 1f, false);
         }
     }
 
@@ -74,8 +75,8 @@ public class KeyHandler : MonoBehaviour
         }
         else
         {
-            doorIsLocked = false;
             keyCollectedMessage.text = "The door is unlocked. Go to it to escape";
+            OpenDoor();
         }
     }
 
@@ -83,10 +84,10 @@ public class KeyHandler : MonoBehaviour
     {
         // Hard coded positions for now
         keyPositions = new Vector3[4];
-        keyPositions[0] = new Vector3(0f, 5f, 0f);
-        keyPositions[1] = new Vector3(0f, 5f, 3f);
-        keyPositions[2] = new Vector3(0f, 5f, 6f);
-        keyPositions[3] = new Vector3(0f, 5f, 9f);
+        keyPositions[0] = new Vector3(-5f, 5f, -14f);
+        keyPositions[1] = new Vector3(-5f, 5f, -3f);
+        keyPositions[2] = new Vector3(7.5f, 5f, -14f);
+        keyPositions[3] = new Vector3(7.5f, 5f, -3f);
     }
 
     private void CreateKeys() {
@@ -97,5 +98,10 @@ public class KeyHandler : MonoBehaviour
             temp.name = "Key" + i.ToString();
             temp.GetComponent<Key>().keyHandler = theKeyHandler;
         }
+    }
+
+    private void OpenDoor()
+    {
+        //TODO: Add code to open 'door' so that tiny-guys can escape
     }
 }
