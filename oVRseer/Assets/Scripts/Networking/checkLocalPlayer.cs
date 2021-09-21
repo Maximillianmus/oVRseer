@@ -20,10 +20,11 @@ public class checkLocalPlayer : NetworkBehaviour
     [Header("leave empty if NOT IN VR ")]
     [SerializeField] XRRig XR_Rig;
     [SerializeField] ActionBasedController ActionControllerLeft;
-    [SerializeField] XRRayInteractor XRRayInteractorLeft;
     [SerializeField] ActionBasedController ActionControllerRight;
     [SerializeField] XRRayInteractor XRRayInteractorRight;
     [SerializeField] InputActionManager inputActionManager;
+    [SerializeField] XRDirectInteractor xRDirectInteractorLeft;
+    [SerializeField] XRDirectInteractor xRDirectInteractorRight;
 
 
     [Header("leave empty if IN VR ")]
@@ -76,10 +77,11 @@ public class checkLocalPlayer : NetworkBehaviour
                 XRGeneralSettings.Instance.Manager.InitializeLoader();
                 XR_Rig.enabled = true;
                 ActionControllerLeft.enabled = true;
-                XRRayInteractorLeft.enabled = true;
                 ActionControllerRight.enabled = true;
                 XRRayInteractorRight.enabled = true;
                 inputActionManager.enabled = true;
+                xRDirectInteractorLeft.enabled = true;
+                xRDirectInteractorRight.enabled = true;
             }
         }
        

@@ -164,7 +164,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2977353921888867453}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
@@ -713,7 +713,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2977353923298218753}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
@@ -1141,10 +1141,11 @@ MonoBehaviour:
   isVr: 1
   XR_Rig: {fileID: 2977353923470306409}
   ActionControllerLeft: {fileID: 2977353921888867446}
-  XRRayInteractorLeft: {fileID: 0}
   ActionControllerRight: {fileID: 2977353923298218810}
   XRRayInteractorRight: {fileID: 0}
   inputActionManager: {fileID: 1845840976}
+  xRDirectInteractorLeft: {fileID: 4533706315006706350}
+  xRDirectInteractorRight: {fileID: 8053502444625841608}
   characterController: {fileID: 0}
   thirdPersonController: {fileID: 0}
   playerInput: {fileID: 0}
