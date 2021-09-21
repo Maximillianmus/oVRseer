@@ -1,6 +1,7 @@
 using System;
 using Mirror;
 using Network;
+using Telepathy;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -112,12 +113,20 @@ public class OVRseerRoomPlayer : NetworkBehaviour
     }
 
 
+    private void Start()
+    {
+        if (Room.dontDestroyOnLoad)
+        {
+            DontDestroyOnLoad(gameObject);
+        } 
+    }
+
     public override void OnStopClient()
     {
         Room.roomPlayers.Remove(this);
         if (hasAuthority)
         {
-            CmdNotifyExist();
+            // CmdNotifyExist();
         }
     }
 

@@ -4,6 +4,7 @@ using kcp2k;
 using Mirror;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace Network
 {
@@ -16,17 +17,33 @@ namespace Network
 
     }
 
+    public struct DisplayAlert : NetworkMessage
+    {
+        public bool toDisplay;
+    }
+
+    public struct RoomPlayersToDestroy
+    {
+        public GameObject roomPlayer;
+        public NetworkConnection conn;
+    }
     
     
     public class OVRseerNetworkManager : Mirror.NetworkManager
     {
-        // *** Prefab for overseer and Tiny ***
-        [SerializeField] GameObject overSeerPrefab;
         [SerializeField] GameObject gamePlayerPrefab;
         
         [Scene] public string gameScene;
+        [SerializeField] private GameObject playerSpawnSystem = null;
+        [SerializeField] public Text serverAdress;
+        [SerializeField] public GameObject alertStarted;
+
+        public static event Action<NetworkConnection> onServerReadied;
+        
+
 
         public List<OVRseerRoomPlayer> roomPlayers { get; } = new List<OVRseerRoomPlayer>();
+        private List<RoomPlayersToDestroy> _roomPlayersToDestroys = new List<RoomPlayersToDestroy>();
 
         /// <summary>
         /// Check if game can be launched and update count
@@ -70,7 +87,7 @@ namespace Network
         
         public override void OnServerDisconnect(NetworkConnection conn)
         {
-            if (conn.identity != null)
+            if (conn.identity != null && IsSceneActive(onlineScene))
             {
                 var player = conn.identity.GetComponent<OVRseerRoomPlayer>();
 
@@ -82,11 +99,37 @@ namespace Network
 
             base.OnServerDisconnect(conn);
         }
+        
+        public override void OnServerConnect(NetworkConnection conn)
+        {
+            if (numPlayers >= maxConnections)
+            {
+                conn.Disconnect();
+                return;
+            }
+
+            if (!IsSceneActive(onlineScene))
+            {
+                conn.Disconnect();
+                return;
+            }
+        }
 
         public override void OnStopServer()
         {
             roomPlayers.Clear();
-        } 
+        }
+
+        public void StartClientAdress()
+        {
+            alertStarted.SetActive(false);
+            if (serverAdress.text.Length != 0)
+            {
+                networkAddress = serverAdress.text;
+            }
+
+            StartClient();
+        }
         
 
         /// <summary>
@@ -122,7 +165,7 @@ namespace Network
 
         public void StartGame()
         {
-            if (SceneManager.GetActiveScene().path == onlineScene)
+            if (IsSceneActive(onlineScene))
             {
                 if (!canLaunch(null))
                 {
@@ -133,33 +176,64 @@ namespace Network
             }
         }
 
-        public override void ServerChangeScene(string newSceneName)
+        
+        public override void OnServerAddPlayer(NetworkConnection conn)
         {
-            // From menu to game
-            if (SceneManager.GetActiveScene().path == onlineScene && newSceneName == gameScene)
+            if (IsSceneActive(onlineScene))
             {
-                for (int i = roomPlayers.Count - 1; i >= 0; --i)
-                {
-                    var conn = roomPlayers[i].connectionToClient;
-                    var roomPlayerComp = roomPlayers[i].GetComponent<OVRseerRoomPlayer>();
-                    GameObject gameplayerInstance;
-                    if (roomPlayerComp.type == PlayerType.Overseer)
-                    {
-                        gameplayerInstance = Instantiate(overSeerPrefab);
+                bool isLeader = roomPlayers.Count == 0;
 
-                    }
-                    else
-                    {
-                        gameplayerInstance = Instantiate(gamePlayerPrefab);
-                    }
-                    
-                    NetworkServer.Destroy(conn.identity.gameObject);
-                    NetworkServer.ReplacePlayerForConnection(conn, gameplayerInstance.gameObject);
+                GameObject roomPlayerInstance = Instantiate(playerPrefab);
 
-                }
+                NetworkServer.AddPlayerForConnection(conn, roomPlayerInstance.gameObject);
             }
-            base.ServerChangeScene(newSceneName);
+        }
+        
+        public override void OnServerSceneChanged(string sceneName)
+        {
+            if (IsSceneActive(gameScene))
+            {
+                GameObject playerSpawnSystemInstance = Instantiate(playerSpawnSystem);
+                NetworkServer.Spawn(playerSpawnSystemInstance);
+            }
+        }
+
+        public override void OnServerReady(NetworkConnection conn)
+        {
+            base.OnServerReady(conn);
+            onServerReadied?.Invoke(conn);
+            if (_roomPlayersToDestroys.Count == roomPlayers.Count)
+            {
+                DestroyAllRoomPlayers();
+            }
+        }
+
+        private void DestroyAllRoomPlayers()
+        {
+            for (int i = _roomPlayersToDestroys.Count - 1; i >= 0; --i)
+            {
+                NetworkServer.Destroy(_roomPlayersToDestroys[i].roomPlayer);
+            }
+            _roomPlayersToDestroys.Clear();
+        }
+
+        public void ReplacePlayer(NetworkConnection conn, GameObject newInstance)
+        {
+            // Cache a reference to the current player object
+            GameObject oldPlayer = conn.identity.gameObject;
+
+            // Instantiate the new player object and broadcast to clients
+            NetworkServer.ReplacePlayerForConnection(conn, newInstance, true);
+
+            RoomPlayersToDestroy roomPlayersToDestroy = new RoomPlayersToDestroy
+            {
+                conn = conn,
+                roomPlayer = oldPlayer
+            };
+            _roomPlayersToDestroys.Add(roomPlayersToDestroy);
+
         }
     }
+    
 
 }
