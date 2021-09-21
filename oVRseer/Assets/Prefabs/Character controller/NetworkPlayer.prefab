@@ -441,49 +441,6 @@ MonoBehaviour:
     m_Bits: 1
   IgnoreTag: Player
   CameraRadius: 0.15
---- !u!1 &895932175672495354
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2506348960374446837}
-  - component: {fileID: 5850237867012457496}
-  m_Layer: 0
-  m_Name: XR Interaction Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2506348960374446837
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895932175672495354}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25906372, y: 0.2608683, z: -0.015393883}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4411226295895103231}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5850237867012457496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 895932175672495354}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1132300131541016143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,6 +1274,7 @@ GameObject:
   - component: {fileID: 3303415447798998563}
   - component: {fileID: 1196478805019782728}
   - component: {fileID: 4830112540762056757}
+  - component: {fileID: 1598936085226493886}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -1555,7 +1513,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -1572,7 +1530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 5850237867012457496}
+  m_InteractionManager: {fileID: 0}
   m_Colliders: []
   m_InteractionLayerMask:
     serializedVersion: 2
@@ -1666,6 +1624,20 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!136 &1598936085226493886
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303415447798998575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.28041887
+  m_Height: 1.805492
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.92625874, z: -0.0008854866}
 --- !u!1 &3337571173044081267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,7 +2402,6 @@ Transform:
   - {fileID: 2779783598367620245}
   - {fileID: 1791892561638066304}
   - {fileID: 9183348227820701404}
-  - {fileID: 2506348960374446837}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2519,10 +2490,10 @@ MonoBehaviour:
   isVr: 0
   XR_Rig: {fileID: 0}
   ActionControllerLeft: {fileID: 0}
-  XRRayInteractorLeft: {fileID: 0}
   ActionControllerRight: {fileID: 0}
-  XRRayInteractorRight: {fileID: 0}
   inputActionManager: {fileID: 0}
+  xRDirectInteractorLeft: {fileID: 0}
+  xRDirectInteractorRight: {fileID: 0}
   characterController: {fileID: 3303415447798998565}
   thirdPersonController: {fileID: 3303415447798998564}
   playerInput: {fileID: 3303415447798998563}
