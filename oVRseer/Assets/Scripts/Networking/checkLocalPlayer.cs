@@ -27,8 +27,7 @@ public class checkLocalPlayer : NetworkBehaviour
 
 
     [Header("leave empty if IN VR ")]
-    [SerializeField] CharacterController characterController;
-    [SerializeField] ThirdPersonController thirdPersonController;
+    [SerializeField] RigidbodyThirdPersonController thirdPersonController;
     [SerializeField] PlayerInput playerInput;
 
 
@@ -44,7 +43,6 @@ public class checkLocalPlayer : NetworkBehaviour
 
             if (!isVr)
             {
-                characterController.enabled = true;
                 thirdPersonController.enabled = true;
                 playerInput.enabled = true;
             }

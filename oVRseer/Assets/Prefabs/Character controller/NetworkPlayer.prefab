@@ -1301,6 +1301,8 @@ GameObject:
   - component: {fileID: 1258274459254405715}
   - component: {fileID: 3303415447798998563}
   - component: {fileID: 3118551891364624030}
+  - component: {fileID: 7974580675942165510}
+  - component: {fileID: 6544687867925450220}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -1351,18 +1353,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3303415447798998575}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ebb53006ccb97a4fb3a9275a4526c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerRigidbody: {fileID: 3118551891364624030}
   Orientation: {fileID: 7483665052832478796}
-  MoveSpeed: 2
+  MoveSpeed: 3
   SprintSpeed: 5.335
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
-  JumpHeight: 1.2
+  JumpHeight: 50
   JumpTimeout: 0.5
   FallTimeout: 0.15
   Grounded: 1
@@ -1371,12 +1373,12 @@ MonoBehaviour:
   GroundLayers:
     serializedVersion: 2
     m_Bits: 65
-  CinemachineCameraTarget: {fileID: 0}
+  CinemachineCameraTarget: {fileID: 7146664970857291636}
   TopClamp: 70
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 7833077837794516781}
 --- !u!114 &1258274459254405715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1507,9 +1509,36 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
+  m_Interpolate: 1
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &7974580675942165510
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303415447798998575}
+  m_Material: {fileID: 13400000, guid: 2debad4ac21a6644faf4fc93bd5b5869, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.26109576
+  m_Height: 1.8177652
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9622307, z: -0.023999453}
+--- !u!65 &6544687867925450220
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303415447798998575}
+  m_Material: {fileID: 13400000, guid: cc777b8fa89917f418329d3437312450, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4479103, y: 0.4811921, z: 0.3170371}
+  m_Center: {x: -0.007171631, y: 0.25940394, z: -0.029143572}
 --- !u!1 &3337571173044081267
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,6 +2281,7 @@ GameObject:
   - component: {fileID: 4340053256900888946}
   - component: {fileID: 3371776138410876761}
   - component: {fileID: 5394593220124366438}
+  - component: {fileID: 869292827429701058}
   m_Layer: 0
   m_Name: NetworkPlayer
   m_TagString: Untagged
@@ -2368,8 +2398,7 @@ MonoBehaviour:
   ActionControllerRight: {fileID: 0}
   XRRayInteractorRight: {fileID: 0}
   inputActionManager: {fileID: 0}
-  characterController: {fileID: 0}
-  thirdPersonController: {fileID: 0}
+  thirdPersonController: {fileID: 1699815079654780903}
   playerInput: {fileID: 3303415447798998563}
 --- !u!114 &3371776138410876761
 MonoBehaviour:
@@ -2384,7 +2413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 0.1
+  syncInterval: 0.05
   clientAuthority: 1
   animator: {fileID: 8103078131383232239}
 --- !u!114 &5394593220124366438
@@ -2401,14 +2430,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  target: {fileID: 0}
-  clientAuthority: 0
+  target: {fileID: 3118551891364624030}
+  clientAuthority: 1
   syncVelocity: 1
   clearVelocity: 0
   velocitySensitivity: 0.1
   syncAngularVelocity: 1
   clearAngularVelocity: 0
   angularVelocitySensitivity: 0.1
+--- !u!114 &869292827429701058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760214788905530314}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f032128052c95a46afb0ddd97d994cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  target: {fileID: 3118551891364624030}
+  lerpVelocityAmount: 0.5
+  lerpPositionAmount: 0.5
+  clientAuthority: 1
 --- !u!1 &5783865163521243628
 GameObject:
   m_ObjectHideFlags: 0
