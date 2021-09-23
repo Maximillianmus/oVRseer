@@ -29,6 +29,7 @@ public class checkLocalPlayer : NetworkBehaviour
     [Header("leave empty if IN VR ")]
     [SerializeField] RigidbodyThirdPersonController thirdPersonController;
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] private MorphControl morphControl;
 
 
     //this only runes if the object it is on is the local player, so we enable all the controlls and cammeras here
@@ -45,6 +46,7 @@ public class checkLocalPlayer : NetworkBehaviour
             {
                 thirdPersonController.enabled = true;
                 playerInput.enabled = true;
+                morphControl.enabled = true;
             }
 
             for (int i = 0; i < EnableTransforms.Length; i++)

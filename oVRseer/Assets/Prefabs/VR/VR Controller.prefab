@@ -1597,6 +1597,7 @@ MonoBehaviour:
   inputActionManager: {fileID: 1845840976}
   thirdPersonController: {fileID: 0}
   playerInput: {fileID: 0}
+  morphControl: {fileID: 0}
 --- !u!114 &7888373092948496452
 MonoBehaviour:
   m_ObjectHideFlags: 0

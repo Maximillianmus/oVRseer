@@ -7,6 +7,13 @@ namespace StarterAssets
 {
 	public class StarterAssetsInputs : MonoBehaviour
 	{
+		[Header("Action properties")] 
+		public float morphCooldown = 2.0f;
+
+		public float lastTimeMorph  = -2.0f;
+		
+		
+		
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
@@ -90,6 +97,12 @@ namespace StarterAssets
 
 		public void MorphInput()
 		{
+			if (Time.time - lastTimeMorph < morphCooldown)
+			{
+				return;
+			}
+
+			lastTimeMorph = Time.time;
 			morph = !morph;
 		}
 
