@@ -36,6 +36,22 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Morph",
+                    "type": "Button",
+                    "id": "cc1f05f1-ecfd-4bef-a2eb-13d4f95ed7b1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Choose",
+                    "type": "PassThrough",
+                    "id": "83f0ed28-3d55-4c04-8563-96bc27eb67b0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -212,6 +228,28 @@
                     "processors": "",
                     "groups": "Gamepad;Xbox Controller",
                     "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96d42197-00ac-422b-8857-7e9bfce9eb26",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Morph",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4574eaa-d9cb-442d-88f0-ce0e10edae93",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Choose",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

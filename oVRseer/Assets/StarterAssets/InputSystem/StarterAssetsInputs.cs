@@ -12,6 +12,8 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool morph = false;
+		public bool choose = false;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -45,6 +47,17 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+		public void OnMorph(InputValue value)
+		{
+			if (value.isPressed)
+				MorphInput();
+		}
+		
+		public void OnChoose(InputValue value)
+		{
+			ChooseInput(value.isPressed);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -68,6 +81,16 @@ namespace StarterAssets
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
+		}
+		
+		public void ChooseInput(bool newChooseState)
+		{
+			choose = newChooseState;
+		}
+
+		public void MorphInput()
+		{
+			morph = !morph;
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID
