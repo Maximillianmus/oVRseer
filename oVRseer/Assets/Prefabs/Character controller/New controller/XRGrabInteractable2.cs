@@ -756,8 +756,6 @@ namespace UnityEngine.XR.Interaction.Toolkit
             m_CurrentMovementType = m_MovementType;
             m_DetachInLateUpdate = true;
             SmoothVelocityEnd();
-
-            vrInformer.NotifyVrReleasing();
         }
 
         /// <summary>
