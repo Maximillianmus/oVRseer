@@ -54,6 +54,7 @@ public class VrInformer : NetworkBehaviour
         }
     }
 
+    [Command]
     void CmdRelease()
     {
         networkId.RemoveClientAuthority();

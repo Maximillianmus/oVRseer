@@ -802,6 +802,7 @@ namespace UnityEngine.XR.Interaction.Toolkit
         // ReSharper disable once ParameterHidesMember
         protected virtual void SetupRigidbodyDrop(Rigidbody rigidbody)
         {
+            print("hello");
             // Restore Rigidbody settings
             rigidbody.isKinematic = m_WasKinematic;
             rigidbody.useGravity = m_UsedGravity | m_ForceGravityOnDetach;
