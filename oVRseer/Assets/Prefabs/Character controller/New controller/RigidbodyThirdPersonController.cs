@@ -86,7 +86,7 @@ namespace StarterAssets
 		private Animator _animator;
 		//private CharacterController _controller;
 		private StarterAssetsInputs _input;
-		public GameObject _mainCamera;
+		[SerializeField] GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
 
@@ -98,8 +98,7 @@ namespace StarterAssets
 			if (_mainCamera == null)
 			{
 				//commented out as i changed the it so we can set the variable from the editor
-				//and i commented it in again /Max
-				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+				//_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
 		}
 

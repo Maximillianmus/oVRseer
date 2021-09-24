@@ -8,7 +8,6 @@ using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 using StarterAssets;
 using UnityEngine.InputSystem;
-using Cinemachine;
 
 public class checkLocalPlayer : NetworkBehaviour
 {
@@ -67,8 +66,6 @@ public class checkLocalPlayer : NetworkBehaviour
 
             if (!isVr)
             {
-                GameObject Camera = GameObject.Find("Camera");
-                Camera.GetComponentInChildren<CinemachineVirtualCamera>().Follow = this.transform;
                 //removes the VR settings if the local player is not a vr player
                 XRGeneralSettings.Instance.Manager.DeinitializeLoader();
                 print("Turning of Vr");

@@ -80,4 +80,3 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   PlayerPrefab: {fileID: 5760214788905530314, guid: eded471dd618d4340b5b04413cc9e7c5, type: 3}
-  CameraPrefab: {fileID: 5760214788905530314, guid: 44597fca3779649438ab02728046d730, type: 3}

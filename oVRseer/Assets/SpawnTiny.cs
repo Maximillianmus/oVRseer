@@ -6,7 +6,6 @@ using UnityEngine;
 public class SpawnTiny : NetworkBehaviour
 {
     public GameObject PlayerPrefab;
-    public GameObject CameraPrefab;
 
     private NetworkIdentity networkId;
     private NetworkConnectionToClient networkConnectionToClient;
@@ -17,8 +16,8 @@ public class SpawnTiny : NetworkBehaviour
         networkId = transform.GetComponent<NetworkIdentity>();
         networkConnectionToClient = networkId.connectionToClient;
 
-        GameObject Camera = Instantiate(CameraPrefab, transform.position, transform.rotation);
         CmdSpawnModel();
+
 
     }
 
