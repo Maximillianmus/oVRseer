@@ -27,6 +27,7 @@ public class VrInformer : MonoBehaviour
         if(VrPlayer == null)
         {
             VrPlayer = GameObject.FindGameObjectWithTag("VR");
+            grabCommand = VrPlayer.GetComponent<GrabCommand>();
         }
            
 
