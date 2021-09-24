@@ -12,12 +12,17 @@ public class MorphControl : NetworkBehaviour
     public GameObject baseMesh;
     public GameObject morphMesh;
     public Image morphButton;
+    private bool lastMorphState = false;
     
     
 
     // Update is called once per frame
     void Update()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
         var buttonColor = morphButton.color;
         if (Time.time - _inputs.lastTimeMorph < _inputs.morphCooldown)
         {
@@ -28,8 +33,13 @@ public class MorphControl : NetworkBehaviour
         {
             morphButton.color = Color.white;
             buttonColor.a = 0;
-        } 
-        CmdMorphAbility(_inputs.morph);
+        }
+
+        if (_inputs.morph != lastMorphState)
+        {
+            lastMorphState = _inputs.morph;
+            CmdMorphAbility(_inputs.morph);
+        }
         
         if (_inputs.choose) 
             RayCast();
@@ -54,18 +64,41 @@ public class MorphControl : NetworkBehaviour
     {
         RaycastHit hitInfo = new RaycastHit();
         LayerMask layerMask = LayerMask.GetMask("Map", "Ground");
-        bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, Mathf.Infinity, layerMask);
+        bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, Mathf.Infinity,
+            layerMask);
         if (!hit)
         {
             return;
         }
 
-        var morphMeshFilter = morphMesh.GetComponent<MeshFilter>();
-        Destroy(morphMesh.GetComponent<MeshCollider>());
-        morphMeshFilter.mesh = hitInfo.transform.gameObject.GetComponent<MeshFilter>().mesh;
-        var morphCollider = morphMesh.AddComponent<MeshCollider>();
-        morphCollider.sharedMesh = morphMeshFilter.mesh;
-        morphCollider.convex = true;
+        NetworkIdentity networkIdentity;
+        bool hasNetworkIdentity = hitInfo.transform.gameObject.TryGetComponent<NetworkIdentity>(out networkIdentity);
+        if (!hasNetworkIdentity)
+        {
+            Debug.Log("this object can not be morph through network");
+            return;
+        }
+
+        CmdChangeMorphTo(networkIdentity.netId);
     }
+
+    [Command]
+    void CmdChangeMorphTo(uint netId)
+    {
+        RpcChangeMorphTo(netId);
+    }
+
+    [ClientRpc]
+     void RpcChangeMorphTo(uint netId)
+     {
+         var newMeshObj = NetworkClient.spawned[netId];
+         var morphMeshFilter = morphMesh.GetComponent<MeshFilter>();
+         Destroy(morphMesh.GetComponent<MeshCollider>());
+         morphMeshFilter.mesh = newMeshObj.gameObject.GetComponent<MeshFilter>().mesh;
+         var morphCollider = morphMesh.AddComponent<MeshCollider>();
+         morphCollider.sharedMesh = morphMeshFilter.mesh;
+         morphCollider.convex = true;
+     }
+
     
 }

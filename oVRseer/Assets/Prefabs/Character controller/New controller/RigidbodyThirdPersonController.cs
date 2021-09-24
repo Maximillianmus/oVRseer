@@ -239,7 +239,6 @@ namespace StarterAssets
 			//Debug.DrawLine(transform.position, transform.position + forward * 10 * 2, Color.blue);
 
 			// move the player
-			print(targetDirection.normalized);
 			PlayerRigidbody.velocity = (targetDirection.normalized * (_speed) + new Vector3(0.0f, PlayerRigidbody.velocity.y, 0.0f));
 
 			// update animator if using character
