@@ -578,6 +578,7 @@ namespace UnityEngine.XR.Interaction.Toolkit
                 if (m_TrackPosition)
                 {
                     transform.position = m_TargetWorldPosition;
+
                 }
 
                 if (m_TrackRotation)
@@ -754,6 +755,7 @@ namespace UnityEngine.XR.Interaction.Toolkit
             m_CurrentMovementType = m_MovementType;
             m_DetachInLateUpdate = true;
             SmoothVelocityEnd();
+
         }
 
         /// <summary>

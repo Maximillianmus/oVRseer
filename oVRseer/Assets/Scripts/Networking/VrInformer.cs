@@ -10,7 +10,7 @@ public class VrInformer : NetworkBehaviour
 
 
     public GameObject VrPlayer;
-    public bool forceAuthority;
+    public bool forceAuthority = false;
     GrabCommand grabCommand;
     NetworkIdentity networkId;
     NetworkConnectionToClient owner;
@@ -55,6 +55,7 @@ public class VrInformer : NetworkBehaviour
         {
 
         }
+        print("we are grounded");
         if (hasAuthority)
         {
             CmdRelease();
