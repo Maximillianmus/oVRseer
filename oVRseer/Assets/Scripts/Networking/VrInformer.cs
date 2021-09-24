@@ -49,16 +49,9 @@ public class VrInformer : NetworkBehaviour
     {
         print(owner);
         print(networkId);
-
-        //grabCommand.Release(owner, networkId);
-        while(!forceAuthority && !rigidbodyThirdpersonController.Grounded)
-        {
-
-        }
-        print("we are grounded");
         if (hasAuthority)
         {
-            CmdRelease();
+            Invoke("CmdRelease", 0.1f);
         }
     }
 
