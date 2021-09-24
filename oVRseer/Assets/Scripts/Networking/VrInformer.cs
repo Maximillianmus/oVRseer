@@ -14,7 +14,6 @@ public class VrInformer : NetworkBehaviour
     GrabCommand grabCommand;
     NetworkIdentity networkId;
     NetworkConnectionToClient owner;
-    public RigidbodyThirdPersonController rigidbodyThirdpersonController;
     
 
     public void Awake()

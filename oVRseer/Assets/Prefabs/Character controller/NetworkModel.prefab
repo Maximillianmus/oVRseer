@@ -1621,7 +1621,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  VrInformer: {fileID: 0}
+  VrInformer: {fileID: 2953560043100508259}
   m_AttachTransform: {fileID: 0}
   m_AttachEaseInTime: 0.15
   m_MovementType: 2
@@ -2576,7 +2576,6 @@ MonoBehaviour:
   syncInterval: 0.1
   VrPlayer: {fileID: 0}
   forceAuthority: 0
-  rigidbodyThirdpersonController: {fileID: 1699815079654780903}
 --- !u!114 &2557327246284887480
 MonoBehaviour:
   m_ObjectHideFlags: 0
