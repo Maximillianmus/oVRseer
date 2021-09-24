@@ -10,7 +10,6 @@ public class VrInformer : NetworkBehaviour
 
 
     public GameObject VrPlayer;
-    public bool forceAuthority = false;
     GrabCommand grabCommand;
     NetworkIdentity networkId;
     NetworkConnectionToClient owner;
@@ -50,7 +49,7 @@ public class VrInformer : NetworkBehaviour
         print(networkId);
         if (hasAuthority)
         {
-            Invoke("CmdRelease", 0.1f);
+            CmdRelease();
         }
     }
 

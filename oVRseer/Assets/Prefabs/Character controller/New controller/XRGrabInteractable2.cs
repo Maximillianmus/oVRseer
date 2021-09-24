@@ -508,7 +508,7 @@ namespace UnityEngine.XR.Interaction.Toolkit
                         if (selectingInteractor == null)
                         {
                             Detach();
-                            VrInformer.NotifyVrReleasing();
+                            
                         }
                            
                         m_DetachInLateUpdate = false;
@@ -780,6 +780,7 @@ namespace UnityEngine.XR.Interaction.Toolkit
             {
                 m_Rigidbody.velocity = m_DetachVelocity;
                 m_Rigidbody.angularVelocity = m_DetachAngularVelocity;
+                VrInformer.NotifyVrReleasing();
             }
         }
 
