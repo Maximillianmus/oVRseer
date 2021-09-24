@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class NPC : MonoBehaviour
 {
     [Tooltip("The locations the NPC will go to")]
@@ -11,7 +12,7 @@ public class NPC : MonoBehaviour
     private int numlocations;
 
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Animator animator;
+    [SerializeField] RigidbodyControllerNPC npcController;
 
     [SerializeField] float minDecisionTime = 0.3f;
     [SerializeField] float maxDecisionTime = 2f;
@@ -23,13 +24,17 @@ public class NPC : MonoBehaviour
         targetLocation = locations[Random.Range(0, numlocations - 1)];
         agent.SetDestination(targetLocation.position);
 
+        agent.updatePosition = false;
+        agent.updateRotation = false;
+
         // Handles the AI decision making
         StartCoroutine(MakeDecision(Random.Range(minDecisionTime, maxDecisionTime)));
     }
 
-    void Update()
+    private void Update()
     {
-        animator.SetFloat("Speed", agent.velocity.magnitude);
+        agent.nextPosition = transform.position;
+        npcController.MoveNPC(agent.desiredVelocity);
     }
 
 
@@ -41,7 +46,7 @@ public class NPC : MonoBehaviour
 
         // 20% chance of getting a new destination
         // If NPC has reached destination also assign new destination
-        if (decision < 0.2 || Vector3.Distance(targetLocation.position, transform.position) < 0.5f)
+        if (decision < 0.2 || agent.remainingDistance < 0.5f)
         {
             targetLocation = locations[Random.Range(0, numlocations - 1)];
             agent.SetDestination(targetLocation.position);
