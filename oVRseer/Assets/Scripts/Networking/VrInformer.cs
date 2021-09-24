@@ -13,7 +13,7 @@ public class VrInformer : MonoBehaviour
     NetworkIdentity networkId;
     NetworkConnectionToClient owner;
 
-    public void awake()
+    public void Awake()
     {
         VrPlayer = GameObject.FindGameObjectWithTag("VR");
         grabCommand = VrPlayer.GetComponent<GrabCommand>();

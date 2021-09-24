@@ -21,6 +21,7 @@ public class GrabCommand : NetworkBehaviour
 
     public void Grab( NetworkIdentity grabbedNetId)
     {
+        print(grabbedNetId);
         CmdGrab(grabbedNetId);
     }
 
