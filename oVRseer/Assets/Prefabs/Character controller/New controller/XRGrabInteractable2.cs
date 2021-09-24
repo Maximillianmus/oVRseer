@@ -506,10 +506,14 @@ namespace UnityEngine.XR.Interaction.Toolkit
                     if (m_DetachInLateUpdate)
                     {
                         if (selectingInteractor == null)
+                        {
                             Detach();
+                            VrInformer.NotifyVrReleasing();
+                        }
+                           
                         m_DetachInLateUpdate = false;
                     }
-
+           
                     break;
             }
         }
@@ -697,7 +701,7 @@ namespace UnityEngine.XR.Interaction.Toolkit
         {
             base.OnSelectExiting(args);
             Drop();
-            VrInformer.NotifyVrReleasing();
+           
 
         }
 
