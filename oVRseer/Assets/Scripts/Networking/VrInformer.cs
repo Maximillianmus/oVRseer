@@ -52,6 +52,8 @@ public class VrInformer : NetworkBehaviour
         print(networkId);
         if (hasAuthority)
         {
+            //used to see if it was an authority or buffer problem  
+            //it is a buffer problem, no idea on how to fix
             Invoke("CmdRelease", 20);
         }
     }
