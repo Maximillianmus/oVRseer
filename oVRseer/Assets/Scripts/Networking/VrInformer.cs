@@ -24,8 +24,11 @@ public class VrInformer : MonoBehaviour
     public void NotifyVrGrabbing()
     {
         // incase the vr player had yet to spawn in when this object was made 
-        if(VrPlayer = null)
+        if(VrPlayer == null)
+        {
             VrPlayer = GameObject.FindGameObjectWithTag("VR");
+        }
+           
 
         grabCommand.Grab(networkId);
     }
