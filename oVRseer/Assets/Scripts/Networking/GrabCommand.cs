@@ -21,7 +21,9 @@ public class GrabCommand : NetworkBehaviour
 
     public void Grab( NetworkIdentity grabbedNetId)
     {
-        CmdGrab(grabbedNetId);
+
+        if(hasAuthority)
+            CmdGrab(grabbedNetId);
     }
 
     //this function tells the server that a player has been grabbed
