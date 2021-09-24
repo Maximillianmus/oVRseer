@@ -808,6 +808,7 @@ namespace UnityEngine.XR.Interaction.Toolkit
             rigidbody.useGravity = m_UsedGravity | m_ForceGravityOnDetach;
             rigidbody.drag = m_OldDrag;
             rigidbody.angularDrag = m_OldAngularDrag;
+            transform.GetComponent<VrInformer>().NotifyVrReleasing();
         }
 
         void SmoothVelocityStart()
