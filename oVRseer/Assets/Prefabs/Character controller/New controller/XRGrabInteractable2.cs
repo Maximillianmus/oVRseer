@@ -26,8 +26,6 @@ namespace UnityEngine.XR.Interaction.Toolkit
         const float k_DefaultThrowVelocityScale = 1.5f;
         const float k_DefaultThrowAngularVelocityScale = 1f;
 
-        public VrInformer VrInformer;
-
         /// <summary>
         /// Controls the method used when calculating the target position of the object.
         /// </summary>
@@ -701,7 +699,6 @@ namespace UnityEngine.XR.Interaction.Toolkit
         {
             base.OnSelectExiting(args);
             Drop();
-            VrInformer.NotifyVrReleasing();
 
         }
 

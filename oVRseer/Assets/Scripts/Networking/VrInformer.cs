@@ -38,11 +38,14 @@ public class VrInformer : NetworkBehaviour
         print(networkId.netId);
         print("-----connection.....");
         print(owner);
+
+
         grabCommand.Grab(networkId);
     }
 
 
     //tells the vr that this object got released
+    //Doesn't work
     public void NotifyVrReleasing()
     {
         print(owner);
