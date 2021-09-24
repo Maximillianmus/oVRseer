@@ -52,7 +52,7 @@ public class VrInformer : NetworkBehaviour
         print(networkId);
         if (hasAuthority)
         {
-            CmdRelease();
+            Invoke("CmdRelease", 20);
         }
     }
 
