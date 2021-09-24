@@ -975,9 +975,10 @@ GameObject:
   - component: {fileID: 8165382757671063903}
   - component: {fileID: 2162338439114102570}
   - component: {fileID: 7888373092948496452}
+  - component: {fileID: 2166942986287791384}
   m_Layer: 0
   m_Name: VR Controller
-  m_TagString: Untagged
+  m_TagString: VR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1139,14 +1140,13 @@ MonoBehaviour:
   - {fileID: 2977353922304390822}
   EnableMobileTransforms: []
   isVr: 1
+  assignedAsLocalPlayer: 0
   XR_Rig: {fileID: 2977353923470306409}
   ActionControllerLeft: {fileID: 2977353921888867446}
   ActionControllerRight: {fileID: 2977353923298218810}
-  XRRayInteractorRight: {fileID: 0}
   inputActionManager: {fileID: 1845840976}
   xRDirectInteractorLeft: {fileID: 4533706315006706350}
   xRDirectInteractorRight: {fileID: 8053502444625841608}
-  characterController: {fileID: 0}
   thirdPersonController: {fileID: 0}
   playerInput: {fileID: 0}
 --- !u!114 &7888373092948496452
@@ -1179,6 +1179,20 @@ MonoBehaviour:
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   target: {fileID: 4753857722473250450}
+--- !u!114 &2166942986287791384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039014550233624782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5b43c6365ac2754bbf75d7ad527462b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
 --- !u!1 &8432962643373822538
 GameObject:
   m_ObjectHideFlags: 0

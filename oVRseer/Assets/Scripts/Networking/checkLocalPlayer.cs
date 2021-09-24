@@ -15,9 +15,10 @@ public class checkLocalPlayer : NetworkBehaviour
     public Transform[] EnableTransforms;
     [SerializeField] Transform[] EnableMobileTransforms;
     public bool isVr;
+    public bool assignedAsLocalPlayer = false;
 
 
-    [Header("leave empty if NOT IN VR ")]
+[Header("leave empty if NOT IN VR ")]
     [SerializeField] XRRig XR_Rig;
     [SerializeField] ActionBasedController ActionControllerLeft;
     [SerializeField] ActionBasedController ActionControllerRight;
@@ -30,15 +31,18 @@ public class checkLocalPlayer : NetworkBehaviour
     [SerializeField] RigidbodyThirdPersonController thirdPersonController;
     [SerializeField] PlayerInput playerInput;
 
-
+   
     //this only runes if the object it is on is the local player, so we enable all the controlls and cammeras here
-    public override void OnStartLocalPlayer()
+    public void Start ()
     {
 
         NetworkIdentity netID = GetComponent<NetworkIdentity>();
 
+        if(netID.hasAuthority){
+            assignedAsLocalPlayer = true;
+        }
 
-        if (netID.isLocalPlayer)
+        if (assignedAsLocalPlayer)
         {
 
             if (!isVr)

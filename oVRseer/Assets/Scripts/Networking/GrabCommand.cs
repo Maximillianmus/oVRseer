@@ -9,41 +9,39 @@ using UnityEngine.XR.Interaction.Toolkit;
 //this class handles grabing for networking purposes
 public class GrabCommand : NetworkBehaviour
 {
-
-    XRGrabInteractable grabHand;
-    Transform CurrentlyHeldObject;
+    NetworkIdentity VrIdentity;
 
 
 
     private void Start()
     {
-        grabHand = gameObject.GetComponent<XRGrabInteractable>();
+        VrIdentity = transform.GetComponent<NetworkIdentity>();
     }
 
 
-    void Grab()
+    public void Grab( NetworkIdentity grabbedNetId)
     {
-       
-
-
+        CmdGrab(grabbedNetId);
     }
 
     //this function tells the server that a player has been grabbed
     [Command]
-    void CmdGrab(NetworkIdentity netId)
+    void CmdGrab(NetworkIdentity grabbed)
     {
-
+        grabbed.RemoveClientAuthority();
+        grabbed.AssignClientAuthority(VrIdentity.connectionToClient);
     }
 
 
-    void Release()
+    public void Release(NetworkConnectionToClient modelOwner, NetworkIdentity grabbedNetId)
     {
-
+        CmdRelease(modelOwner, grabbedNetId);
     }
     [Command]
-    void CmdRelease(NetworkIdentity netId)
+    void CmdRelease(NetworkConnectionToClient modelOwner,NetworkIdentity grabbed)
     {
-
+        grabbed.RemoveClientAuthority();
+        grabbed.AssignClientAuthority(modelOwner);
     }
 
 }
