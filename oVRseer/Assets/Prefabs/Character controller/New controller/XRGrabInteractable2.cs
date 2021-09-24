@@ -755,7 +755,9 @@ namespace UnityEngine.XR.Interaction.Toolkit
 
             m_CurrentMovementType = m_MovementType;
             m_DetachInLateUpdate = true;
-            //SmoothVelocityEnd();
+            SmoothVelocityEnd();
+
+            vrInformer.NotifyVrReleasing();
         }
 
         /// <summary>
@@ -809,7 +811,6 @@ namespace UnityEngine.XR.Interaction.Toolkit
             rigidbody.useGravity = m_UsedGravity | m_ForceGravityOnDetach;
             rigidbody.drag = m_OldDrag;
             rigidbody.angularDrag = m_OldAngularDrag;
-            vrInformer.NotifyVrReleasing();
         }
 
         void SmoothVelocityStart()
