@@ -1,18 +1,49 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
-public class GrabCommand : MonoBehaviour
+
+
+//this class handles grabing for networking purposes
+public class GrabCommand : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    XRGrabInteractable grabHand;
+    Transform CurrentlyHeldObject;
+
+
+
+    private void Start()
     {
-        
+        grabHand = gameObject.GetComponent<XRGrabInteractable>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void Grab()
     {
-        
+       
+
+
     }
+
+    //this function tells the server that a player has been grabbed
+    [Command]
+    void CmdGrab(NetworkIdentity netId)
+    {
+
+    }
+
+
+    void Release()
+    {
+
+    }
+    [Command]
+    void CmdRelease(NetworkIdentity netId)
+    {
+
+    }
+
 }
