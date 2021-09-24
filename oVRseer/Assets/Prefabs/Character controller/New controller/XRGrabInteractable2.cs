@@ -701,7 +701,7 @@ namespace UnityEngine.XR.Interaction.Toolkit
         {
             base.OnSelectExiting(args);
             Drop();
-           
+            VrInformer.NotifyVrReleasing();
 
         }
 
@@ -780,7 +780,6 @@ namespace UnityEngine.XR.Interaction.Toolkit
             {
                 m_Rigidbody.velocity = m_DetachVelocity;
                 m_Rigidbody.angularVelocity = m_DetachAngularVelocity;
-                VrInformer.NotifyVrReleasing();
             }
         }
 
