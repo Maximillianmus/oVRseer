@@ -1,4 +1,5 @@
 using Mirror;
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +10,12 @@ public class VrInformer : NetworkBehaviour
 
 
     public GameObject VrPlayer;
+    public bool forceAuthority;
     GrabCommand grabCommand;
     NetworkIdentity networkId;
     NetworkConnectionToClient owner;
+    public RigidbodyThirdPersonController rigidbodyThirdpersonController;
+    
 
     public void Awake()
     {
@@ -47,7 +51,10 @@ public class VrInformer : NetworkBehaviour
         print(networkId);
 
         //grabCommand.Release(owner, networkId);
+        while(!forceAuthority && !rigidbodyThirdpersonController.Grounded)
+        {
 
+        }
         if (hasAuthority)
         {
             CmdRelease();
