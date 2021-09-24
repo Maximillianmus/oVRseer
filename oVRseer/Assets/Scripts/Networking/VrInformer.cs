@@ -18,6 +18,7 @@ public class VrInformer : MonoBehaviour
         VrPlayer = GameObject.FindGameObjectWithTag("VR");
         grabCommand = VrPlayer.GetComponent<GrabCommand>();
         networkId = transform.GetComponent<NetworkIdentity>();
+        owner = networkId.connectionToClient;
     }
 
     //tells the vr that this object got grabbed
