@@ -2586,6 +2586,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   VrPlayer: {fileID: 0}
+  forceAuthority: 0
+  rigidbodyThirdpersonController: {fileID: 1699815079654780903}
 --- !u!114 &2557327246284887480
 MonoBehaviour:
   m_ObjectHideFlags: 0
