@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ebb53006ccb97a4fb3a9275a4526c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerRigidbody: {fileID: 0}
+  PlayerRigidbody: {fileID: 1373764211723307190}
   Orientation: {fileID: 7483665052832478796}
   MoveSpeed: 3
   SprintSpeed: 5.335
