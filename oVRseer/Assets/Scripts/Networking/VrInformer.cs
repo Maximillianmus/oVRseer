@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VrInformer : MonoBehaviour
+public class VrInformer : NetworkBehaviour
 {
     // Start is called before the first frame update
 
@@ -30,16 +30,34 @@ public class VrInformer : MonoBehaviour
             VrPlayer = GameObject.FindGameObjectWithTag("VR");
             grabCommand = VrPlayer.GetComponent<GrabCommand>();
         }
-           
 
+        owner = networkId.connectionToClient;
+        print("----networkId---");
+        print(networkId.netId);
+        print("-----connection.....");
+        print(owner);
         grabCommand.Grab(networkId);
     }
 
 
-    //tells the vr that this object got grabbed
+    //tells the vr that this object got released
     public void NotifyVrReleasing()
     {
-        grabCommand.Release(owner, networkId);
+        print(owner);
+        print(networkId);
+
+        //grabCommand.Release(owner, networkId);
+
+        if (hasAuthority)
+        {
+            CmdRelease();
+        }
+    }
+
+    void CmdRelease()
+    {
+        networkId.RemoveClientAuthority();
+        networkId.AssignClientAuthority(owner);
     }
 
 
