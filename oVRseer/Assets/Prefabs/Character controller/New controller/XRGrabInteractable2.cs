@@ -26,6 +26,8 @@ namespace UnityEngine.XR.Interaction.Toolkit
         const float k_DefaultThrowVelocityScale = 1.5f;
         const float k_DefaultThrowAngularVelocityScale = 1f;
 
+        public VrInformer vrInformer;
+
         /// <summary>
         /// Controls the method used when calculating the target position of the object.
         /// </summary>
@@ -802,13 +804,12 @@ namespace UnityEngine.XR.Interaction.Toolkit
         // ReSharper disable once ParameterHidesMember
         protected virtual void SetupRigidbodyDrop(Rigidbody rigidbody)
         {
-            print("hello");
             // Restore Rigidbody settings
             rigidbody.isKinematic = m_WasKinematic;
             rigidbody.useGravity = m_UsedGravity | m_ForceGravityOnDetach;
             rigidbody.drag = m_OldDrag;
             rigidbody.angularDrag = m_OldAngularDrag;
-            transform.GetComponent<VrInformer>().NotifyVrReleasing();
+            vrInformer.NotifyVrReleasing();
         }
 
         void SmoothVelocityStart()
