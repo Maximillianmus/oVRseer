@@ -50,7 +50,7 @@ public class VrInformer : NetworkBehaviour
 
         if (hasAuthority)
         {
-            CmdRelease();
+            Invoke("CmdRelease",0.5f);
         }
     }
 
