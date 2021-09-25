@@ -32,7 +32,7 @@ public class MorphControl : NetworkBehaviour
         else
         {
             morphButton.color = Color.white;
-            buttonColor.a = 0;
+            buttonColor.a = 255;
         }
 
         if (_inputs.morph != lastMorphState)

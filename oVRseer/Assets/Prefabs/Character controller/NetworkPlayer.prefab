@@ -503,7 +503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3378032426418725943
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2770,6 +2770,7 @@ MonoBehaviour:
   thirdPersonController: {fileID: 1699815079654780903}
   playerInput: {fileID: 3303415447798998563}
   morphControl: {fileID: 6351683912495602361}
+  uiCanvas: {fileID: 1086779574741959018}
 --- !u!114 &3371776138410876761
 MonoBehaviour:
   m_ObjectHideFlags: 0

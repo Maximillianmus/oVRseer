@@ -1598,6 +1598,7 @@ MonoBehaviour:
   thirdPersonController: {fileID: 0}
   playerInput: {fileID: 0}
   morphControl: {fileID: 0}
+  uiCanvas: {fileID: 0}
 --- !u!114 &7888373092948496452
 MonoBehaviour:
   m_ObjectHideFlags: 0
