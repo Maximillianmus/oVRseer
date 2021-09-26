@@ -11,7 +11,7 @@ public class MorphControl : NetworkBehaviour
     public StarterAssetsInputs _inputs;
     public GameObject baseMesh;
     public GameObject morphMesh;
-    public Image morphButton;
+    public ActionCD morphCD;
     private bool lastMorphState = false;
     
     
@@ -23,21 +23,11 @@ public class MorphControl : NetworkBehaviour
         {
             return;
         }
-        var buttonColor = morphButton.color;
-        if (Time.time - _inputs.lastTimeMorph < _inputs.morphCooldown)
-        {
-            morphButton.color = Color.gray;
-            buttonColor.a = 255;
-        }
-        else
-        {
-            morphButton.color = Color.white;
-            buttonColor.a = 255;
-        }
 
         if (_inputs.morph != lastMorphState)
         {
             lastMorphState = _inputs.morph;
+            morphCD.OnActionPress(Time.time, _inputs.morphCooldown);
             CmdMorphAbility(_inputs.morph);
         }
         
