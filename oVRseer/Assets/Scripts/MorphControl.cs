@@ -19,10 +19,6 @@ public class MorphControl : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
 
         if (_inputs.morph != lastMorphState)
         {
