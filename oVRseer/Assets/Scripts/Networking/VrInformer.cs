@@ -54,6 +54,9 @@ public class VrInformer : NetworkBehaviour
         {
             //used to see if it was an authority or buffer problem  
             //it is a buffer problem, no idea on how to fix
+            var rigid = GetComponent<Rigidbody>();
+            rigid.isKinematic = false;
+            rigid.useGravity = true;
             CmdRelease();
         }
     }
@@ -64,6 +67,4 @@ public class VrInformer : NetworkBehaviour
         networkId.RemoveClientAuthority();
         networkId.AssignClientAuthority(owner);
     }
-
-
 }
