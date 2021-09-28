@@ -54,7 +54,7 @@ public class VrInformer : NetworkBehaviour
         {
             //used to see if it was an authority or buffer problem  
             //it is a buffer problem, no idea on how to fix
-            var rigid = GetComponent<Rigidbody>();
+            var rigid = GetComponentInChildren<Rigidbody>();
             rigid.isKinematic = false;
             rigid.useGravity = true;
             CmdRelease();
