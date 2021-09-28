@@ -15,38 +15,44 @@ public class checkLocalPlayer : NetworkBehaviour
     public Transform[] EnableTransforms;
     [SerializeField] Transform[] EnableMobileTransforms;
     public bool isVr;
+    public bool assignedAsLocalPlayer = false;
 
 
-    [Header("leave empty if NOT IN VR ")]
+[Header("leave empty if NOT IN VR ")]
     [SerializeField] XRRig XR_Rig;
     [SerializeField] ActionBasedController ActionControllerLeft;
-    [SerializeField] XRRayInteractor XRRayInteractorLeft;
     [SerializeField] ActionBasedController ActionControllerRight;
-    [SerializeField] XRRayInteractor XRRayInteractorRight;
     [SerializeField] InputActionManager inputActionManager;
+    [SerializeField] XRDirectInteractor xRDirectInteractorLeft;
+    [SerializeField] XRDirectInteractor xRDirectInteractorRight;
 
 
     [Header("leave empty if IN VR ")]
-    [SerializeField] CharacterController characterController;
-    [SerializeField] ThirdPersonController thirdPersonController;
+    [SerializeField] RigidbodyThirdPersonController thirdPersonController;
     [SerializeField] PlayerInput playerInput;
+    [SerializeField]  MorphControl morphControl;
+    [SerializeField]  GameObject uiCanvas;
 
-
+   
     //this only runes if the object it is on is the local player, so we enable all the controlls and cammeras here
-    public override void OnStartLocalPlayer()
+    public void Start ()
     {
 
         NetworkIdentity netID = GetComponent<NetworkIdentity>();
 
+        if(netID.hasAuthority){
+            assignedAsLocalPlayer = true;
+        }
 
-        if (netID.isLocalPlayer)
+        if (assignedAsLocalPlayer)
         {
 
             if (!isVr)
             {
-                characterController.enabled = true;
                 thirdPersonController.enabled = true;
                 playerInput.enabled = true;
+                morphControl.enabled = true;
+                uiCanvas.SetActive(true);
             }
 
             for (int i = 0; i < EnableTransforms.Length; i++)
@@ -76,10 +82,10 @@ public class checkLocalPlayer : NetworkBehaviour
                 XRGeneralSettings.Instance.Manager.InitializeLoader();
                 XR_Rig.enabled = true;
                 ActionControllerLeft.enabled = true;
-                XRRayInteractorLeft.enabled = true;
                 ActionControllerRight.enabled = true;
-                XRRayInteractorRight.enabled = true;
                 inputActionManager.enabled = true;
+                xRDirectInteractorLeft.enabled = true;
+                xRDirectInteractorRight.enabled = true;
             }
         }
        
