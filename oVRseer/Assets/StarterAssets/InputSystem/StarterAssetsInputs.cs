@@ -7,11 +7,20 @@ namespace StarterAssets
 {
 	public class StarterAssetsInputs : MonoBehaviour
 	{
+		[Header("Action properties")] 
+		public float morphCooldown = 2.0f;
+
+		public float lastTimeMorph  = -2.0f;
+		
+		
+		
 		[Header("Character Input Values")]
 		public Vector2 move;
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool morph = false;
+		public bool choose = false;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -45,6 +54,17 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+		public void OnMorph(InputValue value)
+		{
+			if (value.isPressed)
+				MorphInput();
+		}
+		
+		public void OnChoose(InputValue value)
+		{
+			ChooseInput(value.isPressed);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -68,6 +88,22 @@ namespace StarterAssets
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
+		}
+		
+		public void ChooseInput(bool newChooseState)
+		{
+			choose = newChooseState;
+		}
+
+		public void MorphInput()
+		{
+			if (Time.time - lastTimeMorph < morphCooldown)
+			{
+				return;
+			}
+
+			lastTimeMorph = Time.time;
+			morph = !morph;
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID
