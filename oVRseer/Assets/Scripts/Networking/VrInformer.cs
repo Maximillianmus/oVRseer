@@ -54,9 +54,6 @@ public class VrInformer : NetworkBehaviour
         {
             //used to see if it was an authority or buffer problem  
             //it is a buffer problem, no idea on how to fix
-            var rigid = GetComponentInChildren<Rigidbody>();
-            rigid.isKinematic = false;
-            rigid.useGravity = true;
             CmdRelease();
         }
     }
@@ -66,5 +63,17 @@ public class VrInformer : NetworkBehaviour
     {
         networkId.RemoveClientAuthority();
         networkId.AssignClientAuthority(owner);
+    }
+
+    public override void OnStartAuthority()
+    {
+        if (!VrPlayer.GetComponent<NetworkIdentity>().hasAuthority)
+        {
+            var rigid = GetComponentInChildren<Rigidbody>();
+            rigid.isKinematic = false;
+            rigid.useGravity = true;
+        }
+        base.OnStartAuthority();
+        
     }
 }
