@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CinemachineTarget
   - VR
+  - IsPlayerUI
+  - IsTheDoor
+  - IsAKey
   layers:
   - Default
   - TransparentFX

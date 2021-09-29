@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 
-public class Key : MonoBehaviour
+public class LocalKey : MonoBehaviour
 {
     public GameObject keyHandler;
 
     // Key is collected
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
 
         // Update UI and number of keys in key handler
         keyHandler.GetComponent<KeyHandler>().FadeInText();

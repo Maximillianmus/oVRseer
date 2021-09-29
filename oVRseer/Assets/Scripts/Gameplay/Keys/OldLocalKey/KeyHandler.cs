@@ -16,6 +16,7 @@ public class KeyHandler : MonoBehaviour
 
     public GameObject keyPrefab;
     public GameObject theKeyHandler;
+    public GameObject door;
 
     // Start is called before the first frame update
     void Start()
@@ -96,12 +97,12 @@ public class KeyHandler : MonoBehaviour
         {
             GameObject temp = Instantiate(keyPrefab, keyPositions[i], Quaternion.identity) as GameObject;
             temp.name = "Key" + i.ToString();
-            temp.GetComponent<Key>().keyHandler = theKeyHandler;
+            temp.GetComponent<LocalKey>().keyHandler = theKeyHandler;
         }
     }
 
     private void OpenDoor()
     {
-        //TODO: Add code to open 'door' so that tiny-guys can escape
+        door.SetActive(false);
     }
 }
