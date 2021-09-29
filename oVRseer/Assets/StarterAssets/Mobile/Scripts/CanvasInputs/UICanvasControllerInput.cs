@@ -27,6 +27,11 @@ namespace StarterAssets
         {
             starterAssetsInputs.SprintInput(virtualSprintState);
         }
+
+        public void VirtualMorphInput(bool virtualMorphState)
+        {
+            starterAssetsInputs.MorphInput();
+        }
         
     }
 
