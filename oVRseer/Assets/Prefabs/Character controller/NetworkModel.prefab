@@ -2732,6 +2732,7 @@ GameObject:
   - component: {fileID: 2953560043100508259}
   - component: {fileID: 2557327246284887480}
   - component: {fileID: 6417124009604230143}
+  - component: {fileID: -5481472830625101235}
   m_Layer: 7
   m_Name: NetworkModel
   m_TagString: Player
@@ -2954,6 +2955,28 @@ MonoBehaviour:
   baseMesh: {fileID: 6992870886929157731}
   morphMesh: {fileID: 2562485529303824407}
   morphCD: {fileID: 3702690339347423813}
+--- !u!114 &-5481472830625101235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760214788905530314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59726aadf55504d43b911b95252bf042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  isVrPlayer: 0
+  clientKeys: []
+  keysRemaining: 0
+  textFadeTime: 1.5
+  textFadeIn: 0
+  canvas: {fileID: 7163940010037775334}
+  keyCollectedMessage: {fileID: 0}
+  door: {fileID: 0}
 --- !u!1 &5783865163521243628
 GameObject:
   m_ObjectHideFlags: 0
