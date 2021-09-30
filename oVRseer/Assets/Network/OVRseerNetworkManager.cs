@@ -32,15 +32,17 @@ namespace Network
     public class OVRseerNetworkManager : Mirror.NetworkManager
     {
         [SerializeField] GameObject gamePlayerPrefab;
-        
+
+
+        [SerializeField] private GameObject keySpawnSystem = null;
+        [SerializeField] public GameObject keyPrefab;
+
         [Scene] public string gameScene;
         [SerializeField] private GameObject playerSpawnSystem = null;
         [SerializeField] public Text serverAdress;
         [SerializeField] public GameObject alertStarted;
 
         public static event Action<NetworkConnection> onServerReadied;
-        
-
 
         public List<OVRseerRoomPlayer> roomPlayers { get; } = new List<OVRseerRoomPlayer>();
         private List<RoomPlayersToDestroy> _roomPlayersToDestroys = new List<RoomPlayersToDestroy>();
@@ -82,7 +84,7 @@ namespace Network
                 countPlayer.tinyReady = nbTiny;
             }
 
-            return nbPlayer == roomPlayers.Count && nbTiny >= 1 && nbOverseer >= 1;
+            return nbPlayer == roomPlayers.Count && nbTiny >= 1 && nbOverseer >= 0; ///!!!
         }
         
         public override void OnServerDisconnect(NetworkConnection conn)
@@ -195,6 +197,10 @@ namespace Network
             {
                 GameObject playerSpawnSystemInstance = Instantiate(playerSpawnSystem);
                 NetworkServer.Spawn(playerSpawnSystemInstance);
+
+                GameObject keySpawnSystemInstance = Instantiate(keySpawnSystem);
+                NetworkServer.Spawn(keySpawnSystemInstance);
+
             }
         }
 

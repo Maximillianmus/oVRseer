@@ -13,7 +13,7 @@ public class KeySpawnSystem : NetworkBehaviour
     private static List<Transform> keyPositions = new List<Transform>();
 
     public List<GameObject> keysInScene = new List<GameObject>();
-    public int numOfKeysToSpawn = 1; // Hard coded for now
+    public int numOfKeysToSpawn = 3; // Hard coded for now
 
     private void Start()
     {

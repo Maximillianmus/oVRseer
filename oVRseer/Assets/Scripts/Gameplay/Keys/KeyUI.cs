@@ -30,12 +30,16 @@ public class KeyUI : MonoBehaviour
         updateText.transform.parent = canvas.transform;
         updateText.AddComponent<Text>();
 
+        // Set rect properties.
+        updateText.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+        updateText.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width - 20, 50);
+
         // Set Text component properties.
         keyCollectedMessage = updateText.GetComponent<Text>();
         keyCollectedMessage.font = arial;
         keyCollectedMessage.fontSize = 15;
         keyCollectedMessage.alignment = TextAnchor.MiddleCenter;
-        keyCollectedMessage.text = "Hej";
+        keyCollectedMessage.text = "";
         keyCollectedMessage.canvasRenderer.SetAlpha(0);
 
         CheckKeys();
@@ -85,7 +89,7 @@ public class KeyUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if (type == PlayerType.Tiny)
         {
             foreach (GameObject key in clientKeys)
