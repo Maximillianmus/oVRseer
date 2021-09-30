@@ -84,7 +84,7 @@ namespace Network
                 countPlayer.tinyReady = nbTiny;
             }
 
-            return nbPlayer == roomPlayers.Count && nbTiny >= 1 && nbOverseer >= 0; ///!!!
+            return nbPlayer == roomPlayers.Count && nbTiny >= 1 && nbOverseer >= 1;
         }
         
         public override void OnServerDisconnect(NetworkConnection conn)

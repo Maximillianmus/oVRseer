@@ -17,6 +17,11 @@ public class KeySpawnSystem : NetworkBehaviour
 
     private void Start()
     {
+        //SpawnKeys();
+    }
+
+    public override void OnStartServer()
+    {
         SpawnKeys();
     }
 

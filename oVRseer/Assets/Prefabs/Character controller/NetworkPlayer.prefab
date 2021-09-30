@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7445443338403270476}
   - component: {fileID: 783215018388337521}
   - component: {fileID: 7098639593212404668}
-  - component: {fileID: 2145576710153443298}
   m_Layer: 7
   m_Name: NetworkPlayer
   m_TagString: Player
@@ -81,23 +80,3 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   PlayerPrefab: {fileID: 5760214788905530314, guid: eded471dd618d4340b5b04413cc9e7c5, type: 3}
---- !u!114 &2145576710153443298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5760214788905530314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59726aadf55504d43b911b95252bf042, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  clientKeys: []
-  keysRemaining: 0
-  textFadeTime: 1.5
-  textFadeIn: 0
-  canvas: {fileID: 0}
-  keyCollectedMessage: {fileID: 0}
-  door: {fileID: 0}

@@ -5,9 +5,9 @@ using Network;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KeyUI : MonoBehaviour
+public class KeyUI : NetworkBehaviour
 {
-    public PlayerType type;
+    public bool isVrPlayer;
     public List<GameObject> clientKeys = new List<GameObject>();
     public int keysRemaining;
     public float textFadeTime = 1.5f;
@@ -20,10 +20,25 @@ public class KeyUI : MonoBehaviour
 
     private void Start()
     {
+        isVrPlayer = gameObject.GetComponent<checkLocalPlayer>().isVr;
+
+        if (!isVrPlayer)
+        {
+            //canvas = gameObject.GetComponent<checkLocalPlayer>().uiCanvas;
+            CreateInfoText();
+
+            door = GameObject.FindGameObjectsWithTag("IsTheDoor")[0];
+            CheckKeys();
+            keysRemaining = clientKeys.Count;
+
+        }
+    }
+
+    private void CreateInfoText()
+    {
+        // Get the font
         Font arial;
         arial = (Font)Resources.GetBuiltinResource(typeof(Font), "Arial.ttf");
-
-        CheckUI();
 
         // Create the Text GameObject.
         GameObject updateText = new GameObject("UpdateText");
@@ -32,50 +47,16 @@ public class KeyUI : MonoBehaviour
 
         // Set rect properties.
         updateText.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
-        updateText.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width - 20, 50);
+        updateText.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        updateText.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width, 100);
 
         // Set Text component properties.
         keyCollectedMessage = updateText.GetComponent<Text>();
         keyCollectedMessage.font = arial;
-        keyCollectedMessage.fontSize = 15;
+        keyCollectedMessage.fontSize = 40;
         keyCollectedMessage.alignment = TextAnchor.MiddleCenter;
         keyCollectedMessage.text = "";
         keyCollectedMessage.canvasRenderer.SetAlpha(0);
-
-        CheckKeys();
-        keysRemaining = clientKeys.Count;
-    }
-
-    private void CheckUI()
-    {
-        foreach (GameObject g in GameObject.FindGameObjectsWithTag("IsPlayerUI"))
-        {
-            if (type == PlayerType.Tiny)
-            {
-                if (g.name == "OverseerUI")
-                {
-                    g.SetActive(false);
-                }
-                else if (g.name == "TinyUI")
-                {
-                    canvas = g;
-                }
-            }
-
-            else
-            {
-                if (g.name == "TinyUI")
-                {
-                    g.SetActive(false);
-                }
-                else if (g.name == "OverseerUI")
-                {
-                    canvas = g;
-                }
-            }
-        }
-
-        door = GameObject.FindGameObjectsWithTag("IsTheDoor")[0];
     }
 
     private void CheckKeys()
@@ -90,7 +71,7 @@ public class KeyUI : MonoBehaviour
     void Update()
     {
         
-        if (type == PlayerType.Tiny)
+        if (!isVrPlayer)
         {
             foreach (GameObject key in clientKeys)
             {
