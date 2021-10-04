@@ -752,6 +752,8 @@ GameObject:
   - component: {fileID: 2162338439114102570}
   - component: {fileID: 7888373092948496452}
   - component: {fileID: 2166942986287791384}
+  - component: {fileID: -6937319355827649033}
+  - component: {fileID: 7396361911875506757}
   m_Layer: 0
   m_Name: VR Controller
   m_TagString: VR
@@ -971,6 +973,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+--- !u!114 &-6937319355827649033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039014550233624782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  animator: {fileID: 2645394286695411082}
+--- !u!114 &7396361911875506757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039014550233624782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  animator: {fileID: 3059042871197673329}
 --- !u!1 &8432962643373822538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,6 +1209,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9133430085333750261, guid: b90fb870e54b491428ffc8aea4145eea, type: 3}
   m_PrefabInstance: {fileID: 3179570217967821687}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &3059042871197673329 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 455986218733110278, guid: b90fb870e54b491428ffc8aea4145eea, type: 3}
+  m_PrefabInstance: {fileID: 3179570217967821687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8450530757553542981
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1235,5 +1274,10 @@ PrefabInstance:
 --- !u!4 &8937619565722565633 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 670646392703986500, guid: 5b454bbfa844f48488245b887eaf7aae, type: 3}
+  m_PrefabInstance: {fileID: 8450530757553542981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2645394286695411082 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -3319147543741449521, guid: 5b454bbfa844f48488245b887eaf7aae, type: 3}
   m_PrefabInstance: {fileID: 8450530757553542981}
   m_PrefabAsset: {fileID: 0}
