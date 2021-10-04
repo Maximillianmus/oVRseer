@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class OVRseerNetworkGamePlayer : NetworkBehaviour
 {
     public PlayerType type;
-    
+    [SyncVar]
+    public string nickname; 
     private OVRseerNetworkManager room;
     private OVRseerNetworkManager Room
     {

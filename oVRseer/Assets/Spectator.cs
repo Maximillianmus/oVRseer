@@ -14,6 +14,9 @@ public class Spectator : MonoBehaviour
     private int indexPlayer = 0;
     public bool IsDead = false;
     public StarterAssetsInputs _inputs;
+    public GameObject aliveUI;
+    public GameObject deadUI;
+    public NetworkNickname nicknameScript;
     
     private void RefreshPlayers()
     {
@@ -49,6 +52,8 @@ public class Spectator : MonoBehaviour
         playerArmature.SetActive(false);
         IsDead = true;
         RefreshPlayers();
+        deadUI.SetActive(true);
+        aliveUI.SetActive(false);
         if (players.Count == 0)
         {
             return;
@@ -82,6 +87,8 @@ public class Spectator : MonoBehaviour
         var newPlayer = players[newIndex];
         newPlayer.GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
         newPlayer.GetComponentInChildren<CinemachineVirtualCamera>(true).gameObject.SetActive(true);
+        var nickSpectate = newPlayer.GetComponentInChildren<NetworkNickname>().nickname;
+        deadUI.GetComponent<changeNickName>().ChangeNickName(nickSpectate);
         indexPlayer = newIndex;
     }
 
