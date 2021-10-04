@@ -39,8 +39,10 @@ public class VrInformer : NetworkBehaviour
         print("-----connection.....");
         print(owner);
 
+        var position = transform.position;
+        var rotation = transform.rotation;
 
-        grabCommand.Grab(networkId);
+        grabCommand.Grab(networkId, position, rotation);
     }
 
 
