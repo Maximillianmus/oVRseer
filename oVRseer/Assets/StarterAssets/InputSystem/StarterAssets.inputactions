@@ -245,7 +245,7 @@
                 {
                     "name": "",
                     "id": "3c26974b-811d-41e7-9e57-77892047ff5b",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad;Xbox Controller",
