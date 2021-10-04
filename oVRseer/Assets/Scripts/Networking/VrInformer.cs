@@ -61,8 +61,19 @@ public class VrInformer : NetworkBehaviour
     [Command]
     void CmdRelease()
     {
+        Vector3 oldPos = transform.position;
+        Quaternion oldRot = transform.rotation;
         networkId.RemoveClientAuthority();
         networkId.AssignClientAuthority(owner);
+        RpcNewpos(oldPos, oldRot); 
+
+    }
+
+    [ClientRpc]
+    void RpcNewpos( Vector3 oldPos, Quaternion oldRot)
+    {
+        transform.position = oldPos;
+        transform.rotation = oldRot;
     }
 
     public override void OnStartAuthority()
