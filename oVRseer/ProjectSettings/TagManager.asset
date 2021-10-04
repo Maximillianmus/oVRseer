@@ -9,6 +9,7 @@ TagManager:
   - IsPlayerUI
   - IsTheDoor
   - IsAKey
+  - Goal
   layers:
   - Default
   - TransparentFX
