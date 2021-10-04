@@ -2819,6 +2819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901182334643ba1438a25accc6bd0c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
 --- !u!1 &5713462087147648554
 GameObject:
   m_ObjectHideFlags: 0
@@ -3075,6 +3076,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   VrPlayer: {fileID: 0}
+  transformPlayer: {fileID: 4409287637027422672}
+  transformArmature: {fileID: 2779783598367620245}
 --- !u!114 &2557327246284887480
 MonoBehaviour:
   m_ObjectHideFlags: 0
