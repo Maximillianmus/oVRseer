@@ -34,7 +34,10 @@ public class NPC : MonoBehaviour
     private void Update()
     {
         agent.nextPosition = transform.position;
-        npcController.MoveNPC(agent.desiredVelocity);
+
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, agent.desiredVelocity, Mathf.Deg2Rad * 1, 0.0f);
+
+        npcController.MoveNPC(newDir);
     }
 
 
@@ -46,7 +49,7 @@ public class NPC : MonoBehaviour
 
         // 20% chance of getting a new destination
         // If NPC has reached destination also assign new destination
-        if (decision < 0.2 || agent.remainingDistance < 0.5f)
+        if (decision < 0.1 || agent.remainingDistance < 2f)
         {
             targetLocation = locations[Random.Range(0, numlocations - 1)];
             agent.SetDestination(targetLocation.position);

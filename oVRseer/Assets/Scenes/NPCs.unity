@@ -1953,6 +1953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7554038338078539132, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
 --- !u!1 &1275516119
@@ -2219,6 +2223,10 @@ PrefabInstance:
     - target: {fileID: 7554038338078539132, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
       propertyPath: m_Name
       value: NPC (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7554038338078539132, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
