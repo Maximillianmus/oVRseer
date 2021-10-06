@@ -79,7 +79,15 @@ namespace Network
 
                     ToSpawn = Instantiate(tinyPrefab, tinyPositions[tinyIndex % totalTinyPosition].position,
                         tinyPositions[tinyIndex % totalTinyPosition].rotation);
-                    ToSpawn.GetComponent<OVRseerNetworkGamePlayer>().nickname = "Player" + tinyIndex;
+                    if (roomPlayer.nickname.Length > 0)
+                    {
+                        ToSpawn.GetComponent<OVRseerNetworkGamePlayer>().nickname = roomPlayer.nickname;
+                    }
+                    else
+                    {
+                        ToSpawn.GetComponent<OVRseerNetworkGamePlayer>().nickname = "Player" + tinyIndex;
+                    }
+
                     tinyIndex++;
                     break;
                 case PlayerType.Overseer:
