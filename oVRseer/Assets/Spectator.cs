@@ -3,17 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Cinemachine;
+using Mirror;
 using StarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Spectator : MonoBehaviour
+public class Spectator : NetworkBehaviour
 {
     private List<GameObject> players = new List<GameObject>();
     public GameObject playerArmature;
     private int indexPlayer = 0;
+    private GameObject spectating = null;
+    [SyncVar]
     public bool IsDead = false;
     public StarterAssetsInputs _inputs;
+    public PlayerInput deadInput;
     public GameObject aliveUI;
     public GameObject deadUI;
     public NetworkNickname nicknameScript;
@@ -24,7 +28,7 @@ public class Spectator : MonoBehaviour
         var possiblePlayers = GameObject.FindGameObjectsWithTag("Player").ToList();
         foreach (var player in possiblePlayers)
         {
-            if (!player.GetComponentInChildren<Spectator>().IsDead && player != transform.parent.gameObject)
+            if (!player.GetComponent<Spectator>().IsDead && player != gameObject)
             {
                 players.Add(player);
             } 
@@ -42,18 +46,28 @@ public class Spectator : MonoBehaviour
         if (!IsDead && _inputs.dead)
         {
             OnDead();
+            return;
+        }
+
+        // local player 
+        NetworkIdentity netID = GetComponent<NetworkIdentity>();
+
+        if (IsDead && netID.hasAuthority)
+        {
+            RefreshAndCheck();
         }
         
     }
 
     public void OnDead()
     {
-        GetComponent<PlayerInput>().enabled = true;
+        deadInput.enabled = true;
         playerArmature.SetActive(false);
         IsDead = true;
         RefreshPlayers();
         deadUI.SetActive(true);
         aliveUI.SetActive(false);
+        OnPlayerDead();
         if (players.Count == 0)
         {
             return;
@@ -77,17 +91,18 @@ public class Spectator : MonoBehaviour
         }
         else
         {
-            oldPlayer = transform.parent.gameObject;
+            oldPlayer = gameObject;
         }
         
-        oldPlayer.GetComponentInChildren<Camera>().gameObject.SetActive(false);
-        oldPlayer.GetComponentInChildren<CinemachineVirtualCamera>().gameObject.SetActive(false);
+        oldPlayer.GetComponentInChildren<Camera>(true).gameObject.SetActive(false);
+        oldPlayer.GetComponentInChildren<CinemachineVirtualCamera>(true).gameObject.SetActive(false);
 
         var newIndex = (oldIndex + 1) % players.Count;
         var newPlayer = players[newIndex];
+        spectating = newPlayer;
         newPlayer.GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
         newPlayer.GetComponentInChildren<CinemachineVirtualCamera>(true).gameObject.SetActive(true);
-        var nickSpectate = newPlayer.GetComponentInChildren<NetworkNickname>().nickname;
+        var nickSpectate = newPlayer.GetComponentInChildren<NetworkNickname>(true).nickname;
         deadUI.GetComponent<changeNickName>().ChangeNickName(nickSpectate);
         indexPlayer = newIndex;
     }
@@ -97,4 +112,32 @@ public class Spectator : MonoBehaviour
         SwitchSpectatePlayer(indexPlayer);
     }
 
+    public void OnPlayerDead()
+    {
+        CmdNotifyPlayerDead();
+    }
+
+    [Command]
+    void CmdNotifyPlayerDead()
+    {
+        IsDead = true;
+    }
+
+    private void RefreshAndCheck()
+    {
+        RefreshPlayers();
+        if (players.Count == 0 || !IsDead)
+        {
+            return;
+        }
+        var player = players.FindIndex(x => x == spectating);
+        if (player == -1)
+        {
+            SwitchSpectatePlayer(-1); 
+        }
+        else
+        {
+            indexPlayer = player;
+        }
+    }
 }

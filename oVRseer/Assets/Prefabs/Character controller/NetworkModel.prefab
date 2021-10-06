@@ -2358,7 +2358,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8677762123256285659}
   - component: {fileID: 963213558008705196}
-  - component: {fileID: 4779028934091829568}
   m_Layer: 7
   m_Name: DeadControl
   m_TagString: Untagged
@@ -2407,7 +2406,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4779028934091829568}
+      - m_Target: {fileID: 6410059251483743675}
         m_TargetAssemblyTypeName: Spectator, Assembly-CSharp
         m_MethodName: OnNextPlayer
         m_Mode: 1
@@ -2426,24 +2425,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4779028934091829568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4850592543197131347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dc0867c5d5c55d46b563f65e3011a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerArmature: {fileID: 3303415447798998575}
-  IsDead: 0
-  _inputs: {fileID: 1258274459254405715}
-  aliveUI: {fileID: 2564555004118244755}
-  deadUI: {fileID: 6702784576898594463}
-  nicknameScript: {fileID: 6660870304911326963}
 --- !u!1 &4934716592380574118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,6 +2927,7 @@ GameObject:
   - component: {fileID: 6417124009604230143}
   - component: {fileID: 1797898959798278199}
   - component: {fileID: 6660870304911326963}
+  - component: {fileID: 6410059251483743675}
   m_Layer: 7
   m_Name: NetworkModel
   m_TagString: Player
@@ -3215,6 +3197,27 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   nickname: 
+--- !u!114 &6410059251483743675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760214788905530314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc0867c5d5c55d46b563f65e3011a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  playerArmature: {fileID: 3303415447798998575}
+  IsDead: 0
+  _inputs: {fileID: 1258274459254405715}
+  deadInput: {fileID: 963213558008705196}
+  aliveUI: {fileID: 2564555004118244755}
+  deadUI: {fileID: 6702784576898594463}
+  nicknameScript: {fileID: 6660870304911326963}
 --- !u!1 &5783865163521243628
 GameObject:
   m_ObjectHideFlags: 0
@@ -5292,11 +5295,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eab7721543bda0347a417b902f0d0a04, type: 3}
---- !u!224 &8949540202476431602 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6901556397598035489, guid: eab7721543bda0347a417b902f0d0a04, type: 3}
-  m_PrefabInstance: {fileID: 2590809622462375635}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3702690339347423813 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1195422718784849046, guid: eab7721543bda0347a417b902f0d0a04, type: 3}
@@ -5308,3 +5306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82fb09e0bb21fca4ba66748ed9c5f436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &8949540202476431602 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6901556397598035489, guid: eab7721543bda0347a417b902f0d0a04, type: 3}
+  m_PrefabInstance: {fileID: 2590809622462375635}
+  m_PrefabAsset: {fileID: 0}
