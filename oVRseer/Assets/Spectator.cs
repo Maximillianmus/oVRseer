@@ -77,8 +77,12 @@ public class Spectator : NetworkBehaviour
     }
 
 
-    private void SwitchSpectatePlayer(int oldIndex)
+    private void SwitchSpectatePlayer(int oldIndex, int step = 1)
     {
+        if (step == 0)
+        {
+            return;
+        }
         if (players.Count == 0)
         {
             return;
@@ -97,7 +101,7 @@ public class Spectator : NetworkBehaviour
         oldPlayer.GetComponentInChildren<Camera>(true).gameObject.SetActive(false);
         oldPlayer.GetComponentInChildren<CinemachineVirtualCamera>(true).gameObject.SetActive(false);
 
-        var newIndex = (oldIndex + 1) % players.Count;
+        var newIndex = (oldIndex + step) % players.Count;
         var newPlayer = players[newIndex];
         spectating = newPlayer;
         newPlayer.GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
@@ -110,6 +114,11 @@ public class Spectator : NetworkBehaviour
     public void OnNextPlayer()
     {
         SwitchSpectatePlayer(indexPlayer);
+    }
+
+    public void OnPreviousPlayer()
+    {
+        SwitchSpectatePlayer(indexPlayer, -1);
     }
 
     public void OnPlayerDead()
