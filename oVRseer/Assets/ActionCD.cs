@@ -19,7 +19,13 @@ public class ActionCD : MonoBehaviour
         {
             if (Time.time - beginTime < cooldown)
             {
-                numberOfSeconds.text = (cooldown - (Time.time - beginTime)).ToString();
+                var nbSec = (cooldown - (Time.time - beginTime)).ToString();
+                if (nbSec.Length > 3)
+                {
+                    nbSec = nbSec.Substring(0, 3);
+                }
+
+                numberOfSeconds.text = nbSec;
                 CDBackground.SetActive(true);
             }
             else
