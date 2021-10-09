@@ -78,12 +78,16 @@ public class MorphControl : NetworkBehaviour
      void RpcChangeMorphTo(uint netId)
      {
          var newMeshObj = NetworkClient.spawned[netId];
-         var morphMeshFilter = morphMesh.GetComponent<MeshFilter>();
+         MeshFilter morphMeshFilter = morphMesh.GetComponent<MeshFilter>();
          Destroy(morphMesh.GetComponent<MeshCollider>());
          morphMeshFilter.mesh = newMeshObj.gameObject.GetComponent<MeshFilter>().mesh;
          var morphCollider = morphMesh.AddComponent<MeshCollider>();
          morphCollider.sharedMesh = morphMeshFilter.mesh;
          morphCollider.convex = true;
+         var morphTransform = morphMeshFilter.transform;
+         var newTransform = newMeshObj.transform;
+         morphTransform.rotation = newTransform.rotation;
+         morphTransform.localScale = newTransform.localScale;
      }
 
     
