@@ -16,7 +16,7 @@ public class KeyUI : NetworkBehaviour
 
     public GameObject canvas;
     public Text keyCollectedMessage;
-    public GameObject door;
+    public GameObject[] doors;
 
     private void Start()
     {
@@ -27,7 +27,7 @@ public class KeyUI : NetworkBehaviour
             //canvas = gameObject.GetComponent<checkLocalPlayer>().uiCanvas;
             CreateInfoText();
 
-            door = GameObject.FindGameObjectsWithTag("IsTheDoor")[0];
+            doors = GameObject.FindGameObjectsWithTag("IsTheDoor");
             CheckKeys();
             keysRemaining = clientKeys.Count;
 
@@ -61,7 +61,7 @@ public class KeyUI : NetworkBehaviour
 
     private void CheckKeys()
     {
-        foreach (GameObject k in GameObject.FindGameObjectsWithTag("IsAKey"))
+        foreach (GameObject k in GameObject.FindGameObjectsWithTag("IsAKey")) 
         {
             clientKeys.Add(k);
         }
@@ -126,13 +126,15 @@ public class KeyUI : NetworkBehaviour
         }
         else
         {
-            keyCollectedMessage.text = "The door is unlocked. Go to it to escape";
+            keyCollectedMessage.text = "The doors are unlocked. Go to either of them to escape";
             OpenDoor();
         }
     }
 
     private void OpenDoor()
     {
-        door.SetActive(false); // Hide for now
+        foreach (GameObject door in doors) { 
+            door.SetActive(false); // Hide doors for now
+        }
     }
 }

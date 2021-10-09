@@ -15,11 +15,6 @@ public class KeySpawnSystem : NetworkBehaviour
     public List<GameObject> keysInScene = new List<GameObject>();
     public int numOfKeysToSpawn = 3; // Hard coded for now
 
-    private void Start()
-    {
-        //SpawnKeys();
-    }
-
     public override void OnStartServer()
     {
         SpawnKeys();

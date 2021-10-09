@@ -38,11 +38,14 @@ public class Key : NetworkBehaviour
 
     // Key is collected
     private void OnTriggerEnter(Collider other) {
+        
+        if(other.tag == "Player") { 
 
-        isCollected = true;
+            isCollected = true;
 
-        if (!isServer) {
-            CmdUpdateKeyCollectedToServer();
+            if (!isServer) {
+                CmdUpdateKeyCollectedToServer();
+            }
         }
 
     }
