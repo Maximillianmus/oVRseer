@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2108913548812962871}
   - component: {fileID: -4837216466962365531}
   - component: {fileID: 9182449996899153560}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LightHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
