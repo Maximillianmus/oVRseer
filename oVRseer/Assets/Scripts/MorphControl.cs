@@ -88,6 +88,9 @@ public class MorphControl : NetworkBehaviour
          var newTransform = newMeshObj.transform;
          morphTransform.rotation = newTransform.rotation;
          morphTransform.localScale = newTransform.localScale;
+         var morphRenderer = morphMesh.GetComponent<MeshRenderer>();
+         var newmorphRenderer = newMeshObj.GetComponent<MeshRenderer>();
+         morphRenderer.material = newmorphRenderer.material;
      }
 
     
