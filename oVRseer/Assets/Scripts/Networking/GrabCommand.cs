@@ -34,6 +34,7 @@ public class GrabCommand : NetworkBehaviour
         grabbed.AssignClientAuthority(VrIdentity.connectionToClient);
     }
 
+
     /*
     //doesn't work
     public void Release(NetworkConnectionToClient modelOwner, NetworkIdentity grabbedNetId)

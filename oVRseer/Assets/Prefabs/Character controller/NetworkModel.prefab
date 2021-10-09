@@ -1919,7 +1919,19 @@ MonoBehaviour:
         m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2953560043100508259}
+        m_TargetAssemblyTypeName: VrInformer, Assembly-CSharp
+        m_MethodName: NotifyVrReleasing
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Activated:
     m_PersistentCalls:
       m_Calls: []
@@ -2807,6 +2819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901182334643ba1438a25accc6bd0c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
 --- !u!1 &5713462087147648554
 GameObject:
   m_ObjectHideFlags: 0
@@ -3063,6 +3076,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   VrPlayer: {fileID: 0}
+  transformPlayer: {fileID: 4409287637027422672}
+  transformArmature: {fileID: 2779783598367620245}
 --- !u!114 &2557327246284887480
 MonoBehaviour:
   m_ObjectHideFlags: 0

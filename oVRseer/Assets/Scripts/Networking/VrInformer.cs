@@ -13,6 +13,8 @@ public class VrInformer : NetworkBehaviour
     GrabCommand grabCommand;
     NetworkIdentity networkId;
     NetworkConnectionToClient owner;
+    public NetworkTransformChild transformPlayer;
+    public Transform transformArmature;
     
 
     public void Awake()
@@ -34,11 +36,6 @@ public class VrInformer : NetworkBehaviour
         }
 
         owner = networkId.connectionToClient;
-        print("----networkId---");
-        print(networkId.netId);
-        print("-----connection.....");
-        print(owner);
-
 
         grabCommand.Grab(networkId);
     }
@@ -48,12 +45,12 @@ public class VrInformer : NetworkBehaviour
     //Doesn't work
     public void NotifyVrReleasing()
     {
-        print(owner);
-        print(networkId);
         if (hasAuthority)
         {
             //used to see if it was an authority or buffer problem  
             //it is a buffer problem, no idea on how to fix
+            Vector3 pos = transformArmature.position;
+            transformPlayer.CmdTeleport(pos);
             CmdRelease();
         }
     }
