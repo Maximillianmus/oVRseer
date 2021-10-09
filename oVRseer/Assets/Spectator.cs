@@ -11,14 +11,15 @@ using UnityEngine.InputSystem;
 public class Spectator : NetworkBehaviour
 {
     private List<GameObject> players = new List<GameObject>();
-    public GameObject playerArmature;
     private int indexPlayer = 0;
     private GameObject spectating = null;
     [SyncVar]
     public bool IsDead = false;
     public StarterAssetsInputs _inputs;
     public PlayerInput deadInput;
-    public GameObject aliveUI;
+    public List<GameObject> toDisableOnDead;
+    public List<GameObject> toEnableOnDead;
+    public List<GameObject> toEnableMobileOnDead;
     public GameObject deadUI;
     public NetworkNickname nicknameScript;
     
@@ -62,11 +63,23 @@ public class Spectator : NetworkBehaviour
     public void OnDead()
     {
         deadInput.enabled = true;
-        playerArmature.SetActive(false);
         IsDead = true;
         RefreshPlayers();
-        deadUI.SetActive(true);
-        aliveUI.SetActive(false);
+        foreach (var toDisable in toDisableOnDead)
+        {
+            toDisable.SetActive(false);
+        }
+
+        foreach (var toEnable in toEnableOnDead)
+        {
+            toEnable.SetActive(true);
+        }
+        #if UNITY_ANDROID
+        foreach (var enableMobile in toEnableMobileOnDead)
+        {
+            enableMobile.SetActive(true);
+        }
+        #endif
         OnPlayerDead();
         if (players.Count == 0)
         {

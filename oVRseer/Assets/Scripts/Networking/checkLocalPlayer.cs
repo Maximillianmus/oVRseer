@@ -66,6 +66,11 @@ public class checkLocalPlayer : NetworkBehaviour
             {
                 EnableMobileTransforms[i].gameObject.SetActive(true);
             }
+
+            if (!isVr)
+            {
+                uiCanvas.SetActive(false);
+            }
             #endif
 
             if (!isVr)
