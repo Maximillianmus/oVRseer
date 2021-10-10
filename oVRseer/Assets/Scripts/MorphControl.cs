@@ -106,7 +106,7 @@ public class MorphControl : NetworkBehaviour
          {
              return;
          }
-         morphRenderer.material = newmorphRenderer.material;
+         morphRenderer.materials = newmorphRenderer.materials;
      }
 
     
