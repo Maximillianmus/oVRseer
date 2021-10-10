@@ -11,6 +11,14 @@ namespace StarterAssets
         public void VirtualMoveInput(Vector2 virtualMoveDirection)
         {
             starterAssetsInputs.MoveInput(virtualMoveDirection);
+            if (virtualMoveDirection.sqrMagnitude >= 0.9)
+            {
+                VirtualSprintInput(true);
+            }
+            else
+            {
+                VirtualSprintInput(false);
+            }
         }
 
         public void VirtualLookInput(Vector2 virtualLookDirection)
@@ -27,7 +35,16 @@ namespace StarterAssets
         {
             starterAssetsInputs.SprintInput(virtualSprintState);
         }
-        
+
+        public void VirtualMorphInput(bool virtualMorphState)
+        {
+            starterAssetsInputs.MorphInput();
+        }
+
+        public void VirtualDeadInput(bool virtualDeadState)
+        {
+            starterAssetsInputs.DeadInput(virtualDeadState);
+        }
     }
 
 }

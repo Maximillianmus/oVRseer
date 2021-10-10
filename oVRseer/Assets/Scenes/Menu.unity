@@ -1056,10 +1056,10 @@ RectTransform:
   m_Father: {fileID: 1453318223}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1630234609
 MonoBehaviour:
@@ -1414,6 +1414,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2548235200037687159, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
+      propertyPath: gameScene
+      value: Assets/Scenes/NewMap.unity
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548235200037687159, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
       propertyPath: tinyPrefab
       value: 
       objectReference: {fileID: 5760214788905530314, guid: d55f5e8e34b1df54daeede40095faa5c, type: 3}
@@ -1434,9 +1438,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2548235200037687159, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
+      propertyPath: spawnPrefabs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548235200037687159, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
       propertyPath: spawnPrefabs.Array.data[1]
       value: 
       objectReference: {fileID: 5760214788905530314, guid: d55f5e8e34b1df54daeede40095faa5c, type: 3}
+    - target: {fileID: 2548235200037687159, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
+      propertyPath: spawnPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 5760214788905530314, guid: eded471dd618d4340b5b04413cc9e7c5, type: 3}
+    - target: {fileID: 2548235200037687159, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
+      propertyPath: spawnPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 3182485801732422699, guid: cc3f91d41513b8240ac06fd2422e3119, type: 3}
+    - target: {fileID: 2548235200037687159, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
+      propertyPath: spawnPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 494398970668405759, guid: 6e5493c90c696114397eed3c356e587d, type: 3}
     - target: {fileID: 2634226859551238643, guid: 6d97c9f2c88f2034082b3e239cb593af, type: 3}
       propertyPath: m_Name
       value: NetworkManager
