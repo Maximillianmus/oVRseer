@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using Mirror;
 using StarterAssets;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MorphControl : NetworkBehaviour
@@ -11,9 +12,8 @@ public class MorphControl : NetworkBehaviour
     public StarterAssetsInputs _inputs;
     public GameObject baseMesh;
     public GameObject morphMesh;
-    public ActionCD morphCD;
     private bool lastMorphState = false;
-    
+    public UnityEvent<float, float> OnActivate;
     
 
     // Update is called once per frame
@@ -23,8 +23,8 @@ public class MorphControl : NetworkBehaviour
         if (_inputs.morph != lastMorphState)
         {
             lastMorphState = _inputs.morph;
-            morphCD.OnActionPress(Time.time, _inputs.morphCooldown);
             CmdMorphAbility(_inputs.morph);
+            OnActivate.Invoke(Time.time, _inputs.morphCooldown);
         }
         
         if (_inputs.choose) 

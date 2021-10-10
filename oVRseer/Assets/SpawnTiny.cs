@@ -29,6 +29,7 @@ public class SpawnTiny : NetworkBehaviour
     {
         //instantiaties the object where the networkplayer is
         GameObject playerModel = Instantiate(PlayerPrefab, transform.position, transform.rotation);
+        playerModel.GetComponent<NetworkNickname>().nickname = GetComponent<OVRseerNetworkGamePlayer>().nickname;
 
         NetworkServer.Spawn(playerModel, connectionToClient);
         print("hello");

@@ -24,6 +24,9 @@ public class OVRseerRoomPlayer : NetworkBehaviour
     [SerializeField] public Text nbJoueursReadyText;
     [SerializeField] public Text nbJoueursTotalText;
     [SerializeField] public GameObject ReadyText;
+    // public Text nicknameInput;
+    [SyncVar] public string nickname;
+    public Text nickInput;
     
     // *** Sync Var for number of players ***
     [SyncVar(hook = nameof(HandleCompteurChanged))]
@@ -146,7 +149,17 @@ public class OVRseerRoomPlayer : NetworkBehaviour
         }
 
         Room.ChangeStatusClient();
+    }
 
+    public void OnEndEditNick(String newNickname)
+    {
+        CmdEditNick(nickInput.text);
+    }
+
+    [Command]
+    void CmdEditNick(String newnick)
+    {
+        nickname = newnick;
     }
 
     [Command]

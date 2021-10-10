@@ -21,6 +21,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool morph = false;
 		public bool choose = false;
+		public bool dead = false;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -65,6 +66,11 @@ namespace StarterAssets
 		{
 			ChooseInput(value.isPressed);
 		}
+
+		public void OnDead(InputValue value)
+		{
+			DeadInput(value.isPressed);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -104,6 +110,11 @@ namespace StarterAssets
 
 			lastTimeMorph = Time.time;
 			morph = !morph;
+		}
+
+		public void DeadInput(bool newDeadValue)
+		{
+			dead = newDeadValue;
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID

@@ -10,6 +10,7 @@ TagManager:
   - IsTheDoor
   - IsAKey
   - Goal
+  - PlayerNetwork
   layers:
   - Default
   - TransparentFX
