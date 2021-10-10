@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6959664195965210876}
   - component: {fileID: 4430272735401870390}
   - component: {fileID: 4908372879192111782}
-  - component: {fileID: 7593240226353498039}
   m_Layer: 0
   m_Name: Key
   m_TagString: IsAKey
@@ -131,17 +130,3 @@ MonoBehaviour:
   syncInterval: 0.1
   keyNetId: {fileID: 0}
   isCollected: 0
---- !u!114 &7593240226353498039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3182485801732422699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d17e718851449a6879986e45c458fb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1

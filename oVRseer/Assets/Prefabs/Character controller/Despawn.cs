@@ -1,7 +1,10 @@
+using System;
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 
@@ -27,6 +30,11 @@ public class Despawn : NetworkBehaviour
     public Color deathColor;
     public Font deathFont;
 
+    private float TimeDead;
+    public float delayForSpectating;
+    public UnityEvent spectatingEvent;
+    private bool Dead = false;
+
 
 
 
@@ -36,6 +44,17 @@ public class Despawn : NetworkBehaviour
         textComponent = textTransform.GetComponent<Text>();
         textBackground = textCanvas.transform.Find("EndBackground");
         textComponent.text = "";
+    }
+
+    private void Update()
+    {
+        if (Dead && Time.time - TimeDead > delayForSpectating)
+        {
+            textBackground.gameObject.SetActive(false);
+            textComponent.gameObject.SetActive(false);
+            spectatingEvent.Invoke();
+        }
+        
     }
 
 
@@ -49,7 +68,8 @@ public class Despawn : NetworkBehaviour
         textComponent.color = winColor;
         EnableText();
         //TODO particle effect when winning
-        CmdDespawn();
+        TimeDead = Time.time;
+        Dead = true;
     }
 
 
@@ -60,7 +80,6 @@ public class Despawn : NetworkBehaviour
         textComponent.color = deathColor;
         EnableText();
         //TODO particle effect when dead
-        CmdDespawn();
     }
 
     public void EnableText()

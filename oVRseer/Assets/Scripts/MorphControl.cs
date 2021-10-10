@@ -78,18 +78,34 @@ public class MorphControl : NetworkBehaviour
      void RpcChangeMorphTo(uint netId)
      {
          var newMeshObj = NetworkClient.spawned[netId];
+         // Change meshFilter
          MeshFilter morphMeshFilter = morphMesh.GetComponent<MeshFilter>();
+         
+         MeshFilter newMeshFilter;
+         var newObjectHasMeshFilter = newMeshObj.gameObject.TryGetComponent<MeshFilter>(out newMeshFilter);
+         if (!newObjectHasMeshFilter)
+         {
+             return;
+         }
+         morphMeshFilter.mesh = newMeshFilter.mesh;
+         // Add MeshCollider
          Destroy(morphMesh.GetComponent<MeshCollider>());
-         morphMeshFilter.mesh = newMeshObj.gameObject.GetComponent<MeshFilter>().mesh;
          var morphCollider = morphMesh.AddComponent<MeshCollider>();
          morphCollider.sharedMesh = morphMeshFilter.mesh;
          morphCollider.convex = true;
+         // Change transform of new morph mesh
          var morphTransform = morphMeshFilter.transform;
          var newTransform = newMeshObj.transform;
          morphTransform.rotation = newTransform.rotation;
          morphTransform.localScale = newTransform.localScale;
+         // Change material
          var morphRenderer = morphMesh.GetComponent<MeshRenderer>();
-         var newmorphRenderer = newMeshObj.GetComponent<MeshRenderer>();
+         MeshRenderer newmorphRenderer;
+         var newMorphHasRenderer = newMeshObj.TryGetComponent<MeshRenderer>(out newmorphRenderer);
+         if (!newMorphHasRenderer)
+         {
+             return;
+         }
          morphRenderer.material = newmorphRenderer.material;
      }
 

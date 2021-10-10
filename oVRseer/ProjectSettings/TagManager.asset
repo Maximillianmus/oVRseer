@@ -11,6 +11,7 @@ TagManager:
   - IsAKey
   - Goal
   - PlayerNetwork
+  - NPC
   layers:
   - Default
   - TransparentFX

@@ -39,7 +39,7 @@ public class Key : NetworkBehaviour
     // Key is collected
     private void OnTriggerEnter(Collider other) {
         
-        if(other.tag == "Player") { 
+        if(other.CompareTag("PlayerArmature")) { 
 
             isCollected = true;
 

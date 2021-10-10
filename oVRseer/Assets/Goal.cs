@@ -8,7 +8,7 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "PlayerArmature")
         {
             other.transform.root.GetComponent<Despawn>().Win();
         }

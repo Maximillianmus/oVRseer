@@ -20,6 +20,7 @@ public class Spectator : NetworkBehaviour
     public List<GameObject> toDisableOnDead;
     public List<GameObject> toEnableOnDead;
     public List<GameObject> toEnableMobileOnDead;
+    public GameObject EndScreen;
     public GameObject deadUI;
     public NetworkNickname nicknameScript;
     
@@ -56,8 +57,24 @@ public class Spectator : NetworkBehaviour
         if (IsDead && netID.hasAuthority)
         {
             RefreshAndCheck();
+            if (players.Count == 0)
+            {
+                CmdAllPlayersDead();
+            }
         }
         
+    }
+
+    [Command]
+    private void CmdAllPlayersDead()
+    {
+        RpcTotalEndScreen();
+    }
+
+    [ClientRpc]
+    private void RpcTotalEndScreen()
+    {
+        EndScreen.SetActive(true);
     }
 
     public void OnDead()
