@@ -80,6 +80,8 @@ public class Despawn : NetworkBehaviour
         textComponent.color = deathColor;
         EnableText();
         //TODO particle effect when dead
+        TimeDead = Time.time;
+        Dead = true;
     }
 
     public void EnableText()
