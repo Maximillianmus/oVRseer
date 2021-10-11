@@ -83,6 +83,10 @@ public class Spectator : NetworkBehaviour
 
     public void OnDead()
     {
+        if (!hasAuthority)
+        {
+            return;
+        }
         deadInput.enabled = true;
         IsDead = true;
         RefreshPlayers();
