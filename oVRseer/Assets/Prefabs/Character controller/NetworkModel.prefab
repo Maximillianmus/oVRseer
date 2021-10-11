@@ -4266,8 +4266,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   VrPlayer: {fileID: 0}
-  transformPlayer: {fileID: 0}
-  transformArmature: {fileID: 0}
+  transformPlayer: {fileID: 4409287637027422672}
+  transformArmature: {fileID: 2779783598367620245}
 --- !u!114 &2557327246284887480
 MonoBehaviour:
   m_ObjectHideFlags: 0

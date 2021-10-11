@@ -45,6 +45,10 @@ public class Spectator : NetworkBehaviour
 
     private void Update()
     {
+        if (isServer)
+        {
+            return;
+        }
         if (!IsDead && _inputs.dead)
         {
             OnDead();
