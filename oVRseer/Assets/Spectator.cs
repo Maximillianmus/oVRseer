@@ -49,7 +49,7 @@ public class Spectator : NetworkBehaviour
         {
             return;
         }
-        if (!IsDead && _inputs.dead)
+        if (!IsDead && _inputs.dead && hasAuthority)
         {
             OnDead();
             return;
