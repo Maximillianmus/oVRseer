@@ -115,9 +115,8 @@ public class Spectator : NetworkBehaviour
     }
 
 
-    private void SwitchSpectatePlayer(int step = 1)
+    private void SwitchSpectatePlayer(int oldIndex, int step = 1)
     {
-        int oldIndex = -1;
         if (!hasAuthority)
         {
             return;
@@ -129,19 +128,6 @@ public class Spectator : NetworkBehaviour
         if (players.Count == 0)
         {
             return;
-        }
-
-        if (spectating != null)
-        {
-            var playerIndex = players.FindIndex(x => x == spectating);
-            if (playerIndex == -1)
-            {
-                oldIndex = -1;
-            }
-            else
-            {
-                oldIndex = playerIndex;
-            }
         }
 
         GameObject oldPlayer;
@@ -169,12 +155,12 @@ public class Spectator : NetworkBehaviour
 
     public void OnNextPlayer()
     {
-        SwitchSpectatePlayer();
+        SwitchSpectatePlayer(indexPlayer);
     }
 
     public void OnPreviousPlayer()
     {
-        SwitchSpectatePlayer(-1);
+        SwitchSpectatePlayer(indexPlayer, -1);
     }
 
     public void OnPlayerDead()
