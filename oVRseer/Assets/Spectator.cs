@@ -117,6 +117,10 @@ public class Spectator : NetworkBehaviour
 
     private void SwitchSpectatePlayer(int oldIndex, int step = 1)
     {
+        if (!hasAuthority)
+        {
+            return;
+        }
         if (step == 0)
         {
             return;
