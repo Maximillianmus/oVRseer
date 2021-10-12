@@ -4453,11 +4453,11 @@ MonoBehaviour:
   textCanvas: {fileID: 3997666644721786896}
   winText: Victory
   winColor: {r: 1, g: 0.90058327, b: 0, a: 1}
-  winFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  winFont: {fileID: 12800000, guid: 22cd31a52b13e9c4fa0b94d2e56c1b70, type: 3}
   deathText: Squashed
   deathColor: {r: 1, g: 0, b: 0, a: 1}
   deathFont: {fileID: 12800000, guid: dcc9f979444c16e49b16863f59ae91f1, type: 3}
-  delayForSpectating: 5
+  delayForSpectating: 2
   spectatingEvent:
     m_PersistentCalls:
       m_Calls:
@@ -5739,9 +5739,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 22cd31a52b13e9c4fa0b94d2e56c1b70, type: 3}
     m_FontSize: 100
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 100

@@ -66,6 +66,7 @@ public class Despawn : NetworkBehaviour
 
         textComponent.text = winText;
         textComponent.color = winColor;
+        textComponent.font = winFont;
         EnableText();
         //TODO particle effect when winning
         TimeDead = Time.time;
@@ -78,6 +79,7 @@ public class Despawn : NetworkBehaviour
     {
         textComponent.text = deathText;
         textComponent.color = deathColor;
+        textComponent.font = deathFont;
         EnableText();
         //TODO particle effect when dead
         TimeDead = Time.time;
