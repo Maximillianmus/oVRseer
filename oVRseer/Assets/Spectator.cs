@@ -11,7 +11,6 @@ using UnityEngine.InputSystem;
 public class Spectator : NetworkBehaviour
 {
     private List<GameObject> players = new List<GameObject>();
-    private int indexPlayer = 0;
     private GameObject spectating = null;
     [SyncVar]
     public bool IsDead = false;
@@ -22,7 +21,6 @@ public class Spectator : NetworkBehaviour
     public List<GameObject> toEnableMobileOnDead;
     public GameObject EndScreen;
     public GameObject deadUI;
-    public NetworkNickname nicknameScript;
     
     private void RefreshPlayers()
     {
@@ -110,57 +108,53 @@ public class Spectator : NetworkBehaviour
         {
             return;
         }
-        
-        SwitchSpectatePlayer(-1);
+
+        spectating = gameObject;
+        SwitchSpectatePlayer();
     }
 
-
-    private void SwitchSpectatePlayer(int oldIndex, int step = 1)
+    private void DisableCamera(GameObject gameObject)
     {
-        if (!hasAuthority)
-        {
-            return;
-        }
-        if (step == 0)
-        {
-            return;
-        }
-        if (players.Count == 0)
-        {
-            return;
-        }
+        gameObject.GetComponentInChildren<Camera>(true).gameObject.SetActive(false);
+        gameObject.GetComponentInChildren<CinemachineVirtualCamera>(true).gameObject.SetActive(false);
+    }
 
-        GameObject oldPlayer;
-        if (oldIndex >= 0)
-        {
-            oldPlayer = players[oldIndex];
-        }
-        else
-        {
-            oldPlayer = gameObject;
-        }
-        
-        oldPlayer.GetComponentInChildren<Camera>(true).gameObject.SetActive(false);
-        oldPlayer.GetComponentInChildren<CinemachineVirtualCamera>(true).gameObject.SetActive(false);
-
-        var newIndex = (oldIndex + step) % players.Count;
-        var newPlayer = players[newIndex];
-        spectating = newPlayer;
-        newPlayer.GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
-        newPlayer.GetComponentInChildren<CinemachineVirtualCamera>(true).gameObject.SetActive(true);
-        var nickSpectate = newPlayer.GetComponentInChildren<NetworkNickname>(true).nickname;
+    private void EnableCamera(GameObject gameObject)
+    {
+        spectating = gameObject;
+        gameObject.GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
+        gameObject.GetComponentInChildren<CinemachineVirtualCamera>(true).gameObject.SetActive(true);
+        var nickSpectate = gameObject.GetComponentInChildren<NetworkNickname>(true).nickname;
         deadUI.GetComponent<changeNickName>().ChangeNickName(nickSpectate);
-        indexPlayer = newIndex;
+    }
+    
+    private void SwitchSpectatePlayer(int step = 1)
+    {
+        if (!hasAuthority || step == 0 || players.Count == 0)
+        {
+            return;
+        }
+        DisableCamera(spectating);
+        var index = players.FindIndex(x => x == spectating);
+        var newIndex = index == -1 ? 0 : mod(index + step, players.Count);
+        EnableCamera(players[newIndex]);
+        spectating = players[newIndex];
+
+    }
+
+    private int mod(int a, int m)
+    {
+        return ((a %= m) < 0) ? a + m : a;
     }
 
     public void OnNextPlayer()
     {
-        SwitchSpectatePlayer(indexPlayer);
+        SwitchSpectatePlayer();
     }
 
     public void OnPreviousPlayer()
     {
-        SwitchSpectatePlayer(indexPlayer, -1);
+        SwitchSpectatePlayer(-1);
     }
 
     public void OnPlayerDead()
@@ -184,11 +178,7 @@ public class Spectator : NetworkBehaviour
         var player = players.FindIndex(x => x == spectating);
         if (player == -1)
         {
-            SwitchSpectatePlayer(-1); 
-        }
-        else
-        {
-            indexPlayer = player;
+            SwitchSpectatePlayer(); 
         }
     }
 }
