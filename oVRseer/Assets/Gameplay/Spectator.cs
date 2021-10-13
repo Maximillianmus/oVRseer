@@ -28,7 +28,7 @@ public class Spectator : NetworkBehaviour
         var possiblePlayers = GameObject.FindGameObjectsWithTag("Player").ToList();
         foreach (var player in possiblePlayers)
         {
-            if (!player.GetComponent<Spectator>().IsDead && player != gameObject)
+            if (player.GetComponent<State>().isPlaying() && player != gameObject)
             {
                 players.Add(player);
             } 
@@ -59,25 +59,10 @@ public class Spectator : NetworkBehaviour
         if (IsDead && netID.hasAuthority)
         {
             RefreshAndCheck();
-            if (players.Count == 0)
-            {
-                CmdAllPlayersDead();
-            }
         }
         
     }
 
-    [Command]
-    private void CmdAllPlayersDead()
-    {
-        RpcTotalEndScreen();
-    }
-
-    [ClientRpc]
-    private void RpcTotalEndScreen()
-    {
-        EndScreen.SetActive(true);
-    }
 
     public void OnDead()
     {
