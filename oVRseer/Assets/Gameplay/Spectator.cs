@@ -16,6 +16,7 @@ public class Spectator : NetworkBehaviour
     public bool IsDead = false;
     public StarterAssetsInputs _inputs;
     public PlayerInput deadInput;
+    public GameObject playerArmature;
     public List<GameObject> toDisableOnDead;
     public List<GameObject> toEnableOnDead;
     public List<GameObject> toEnableMobileOnDead;
@@ -78,6 +79,7 @@ public class Spectator : NetworkBehaviour
             toDisable.SetActive(false);
         }
 
+        CmdDisablePA();
         foreach (var toEnable in toEnableOnDead)
         {
             toEnable.SetActive(true);
@@ -97,6 +99,19 @@ public class Spectator : NetworkBehaviour
         spectating = gameObject;
         SwitchSpectatePlayer();
     }
+
+    [Command]
+    private void CmdDisablePA()
+    {
+        RpcDisablePA();
+    }
+
+    [ClientRpc]
+    private void RpcDisablePA()
+    {
+        this.playerArmature.SetActive(false);
+    }
+
 
     private void DisableCamera(GameObject gameObject)
     {
@@ -132,6 +147,17 @@ public class Spectator : NetworkBehaviour
         return ((a %= m) < 0) ? a + m : a;
     }
 
+    public void OnPhoneNextPlayer()
+    {
+       SwitchSpectatePlayer(); 
+    }
+    
+    public void OnPhonePreviousPlayer()
+    {
+       SwitchSpectatePlayer(-1); 
+    }
+    
+    
     public void OnNextPlayer(InputAction.CallbackContext callbackContext)
     {
         if (callbackContext.phase == InputActionPhase.Performed)

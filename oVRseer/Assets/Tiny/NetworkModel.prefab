@@ -2633,7 +2633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2678,10 +2678,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonStateOutputEvent:
     m_PersistentCalls:
+      m_Calls: []
+  buttonClickOutputEvent:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6410059251483743675}
         m_TargetAssemblyTypeName: Spectator, Assembly-CSharp
-        m_MethodName: OnPreviousPlayer
+        m_MethodName: OnPhonePreviousPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2691,9 +2694,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  buttonClickOutputEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &3882845537069244936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2785,7 +2785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2830,10 +2830,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonStateOutputEvent:
     m_PersistentCalls:
+      m_Calls: []
+  buttonClickOutputEvent:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6410059251483743675}
         m_TargetAssemblyTypeName: Spectator, Assembly-CSharp
-        m_MethodName: OnNextPlayer
+        m_MethodName: OnPhoneNextPlayer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2843,9 +2846,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  buttonClickOutputEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &4186800038945761239
 GameObject:
   m_ObjectHideFlags: 0
@@ -3818,6 +3818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901182334643ba1438a25accc6bd0c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
 --- !u!1 &5624161340200660410
 GameObject:
   m_ObjectHideFlags: 0
@@ -4295,15 +4296,16 @@ MonoBehaviour:
   IsDead: 0
   _inputs: {fileID: 1258274459254405715}
   deadInput: {fileID: 963213558008705196}
+  playerArmature: {fileID: 3303415447798998575}
   toDisableOnDead:
   - {fileID: 2564555004118244755}
   - {fileID: 5559065058846174350}
-  - {fileID: 3303415447798998575}
   toEnableOnDead:
   - {fileID: 6702784576898594463}
   - {fileID: 4850592543197131347}
   toEnableMobileOnDead:
   - {fileID: 1635035394985786075}
+  - {fileID: 7163940010037775334}
   EndScreen: {fileID: 0}
   deadUI: {fileID: 6702784576898594463}
 --- !u!114 &9078167513272261166
