@@ -34,6 +34,7 @@ public class Despawn : NetworkBehaviour
     public float delayForSpectating;
     public UnityEvent spectatingEvent;
     private bool Dead = false;
+    private bool alreadySpectating = false;
 
 
 
@@ -48,10 +49,15 @@ public class Despawn : NetworkBehaviour
 
     private void Update()
     {
+        if (alreadySpectating)
+        {
+            return;
+        }
         if (Dead && Time.time - TimeDead > delayForSpectating)
         {
             textBackground.gameObject.SetActive(false);
             textComponent.gameObject.SetActive(false);
+            alreadySpectating = true;
             spectatingEvent.Invoke();
         }
         

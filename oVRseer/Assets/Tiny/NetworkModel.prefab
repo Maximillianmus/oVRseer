@@ -3363,7 +3363,7 @@ MonoBehaviour:
       - m_Target: {fileID: 6410059251483743675}
         m_TargetAssemblyTypeName: Spectator, Assembly-CSharp
         m_MethodName: OnNextPlayer
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4379,6 +4379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  state: 0
   onPlayerDeadNotifyServer:
     m_PersistentCalls:
       m_Calls:
@@ -4435,6 +4436,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bda3e25197c60c4095698f8be4d7028, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   generalUI: {fileID: 1014076587116473836}
   winning: {fileID: 3611043500940567406}
   losing: {fileID: 2617297591943173678}

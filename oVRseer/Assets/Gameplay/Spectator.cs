@@ -132,14 +132,16 @@ public class Spectator : NetworkBehaviour
         return ((a %= m) < 0) ? a + m : a;
     }
 
-    public void OnNextPlayer()
+    public void OnNextPlayer(InputAction.CallbackContext callbackContext)
     {
-        SwitchSpectatePlayer();
+        if (callbackContext.phase == InputActionPhase.Performed)
+            SwitchSpectatePlayer();
     }
 
-    public void OnPreviousPlayer()
+    public void OnPreviousPlayer(InputAction.CallbackContext callbackContext)
     {
-        SwitchSpectatePlayer(-1);
+        if (callbackContext.phase == InputActionPhase.Performed)
+            SwitchSpectatePlayer(-1);
     }
 
     public void OnPlayerDead()
