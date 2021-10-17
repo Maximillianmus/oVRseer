@@ -40,6 +40,11 @@ namespace StarterAssets
         {
             starterAssetsInputs.MorphInput();
         }
+        
+        public void VirtualSelectInput(bool virtualSelectState)
+        {
+            starterAssetsInputs.ChooseInput(virtualSelectState);
+        }
 
         public void VirtualDeadInput(bool virtualDeadState)
         {
