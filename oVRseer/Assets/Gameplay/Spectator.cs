@@ -20,7 +20,6 @@ public class Spectator : NetworkBehaviour
     public List<GameObject> toDisableOnDead;
     public List<GameObject> toEnableOnDead;
     public List<GameObject> toEnableMobileOnDead;
-    public GameObject EndScreen;
     public GameObject deadUI;
     
     private void RefreshPlayers()

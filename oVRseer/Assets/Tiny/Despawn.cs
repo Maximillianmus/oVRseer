@@ -95,6 +95,7 @@ public class Despawn : NetworkBehaviour
     public void EnableText()
     {
         textBackground.gameObject.SetActive(true);
+        textTransform.gameObject.SetActive(true);
     }
 
     //can be used to remove overlay and text when spectating

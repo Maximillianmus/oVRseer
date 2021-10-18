@@ -31,7 +31,8 @@ public class checkLocalPlayer : NetworkBehaviour
     [SerializeField] RigidbodyThirdPersonController thirdPersonController;
     [SerializeField] PlayerInput playerInput;
     [SerializeField]  MorphControl morphControl;
-    [SerializeField]  GameObject uiCanvas;
+    [SerializeField]  GameObject[] uiPCanvas;
+    [SerializeField]  GameObject[] uiMobileCanvas;
 
    
     //this only runes if the object it is on is the local player, so we enable all the controlls and cammeras here
@@ -52,7 +53,21 @@ public class checkLocalPlayer : NetworkBehaviour
                 thirdPersonController.enabled = true;
                 playerInput.enabled = true;
                 morphControl.enabled = true;
-                uiCanvas.SetActive(true);
+                #if UNITY_ANDROID
+                
+                foreach (var canvas in uiMobileCanvas) 
+                {
+                    canvas.SetActive(true);
+                }
+                
+                #else 
+                
+                foreach (var canvas in uiPCanvas)
+                {
+                    canvas.SetActive(true);
+                }
+                
+                #endif
             }
 
             for (int i = 0; i < EnableTransforms.Length; i++)
@@ -67,10 +82,6 @@ public class checkLocalPlayer : NetworkBehaviour
                 EnableMobileTransforms[i].gameObject.SetActive(true);
             }
 
-            if (!isVr)
-            {
-                uiCanvas.SetActive(false);
-            }
             #endif
 
             if (!isVr)

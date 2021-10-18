@@ -21,7 +21,6 @@ public class ListPlayers : NetworkBehaviour
 {
     private int totalPlayer, tinyInside, tinyOutside, tinySquashed;
     private List<PlayerInfo> playersInfo = new List<PlayerInfo>();
-    public UnityEvent<int, int> onEndNotify;
 
     private void Refresh()
     {
