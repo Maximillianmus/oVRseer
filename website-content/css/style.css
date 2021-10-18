@@ -1,12 +1,12 @@
 :root {
   --main-nav-color: #1d1d1d;
   --main-nav-hover-color: #d4c8ed;
-  --main-header-color: #d4c8ed;
+  --main-header-color: rgb(219, 219, 219);
   --section-title-background: #e4def0;
 }
 
 body {
-
+    background-color: white;
 }
 
 .section-title {
@@ -19,12 +19,12 @@ body {
 }
 
 .section-content {
-    margin: auto;
+    margin: 0 auto;
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: center;
-    background-color: white;
 }
+
 
 .nav-bar {
     background-color: var(--main-nav-color);
@@ -51,3 +51,43 @@ header {
 #nav-title {
     text-decoration: none;
 }
+
+.fa {
+    color: black;
+}
+
+.column {
+  margin-bottom: 10px;
+  padding: 0 8px;
+}
+
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@media screen and (max-width: 650px) {   
+    .row {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+}
+
+.member-card {
+  margin: auto;
+  padding: 10px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  max-width: 450px;
+  background-color: white;
+}
+
+/*
+.container-member-info::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+*/
