@@ -9,7 +9,9 @@ public class KeyUI : NetworkBehaviour
 {
     public bool isVrPlayer;
     public List<GameObject> clientKeys = new List<GameObject>();
-    public int keysRemaining;
+    private int MAX_KEYS = 5;
+    public int keysRemainingTotal;
+    public int keysRemaingToOpenDors;
     public float textFadeTime = 1.5f;
 
     public bool textFadeIn = false;
@@ -24,12 +26,12 @@ public class KeyUI : NetworkBehaviour
 
         if (!isVrPlayer)
         {
-            //canvas = gameObject.GetComponent<checkLocalPlayer>().uiCanvas;
             CreateInfoText();
 
             doors = GameObject.FindGameObjectsWithTag("IsTheDoor");
             CheckKeys();
-            keysRemaining = clientKeys.Count;
+            keysRemainingTotal = clientKeys.Count;
+            keysRemaingToOpenDors = (keysRemainingTotal / 2) + 1;
 
         }
     }
@@ -118,16 +120,21 @@ public class KeyUI : NetworkBehaviour
 
     public void KeyCollected()
     {
-        keysRemaining -= 1;
+        keysRemainingTotal -= 1;
 
-        if (keysRemaining > 0)
-        {
-            keyCollectedMessage.text = "A key has been collected" + "\n" + keysRemaining + " keys remaining";
-        }
-        else
-        {
-            keyCollectedMessage.text = "The doors are unlocked. Go to either of them to escape";
-            OpenDoor();
+        if (keysRemaingToOpenDors > 0) { 
+
+        keysRemaingToOpenDors -= 1;
+
+            if (keysRemaingToOpenDors > 0)
+            {
+                keyCollectedMessage.text = "A key has been collected!" + "\nCollect " + keysRemaingToOpenDors + " more keys to unlock the doors";
+            }
+            else
+            {
+                keyCollectedMessage.text = "The doors are unlocked. Go to either of them to escape";
+                OpenDoor();
+            }
         }
     }
 

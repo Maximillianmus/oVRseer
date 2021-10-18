@@ -65,4 +65,6 @@ MonoBehaviour:
   syncInterval: 0.1
   keyPrefab: {fileID: 3182485801732422699, guid: cc3f91d41513b8240ac06fd2422e3119, type: 3}
   keysInScene: []
-  numOfKeysToSpawn: 3
+  numOfKeysToSpawn: 1
+  numOfKeysToCollect: 1
+  numOfPlayers: 0

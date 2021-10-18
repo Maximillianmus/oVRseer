@@ -13,11 +13,29 @@ public class KeySpawnSystem : NetworkBehaviour
     private static List<Transform> keyPositions = new List<Transform>();
 
     public List<GameObject> keysInScene = new List<GameObject>();
-    public int numOfKeysToSpawn = 3; // Hard coded for now
+    public int numOfKeysToSpawn; // Hard coded for now
+    public int numOfKeysToCollect;
+    public int numOfPlayers;
 
     public override void OnStartServer()
     {
+
+    }
+
+    public void Start()
+    {
+        FindNumPlayers();
+        numOfKeysToCollect = numOfPlayers + 1;
+        numOfKeysToSpawn = 2 * numOfKeysToCollect;
         SpawnKeys();
+    }
+
+    private void FindNumPlayers()
+    {
+        foreach (GameObject k in GameObject.FindGameObjectsWithTag("Player"))
+        {
+            numOfPlayers++;
+        }
     }
 
     public static void AddKeySpawnPoint(Transform keyPosition)
