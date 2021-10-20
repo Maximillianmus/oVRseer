@@ -21,7 +21,7 @@ public class Progbar : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // keysTotal = GameObject.Find("KeySpawnSystem").GetComponent<KeySpawnSystem>().numOfKeysToSpawn;
+        keysTotal = GameObject.FindWithTag("KeySpawnSystem").GetComponent<KeySpawnSystem>().numOfKeysToSpawn;
         if (!hasAuthority)
             return;
         keysRemaining = keysTotal;
