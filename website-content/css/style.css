@@ -110,6 +110,16 @@ header {
     padding: 10px;
 }
 
+.img-about-section {
+    padding: 10px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 110px;
+    border-top-right-radius: 60px;
+    border-top-left-radius: 160px;
+    max-width: 400px;
+
+}
+
 /*
 .container-member-info::after, .row::after {
   content: "";
