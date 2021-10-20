@@ -21,6 +21,8 @@ public class Progbar : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!hasAuthority)
+            return;
         keysTotal = GameObject.FindWithTag("KeySpawnSystem").GetComponent<KeySpawnSystem>().numOfKeysToSpawn;
         if (!hasAuthority)
             return;
@@ -37,7 +39,7 @@ public class Progbar : NetworkBehaviour
         }
     }
 
-    public override void OnStartClient()
+    public override void OnStartAuthority()
     {
         NetworkClient.RegisterHandler<KeyCollectedMsg>(OnKeyRetrieved);
     }
