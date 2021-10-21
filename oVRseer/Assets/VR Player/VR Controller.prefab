@@ -1153,7 +1153,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   EnableTransforms:
-  - {fileID: 2977353922166619963}
   - {fileID: 2977353922304390822}
   EnableMobileTransforms: []
   isVr: 1

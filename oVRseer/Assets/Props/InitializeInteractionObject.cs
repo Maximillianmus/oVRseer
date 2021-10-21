@@ -21,7 +21,6 @@ public class InitializeInteractionObject : NetworkBehaviour
         if (VrPlayer != null){
             CmdGiveAuthority();
             foundVR = true;
-            gameObject.GetComponent<XRGrabInteractable>().interactionManager = VrPlayer.GetComponentInChildren<XRInteractionManager>();
         }
 
         if (foundVR)
