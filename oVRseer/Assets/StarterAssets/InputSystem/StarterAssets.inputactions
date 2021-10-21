@@ -60,6 +60,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ConnectAudio",
+                    "type": "Button",
+                    "id": "4c6e2578-4cf3-4d92-8119-e0205c76dffb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -291,6 +299,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Dead",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff79ce4e-cbb7-435e-9021-da755b4b32ca",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "ConnectAudio",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

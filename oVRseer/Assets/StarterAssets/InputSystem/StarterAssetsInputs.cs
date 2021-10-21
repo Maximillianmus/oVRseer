@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -22,9 +24,12 @@ namespace StarterAssets
 		public bool morph = false;
 		public bool choose = false;
 		public bool dead = false;
+		public bool connect = false;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
+
+		[Header("Callback")] public UnityEvent<bool> ConnectionVoice;
 
 #if !UNITY_IOS || !UNITY_ANDROID
 		[Header("Mouse Cursor Settings")]
@@ -71,6 +76,12 @@ namespace StarterAssets
 		{
 			DeadInput(value.isPressed);
 		}
+
+		public void OnConnectAudio(InputValue value)
+		{
+			if (value.isPressed)
+				ConnectInput();
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -115,6 +126,12 @@ namespace StarterAssets
 		public void DeadInput(bool newDeadValue)
 		{
 			dead = newDeadValue;
+		}
+
+		public void ConnectInput()
+		{
+			connect = !connect;
+			ConnectionVoice.Invoke(connect);
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID
