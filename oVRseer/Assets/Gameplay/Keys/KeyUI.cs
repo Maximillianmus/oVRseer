@@ -9,7 +9,6 @@ public class KeyUI : NetworkBehaviour
 {
     public bool isVrPlayer;
     public List<GameObject> clientKeys = new List<GameObject>();
-    private int MAX_KEYS = 5;
     public int keysRemainingTotal;
     public int keysRemaingToOpenDors;
     public float textFadeTime = 1.5f;
@@ -31,7 +30,7 @@ public class KeyUI : NetworkBehaviour
             doors = GameObject.FindGameObjectsWithTag("IsTheDoor");
             CheckKeys();
             keysRemainingTotal = clientKeys.Count;
-            keysRemaingToOpenDors = (keysRemainingTotal / 2) + 1;
+            keysRemaingToOpenDors = (keysRemainingTotal / 2);
 
         }
     }
@@ -140,8 +139,13 @@ public class KeyUI : NetworkBehaviour
 
     private void OpenDoor()
     {
-        foreach (GameObject door in doors) { 
-            door.SetActive(false); // Hide doors for now
+        Animator doorAnimator;
+
+        foreach (GameObject door in doors) {
+            //door.SetActive(false); // Hide doors for now
+            doorAnimator = door.GetComponent<Animator>();
+            doorAnimator.Play("UnlockDoors");
+            //Destroy(door.GetComponent<BoxCollider>()); // Destroy to be able to actually get out
         }
     }
 }
