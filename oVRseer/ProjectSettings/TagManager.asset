@@ -12,6 +12,8 @@ TagManager:
   - Goal
   - PlayerNetwork
   - NPC
+  - PlayerArmature
+  - KeySpawnSystem
   layers:
   - Default
   - TransparentFX
