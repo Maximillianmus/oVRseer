@@ -68,7 +68,7 @@ Shader "Custom/DoorLightShader"
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
 
             o.Albedo = c.rgb;
-            o.Alpha = c.a - fresnelAlpha;
+            o.Alpha = min(max(c.a - fresnelAlpha, 0), 255);
         }
         ENDCG
     }

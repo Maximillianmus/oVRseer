@@ -26,6 +26,13 @@ public class KeySpawnSystem : NetworkBehaviour
     {
         FindNumPlayers();
         numOfKeysToCollect = numOfPlayers + 1;
+
+        // We have a maximum number of spawnpositions so if we have alot of players the number of keys needed to collect will reach a limit
+        if(numOfKeysToCollect >= keyPositions.Count)
+        {
+            numOfKeysToCollect = (keyPositions.Count / 2); 
+        } 
+
         numOfKeysToSpawn = 2 * numOfKeysToCollect;
         SpawnKeys();
     }
