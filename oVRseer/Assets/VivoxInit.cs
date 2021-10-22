@@ -31,8 +31,6 @@ public class VivoxInit : MonoBehaviour
 
     private string channelNext = "";
 
-    private Action autoLogChannel = null;
-    private Action autoSwitchChannel = null;
     void Start()
     {
         DontDestroyOnLoad(gameObject);
@@ -75,7 +73,7 @@ public class VivoxInit : MonoBehaviour
     
 
 
-    public void LoginUser()
+    public void LoginUser(bool auto)
     {
         // For this example, client is initialized.
         var nickname = GetComponent<NetworkNickname>().nickname;
@@ -84,6 +82,10 @@ public class VivoxInit : MonoBehaviour
         
         loginSession = client.GetLoginSession(account);
         Bind_Login_Callback_Listeners(true, loginSession);
+        if (auto)
+        {
+            loginSession.PropertyChanged += AutoJoinChannel;
+        }
         
         loginSession.BeginLogin(serverURI, loginSession.GetLoginToken(tokenKey, timeSpan), ar =>
         {
@@ -93,7 +95,7 @@ public class VivoxInit : MonoBehaviour
             }
             catch (Exception e)
             {
-                Bind_Login_Callback_Listeners(true, loginSession);
+                Bind_Login_Callback_Listeners(false, loginSession);
                 Debug.Log(e.Message);
                 return;
             }
@@ -118,10 +120,6 @@ public class VivoxInit : MonoBehaviour
             
             case LoginState.LoggedIn:
                 Debug.Log($"Logged In {loginSession.LoginSessionId.Name}");
-                if (autoLogChannel != null)
-                {
-                    autoLogChannel.Invoke();
-                }
                 break;
             case LoginState.LoggingOut:
                 Debug.Log("Logging out");
@@ -129,6 +127,22 @@ public class VivoxInit : MonoBehaviour
             case LoginState.LoggedOut:
                 Debug.Log("LoggedOut");
                 Bind_Login_Callback_Listeners(false, source);
+                break;
+        }
+    }
+
+    public void AutoJoinChannel(object sender, PropertyChangedEventArgs loginArgs)
+    {
+        var source = (ILoginSession) sender;
+        switch (source.State)
+        {
+            case LoginState.LoggedIn:
+                bool alive = GetComponent<State>().isPlaying();
+                string channelName = alive ? channelAliveName : channelDeadName;
+                JoinChannel(channelName, true, false, true, ChannelType.NonPositional);
+                loginSession.PropertyChanged -= AutoJoinChannel;
+                break;
+            default:
                 break;
         }
     }
@@ -189,13 +203,28 @@ public class VivoxInit : MonoBehaviour
                 break;    
             case ConnectionState.Disconnected:
                 Debug.Log($"{source.Channel.Name} disconnected");
-                if (autoSwitchChannel != null)
-                {
-                    autoSwitchChannel.Invoke();
-                }
                 break;
         }
     }
+    
+    
+    public void OnChannelAutoSwitch(object sender, PropertyChangedEventArgs channelArgs)
+    {
+        IChannelSession source = (IChannelSession)sender;
+
+        switch (source.ChannelState)
+        {
+            case ConnectionState.Disconnected:
+                Debug.Log($"{source.Channel.Name} disconnected");
+                channelSession.PropertyChanged -= OnChannelAutoSwitch;
+                switchChannelName();
+                break;
+            default:
+                break;
+        }
+    }
+    
+    
 
     #endregion
 
@@ -204,17 +233,9 @@ public class VivoxInit : MonoBehaviour
 
     public void ConnectChannel()
     {
-        autoLogChannel = ChannelAutoLog;
-        autoSwitchChannel = null;
-        LoginUser();
+        LoginUser(true);
     }
 
-    private void ChannelAutoLog()
-    {
-        bool alive = GetComponent<State>().isPlaying();
-        string channelName = alive ? channelAliveName : channelDeadName;
-        JoinChannel(channelName, true, false, true, ChannelType.NonPositional);
-    }
 
     public void SwitchChannel()
     {
@@ -223,11 +244,11 @@ public class VivoxInit : MonoBehaviour
             return;
         }
         bool alive = GetComponent<State>().isPlaying();
-        string channelName = alive ? channelAliveName : channelDeadName;
-        string channelNameNew = !alive ? channelAliveName : channelDeadName;
-        Leave_Channel(channelSession, channelName);
+        string channelName = !alive ? channelAliveName : channelDeadName;
+        string channelNameNew = alive ? channelAliveName : channelDeadName;
+        channelSession.PropertyChanged += OnChannelAutoSwitch;
         channelNext = channelNameNew;
-        autoSwitchChannel = switchChannelName;
+        Leave_Channel(channelSession, channelName);
     }
 
     private void switchChannelName()
