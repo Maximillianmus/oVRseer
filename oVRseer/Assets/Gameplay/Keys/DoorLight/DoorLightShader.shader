@@ -6,8 +6,11 @@ Shader "Custom/DoorLightShader"
         _MainTex ("Albedo (RGB)", 2D) = "white" {}
         _Emission ("Emission", Color) = (0,0,0,1)
         
+        _FresnelEffectAlphaColor ("Fresnel Effect Color", Color) = (1,1,1,1)
         _FresnelEffectColor ("Fresnel Effect Color", Color) = (1,1,1,1)
-        [PowerSlider(4)] _FresnelEffectExponent ("Fresnel Exponent", Range(0, 10)) = 1
+
+        [PowerSlider(4)] _ColorFresnelEffectExponent ("Fresnel Exponent Color", Range(0, 10)) = 1
+        [PowerSlider(4)] _AlphaFresnelEffectExponent ("Fresnel Exponent Alpha", Range(0, 10)) = 1
     }
     SubShader
     {
@@ -31,8 +34,12 @@ Shader "Custom/DoorLightShader"
 
         half3 _Emission;
         fixed4 _Color;
+
+        float3 _FresnelEffectAlphaColor;
         float3 _FresnelEffectColor;
-        float _FresnelEffectExponent;
+
+        float _ColorFresnelEffectExponent;
+        float _AlphaFresnelEffectExponent;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -48,17 +55,20 @@ Shader "Custom/DoorLightShader"
 
             float dotProduct = dot(Normal, viewDirection);
             dotProduct = saturate(1 - dotProduct);
-            dotProduct = pow(dotProduct, _FresnelEffectExponent);
-            float3 fresnelColor = dotProduct * _FresnelEffectColor;
 
-            o.Emission = _Color + fresnelColor;
+            float dotProductColor = pow(dotProduct, _ColorFresnelEffectExponent);
+            float dotProductAlpha = pow(dotProduct, _AlphaFresnelEffectExponent);
+
+            float3 fresnelColor = dotProductColor * _FresnelEffectColor;
+            float3 fresnelAlpha = dotProductAlpha * _FresnelEffectAlphaColor;
+
+            o.Emission = fresnelColor;
 
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            
 
             o.Albedo = c.rgb;
-            o.Alpha = c.a;
+            o.Alpha = c.a - fresnelAlpha;
         }
         ENDCG
     }
