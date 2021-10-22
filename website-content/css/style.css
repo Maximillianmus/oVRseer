@@ -1,12 +1,14 @@
 :root {
   --main-nav-color: #1d1d1d;
-  --main-nav-hover-color: #d4c8ed;
   --main-header-color: #3e3e3e;
   --section-title-background: black;
 }
 
 body {
-    background-image: linear-gradient(to right, rgba(255, 0, 0, 0.9) , rgba(0, 235, 255, 0.9));
+    /*background-image: linear-gradient(to right, rgba(255, 0, 0, 0.9) , rgba(0, 235, 255, 0.9));*/
+
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 0, 0, 0.25)), url("/website-content/img/ovrseer_website_backgroundxcf.png");
+    
 }
 
 .section-title {
@@ -19,7 +21,7 @@ body {
     max-width: 1500px;
     margin-top: 5px;
     margin-bottom: 5px;
-    color: #292929;
+    color: white;
 }
 
 .section-content {
@@ -46,7 +48,7 @@ header {
     text-align: center;
     line-height: 400px;
     height: 400px;
-    color: black;
+    color: white;
     margin-bottom: 20px;
 }
 
@@ -71,7 +73,6 @@ header {
   padding: 0 8px;
 }
 
-
 .row {
   display: flex;
   flex-direction: row;
@@ -86,14 +87,30 @@ header {
     }
 }
 
+.goals-card {
+  margin: auto;
+  padding: 10px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.75);
+  max-width: 400px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.25);
+  text-align: center;
+  border-radius: 10px;
+}
+
 .member-card {
   margin: auto;
   padding: 10px;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.75);
   max-width: 450px;
   color: white;
-    background-color: rgba(255, 255, 255, 0.25);
-    text-align: center;
+  background-color: rgba(255, 255, 255, 0.25);
+  text-align: center;
+  border-radius: 10px;
+}
+
+.member-card:hover {
+  box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.);
 }
 
 .team-member-img {
@@ -101,6 +118,7 @@ header {
     border-color: #60ffff;
     box-shadow: 0px 2px 8px 0px cyan;
     max-width: 300px;
+    margin: 10px;
     
 }
 
