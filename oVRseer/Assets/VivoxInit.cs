@@ -20,10 +20,10 @@ public class VivoxInit : MonoBehaviour
     private string domain = "mtu1xp.vivox.com";
     private string issuer = "9708e-ovrse-68493-test";
 
-    private ILoginSession loginSession;
+    private ILoginSession loginSession = null;
     private bool logged = false;
     
-    private IChannelSession channelSession;
+    private IChannelSession channelSession = null;
     private TimeSpan timeSpan = new TimeSpan(90);
 
     private string channelAliveName = "aliveChannel";
@@ -31,11 +31,25 @@ public class VivoxInit : MonoBehaviour
 
     private string channelNext = "";
 
+    private float nextPosUpdate = 0.0f;
+    public Transform headPosition;
+
     void Start()
     {
         DontDestroyOnLoad(gameObject);
         client = new Client();
         client.Initialize();
+    }
+
+    private void Update()
+    {
+        if (channelSession != null && Time.time > nextPosUpdate && channelSession.AudioState == ConnectionState.Connected)
+        {
+            channelSession.Set3DPosition(headPosition.position, headPosition.position, headPosition.forward,
+                headPosition.up);
+
+            nextPosUpdate = Time.time + 0.3f;
+        }
     }
 
     private void OnApplicationQuit()
@@ -139,7 +153,7 @@ public class VivoxInit : MonoBehaviour
             case LoginState.LoggedIn:
                 bool alive = GetComponent<State>().isPlaying();
                 string channelName = alive ? channelAliveName : channelDeadName;
-                JoinChannel(channelName, true, false, true, ChannelType.NonPositional);
+                JoinChannel(channelName, true, false, true, ChannelType.Positional);
                 loginSession.PropertyChanged -= AutoJoinChannel;
                 break;
             default:
