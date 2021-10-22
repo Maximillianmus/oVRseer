@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e2417b61c91058e469b9c6e94293e4a9
+guid: c7e51fa4ead0c0548b780ee1f2d66765
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
@@ -15,7 +15,32 @@ ModelImporter:
   - first:
       74: 583072607008533245
     second: Door2|Door1Action
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 737655c8f3c0817488c8356722e7a209, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 1b1cf22353366154ea0af4c766ed82c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.007
+    second: {fileID: 2100000, guid: 5c95877f901481b4cad5a7c2a72f7cb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.008
+    second: {fileID: 2100000, guid: a026dcb46e6f43c4eb8986e4d4454bd0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.009
+    second: {fileID: 2100000, guid: 2647ce3255a62b14fa6983d0301b96ab, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
