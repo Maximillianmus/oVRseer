@@ -242,7 +242,6 @@ GameObject:
   - component: {fileID: 5144242369540476153}
   - component: {fileID: 4647770304889475787}
   - component: {fileID: 6844761919520190285}
-  - component: {fileID: 7362981316136139299}
   m_Layer: 0
   m_Name: DoorFrame
   m_TagString: Untagged
@@ -271,7 +270,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8304464072810541444}
-  m_Mesh: {fileID: 6274059880062070182, guid: c7e51fa4ead0c0548b780ee1f2d66765, type: 3}
+  m_Mesh: {fileID: 6274059880062070182, guid: 0af4c33978e9c5841a9b8798e163e8de, type: 3}
 --- !u!23 &6844761919520190285
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -291,7 +290,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5c95877f901481b4cad5a7c2a72f7cb1, type: 2}
+  - {fileID: 2100000, guid: ebf416fe0587d714791a57c744aec2b2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -313,20 +312,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7362981316136139299
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8304464072810541444}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6274059880062070182, guid: c7e51fa4ead0c0548b780ee1f2d66765, type: 3}
 --- !u!1 &8841749076595642204
 GameObject:
   m_ObjectHideFlags: 0
