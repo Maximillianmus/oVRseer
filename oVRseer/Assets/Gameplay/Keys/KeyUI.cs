@@ -18,6 +18,7 @@ public class KeyUI : NetworkBehaviour
     public GameObject canvas;
     public Text keyCollectedMessage;
     public GameObject[] doors;
+    public GameObject[] doorLights;
 
     private void Start()
     {
@@ -28,6 +29,8 @@ public class KeyUI : NetworkBehaviour
             CreateInfoText();
 
             doors = GameObject.FindGameObjectsWithTag("IsTheDoor");
+            doorLights = GameObject.FindGameObjectsWithTag("DoorLight");
+            HideDoorLights();
             CheckKeys();
             keysRemainingTotal = clientKeys.Count;
             keysRemaingToOpenDors = (keysRemainingTotal / 2);
@@ -65,6 +68,14 @@ public class KeyUI : NetworkBehaviour
         foreach (GameObject k in GameObject.FindGameObjectsWithTag("IsAKey")) 
         {
             clientKeys.Add(k);
+        }
+    }
+
+    private void HideDoorLights()
+    {
+        foreach(GameObject dl in doorLights)
+        {
+            dl.SetActive(false);
         }
     }
 
@@ -139,6 +150,16 @@ public class KeyUI : NetworkBehaviour
 
     private void OpenDoor()
     {
+        Animator doorLightAnimator;
+
+        foreach (GameObject dl in doorLights)
+        {
+            dl.SetActive(true);
+            doorLightAnimator = dl.transform.Find("LightBeamCylinder").GetComponent<Animator>();
+            doorLightAnimator.Play("DoorLightRise");
+            //dl.transform.Find("DoorLightParticles");
+        }
+
         Animator doorAnimator;
 
         foreach (GameObject door in doors) {
