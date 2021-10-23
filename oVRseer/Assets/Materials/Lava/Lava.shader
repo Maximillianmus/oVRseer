@@ -61,7 +61,7 @@ Shader "Unlit/Lava"
                 float2 uv : TEXCOORD0;
                 UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
-                float3 localPos : POSITION1;
+                float4 worldPos : POSITION1;
             };
 
             float _TestThreshhold;
@@ -98,12 +98,12 @@ Shader "Unlit/Lava"
             v2f vert (appdata v)
             {
                 v2f o;
-                v.vertex.y += sin((_Time.z*_WaveSpeed + v.vertex.x * v.vertex.z) * _WaveLength) * _WaveHeight;
+                o.worldPos = mul(unity_ObjectToWorld, v.vertex);
+                v.vertex.y += sin((_Time.z * _WaveSpeed + o.worldPos.x * o.worldPos.z) * _WaveLength) * _WaveHeight;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 UNITY_TRANSFER_FOG(o,o.vertex);
 
-                o.localPos = v.vertex;
                 return o;
             }
 
@@ -267,7 +267,7 @@ Shader "Unlit/Lava"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float3 value = mul(unity_ObjectToWorld, i.localPos).xyz / _CellSize;
+                float3 value = i.worldPos.xyz / _CellSize;
 
                 // Apply time
                 value.y += _Time.y * _VoronoiTimeScale;
