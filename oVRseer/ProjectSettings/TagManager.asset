@@ -13,7 +13,6 @@ TagManager:
   - PlayerNetwork
   - NPC
   - PlayerArmature
-  - DoorLight
   layers:
   - Default
   - TransparentFX
