@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3356546393502261297}
   - component: {fileID: 2548235200037687159}
-  - component: {fileID: 2548235200037687154}
+  - component: {fileID: 185070659}
+  - component: {fileID: 185070660}
+  - component: {fileID: 185070661}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -51,7 +53,7 @@ MonoBehaviour:
   serverTickRate: 30
   offlineScene: Assets/Scenes/Menu.unity
   onlineScene: Assets/Scenes/Lobby.unity
-  transport: {fileID: 2548235200037687154}
+  transport: {fileID: 185070661}
   networkAddress: localhost
   maxConnections: 100
   disconnectInactiveConnections: 0
@@ -75,7 +77,34 @@ MonoBehaviour:
   playerSpawnSystem: {fileID: 4210796407570417984, guid: f60f15a2139052a4d9685b07cba35575, type: 3}
   serverAdress: {fileID: 0}
   alertStarted: {fileID: 0}
---- !u!114 &2548235200037687154
+--- !u!114 &185070659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634226859551238643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0110f245bfcfc7d459681f7bd9ebc590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  port: 7778
+  maxMessageSize: 16384
+  handshakeMaxSize: 3000
+  noDelay: 1
+  sendTimeout: 5000
+  receiveTimeout: 20000
+  serverMaxMessagesPerTick: 10000
+  clientMaxMessagesPerTick: 1000
+  batchSend: 1
+  waitBeforeSend: 0
+  clientUseWss: 0
+  sslEnabled: 0
+  sslCertJson: ./cert.json
+  sslProtocols: 3072
+  _logLevels: 0
+--- !u!114 &185070660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,3 +128,18 @@ MonoBehaviour:
   clientMaxReceivesPerTick: 1000
   clientSendQueueLimit: 10000
   clientReceiveQueueLimit: 10000
+--- !u!114 &185070661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634226859551238643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929e3234c7db540b899f00183fc2b1fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transports:
+  - {fileID: 185070660}
+  - {fileID: 185070659}
