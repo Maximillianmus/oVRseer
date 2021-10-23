@@ -134,6 +134,7 @@ public class VivoxInit : MonoBehaviour
             
             case LoginState.LoggedIn:
                 Debug.Log($"Logged In {loginSession.LoginSessionId.Name}");
+                logged = true;
                 break;
             case LoginState.LoggingOut:
                 Debug.Log("Logging out");
@@ -141,6 +142,7 @@ public class VivoxInit : MonoBehaviour
             case LoginState.LoggedOut:
                 Debug.Log("LoggedOut");
                 Bind_Login_Callback_Listeners(false, source);
+                logged = false;
                 break;
         }
     }
@@ -168,6 +170,7 @@ public class VivoxInit : MonoBehaviour
     
     public void JoinChannel(string channelName, bool IsAudio, bool IsText, bool switchTransmission, ChannelType channelType)
     {
+    
     #if PLATFORM_ANDROID || UNITY_ANDROID
             if (!Permission.HasUserAuthorizedPermission(Permission.Microphone))
             {
