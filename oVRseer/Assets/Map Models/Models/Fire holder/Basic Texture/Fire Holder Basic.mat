@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LavaPit
-  m_Shader: {fileID: 4800000, guid: 5fca1f539c2a27d40b9e66c5159c34de, type: 3}
-  m_ShaderKeywords: 
+  m_Name: Fire Holder Basic
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ae567bd4182ace34d8a69b656173c6c9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,28 +39,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _ExtraDetailMap:
-        m_Texture: {fileID: 2800000, guid: e99072630b3d9d64283fada8dd51f161, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f09a2440dd3543144803d310cfe7bf85, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 34cc53d1cdce3444b8c3a20e38f6e8e2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _NoiseMap:
-        m_Texture: {fileID: 2800000, guid: 732cf2f74d87cd4448caad46e4d5c106, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
-        m_Offset: {x: 0, y: 0}
-    - _NoiseMap2:
-        m_Texture: {fileID: 2800000, guid: 094b7a0d5ad0c384080220c6ff0a2027, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
-        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 27ff3e15902570445991c2caa323cdd0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -68,49 +56,23 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BaseColorStrength: 0.461
     - _BumpScale: 1
-    - _CellSize: 0.5
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _GlossMapScale: 1
+    - _GlossMapScale: 0.118
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HighlightColorStrength: 0.683
     - _Metallic: 0
     - _Mode: 0
-    - _NoiseMapSpeedX: 0
-    - _NoiseMapSpeedX2: -1
-    - _NoiseMapSpeedZ: 0.02
-    - _NoiseMapSpeedZ2: -0.006
-    - _NoiseMapStrength: 0.35
-    - _NoiseMapStrength2: 0.7
     - _OcclusionStrength: 1
-    - _Parallax: 0.02
-    - _PrimaryColorStrength: 0.786
-    - _PrimaryColor_Strength: 1
+    - _Parallax: 0.005
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TestThreshhold: 0.244
     - _UVSec: 0
-    - _VoronoiMin: 0
-    - _VoronoiPanSpeed: 2
-    - _VoronoiPanSpeedX: 2
-    - _VoronoiPanSpeedZ: 0.09
-    - _VoronoiScale: 1.796
-    - _VoronoiStrength: 0
-    - _VoronoiTimeScale: 0.2
-    - _WaveHeight: 0.03
-    - _WaveLength: 0.41
-    - _WaveSpeed: 0.92
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.65882355, g: 0.18305564, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HighlightColor: {r: 1.8071814, g: 0.5014692, b: 0, a: 1}
-    - _PrimaryColor: {r: 1.6235294, g: 0.32941177, b: 0.11764706, a: 1}
-    - _TestColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
