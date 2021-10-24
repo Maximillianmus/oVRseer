@@ -67,6 +67,16 @@ public class VrInformer : NetworkBehaviour
     }
 
 
+    public void Release()
+    {
+        print("Returned authority");
+        released = false;
+        Vector3 pos = transformArmature.position;
+        transformPlayer.CmdTeleport(pos);
+        CmdRelease();
+    }
+
+
     [Command]
     public void CmdRelease()
     {
