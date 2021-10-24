@@ -56,6 +56,7 @@ public class VrInformer : NetworkBehaviour
 
     void delayedReleas()
     {
+        print("start releasing");
         released = true;
         //used to see if it was an authority or buffer problem  
         //it is a buffer problem, no idea on how to fix
@@ -89,6 +90,7 @@ public class VrInformer : NetworkBehaviour
     {
         if(released == true)
         {
+            print("Returned authority");
             released = false;
             Vector3 pos = transformArmature.position;
             transformPlayer.CmdTeleport(pos);
