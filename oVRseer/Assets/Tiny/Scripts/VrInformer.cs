@@ -17,7 +17,8 @@ public class VrInformer : NetworkBehaviour
     public NetworkTransformChild transformPlayer;
     public Transform transformArmature;
 
-    bool released = false;
+    [HideInInspector]
+    public bool released = false;
 
     public void Awake()
     {
@@ -67,7 +68,7 @@ public class VrInformer : NetworkBehaviour
 
 
     [Command]
-    void CmdRelease()
+    public void CmdRelease()
     {
         networkId.RemoveClientAuthority();
         networkId.AssignClientAuthority(owner);
@@ -83,19 +84,6 @@ public class VrInformer : NetworkBehaviour
         }
         base.OnStartAuthority();
         
-    }
-
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if(released == true)
-        {
-            print("Returned authority");
-            released = false;
-            Vector3 pos = transformArmature.position;
-            transformPlayer.CmdTeleport(pos);
-            CmdRelease();
-        }
     }
 
 }
