@@ -85,7 +85,7 @@ public class VrInformer : NetworkBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if(released == true)
         {
