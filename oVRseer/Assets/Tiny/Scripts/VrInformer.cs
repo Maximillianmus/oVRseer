@@ -51,7 +51,7 @@ public class VrInformer : NetworkBehaviour
     {
         if (hasAuthority)
         {
-            Invoke("delayedReleas", 0.5f);
+            Invoke("delayedReleas", 0.2f);
         }
     }
 
