@@ -13,9 +13,11 @@ public class VrInformer : NetworkBehaviour
     GrabCommand grabCommand;
     NetworkIdentity networkId;
     NetworkConnectionToClient owner;
+    Rigidbody Rigidbody;
     public NetworkTransformChild transformPlayer;
     public Transform transformArmature;
-    
+
+    bool released = false;
 
     public void Awake()
     {
@@ -23,6 +25,7 @@ public class VrInformer : NetworkBehaviour
         grabCommand = VrPlayer.GetComponent<GrabCommand>();
         networkId = transform.GetComponent<NetworkIdentity>();
         owner = networkId.connectionToClient;
+        Rigidbody = gameObject.GetComponentInChildren<Rigidbody>();
     }
 
     //tells the vr that this object got grabbed
@@ -47,13 +50,20 @@ public class VrInformer : NetworkBehaviour
     {
         if (hasAuthority)
         {
-            //used to see if it was an authority or buffer problem  
-            //it is a buffer problem, no idea on how to fix
-            Vector3 pos = transformArmature.position;
-            transformPlayer.CmdTeleport(pos);
-            CmdRelease();
+            Invoke("delayedReleas", 0.5f);
         }
     }
+
+    void delayedReleas()
+    {
+        released = true;
+        //used to see if it was an authority or buffer problem  
+        //it is a buffer problem, no idea on how to fix
+        //Vector3 pos = transformArmature.position;
+        //transformPlayer.CmdTeleport(pos);
+        //CmdRelease();
+    }
+
 
     [Command]
     void CmdRelease()
@@ -73,4 +83,17 @@ public class VrInformer : NetworkBehaviour
         base.OnStartAuthority();
         
     }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(released == true)
+        {
+            released = false;
+            Vector3 pos = transformArmature.position;
+            transformPlayer.CmdTeleport(pos);
+            CmdRelease();
+        }
+    }
+
 }
