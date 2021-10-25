@@ -602,6 +602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NetworkModel
       objectReference: {fileID: 0}
+    - target: {fileID: 6819943193188248999, guid: eded471dd618d4340b5b04413cc9e7c5, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7445443338403270476, guid: eded471dd618d4340b5b04413cc9e7c5, type: 3}
       propertyPath: sceneId
       value: 2759512106
