@@ -1039,6 +1039,14 @@ PrefabInstance:
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5930146413882414826, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930146413882414826, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
+      propertyPath: clientAuthority
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6039014550233624782, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
       propertyPath: m_Name
       value: VR Controller
@@ -1072,6 +1080,7 @@ PrefabInstance:
     - {fileID: 7396361911875506757, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
     - {fileID: 2729911467425303173, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
     - {fileID: 4030167082312007805, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
+    - {fileID: 5930146413882414826, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
 --- !u!1001 &8740025869956632881
 PrefabInstance:
