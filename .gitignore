@@ -3,6 +3,7 @@
 ###
 [Aa]ssets/AssetStoreTools*
 [Bb]uild/
+[Bb]uildWebGL/
 [Ll]ibrary/
 [Ll]ocal[Cc]ache/
 [Oo]bj/
