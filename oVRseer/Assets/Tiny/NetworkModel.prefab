@@ -2205,9 +2205,9 @@ GameObject:
   - component: {fileID: 1258274459254405715}
   - component: {fileID: 3303415447798998563}
   - component: {fileID: 7974580675942165510}
-  - component: {fileID: 6544687867925450220}
   - component: {fileID: 7826584692008671266}
   - component: {fileID: 2425922599029432192}
+  - component: {fileID: 9173067633153908421}
   m_Layer: 7
   m_Name: PlayerArmature
   m_TagString: PlayerArmature
@@ -2417,22 +2417,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.2454212
-  m_Height: 1.4432831
+  m_Height: 1.521581
   m_Direction: 1
-  m_Center: {x: 0, y: 0.7749896, z: 0.07149646}
---- !u!65 &6544687867925450220
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3303415447798998575}
-  m_Material: {fileID: 13400000, guid: cc777b8fa89917f418329d3437312450, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.4479103, y: 0.4811921, z: 0.3170371}
-  m_Center: {x: -0.007171631, y: 0.25, z: -0.029143572}
+  m_Center: {x: 0, y: 0.7358406, z: 0.07149646}
 --- !u!54 &7826584692008671266
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2579,6 +2566,19 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &9173067633153908421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303415447798998575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686ae108c199d6b49bbfdb559d36787b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informer: {fileID: 2953560043100508259}
 --- !u!1 &3337571173044081267
 GameObject:
   m_ObjectHideFlags: 0
@@ -4143,6 +4143,7 @@ MonoBehaviour:
   VrPlayer: {fileID: 0}
   transformPlayer: {fileID: 4409287637027422672}
   transformArmature: {fileID: 2779783598367620245}
+  released: 0
 --- !u!114 &2557327246284887480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4305,12 +4306,14 @@ MonoBehaviour:
   syncInterval: 0.1
   isVrPlayer: 0
   clientKeys: []
-  keysRemaining: 0
+  keysRemainingTotal: 0
+  keysRemaingToOpenDors: 0
   textFadeTime: 1.5
   textFadeIn: 0
   canvas: {fileID: 4926761045570027952}
   keyCollectedMessage: {fileID: 0}
   doors: []
+  doorLights: []
 --- !u!114 &240939406360088316
 MonoBehaviour:
   m_ObjectHideFlags: 0
