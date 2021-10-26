@@ -75,20 +75,13 @@ public class RigidbodyControllerNPC : MonoBehaviour
 		_fallTimeoutDelta = FallTimeout;
 	}
 
-	public void MoveNPC(Vector3 input, bool wait)
+	public void MoveNPC(Vector3 input)
 	{
 		_hasAnimator = TryGetComponent(out _animator);
 
 		//JumpAndGravity();
 		GroundedCheck();
-		if(wait)
-        {
-			Move(Vector3.zero);
-		}
-		else
-        {
-			Move(input);
-		}
+		Move(input);
 	}
 
 	private void AssignAnimationIDs()

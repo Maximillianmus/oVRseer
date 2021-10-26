@@ -10,7 +10,7 @@ public class Goal : MonoBehaviour
     {
         if(other.tag == "PlayerArmature")
         {
-            other.transform.root.GetComponent<State>().Outside();
+            other.transform.root.GetComponent<Despawn>().Win();
         }
     }
 }

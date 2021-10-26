@@ -16,10 +16,10 @@ public class Spectator : NetworkBehaviour
     public bool IsDead = false;
     public StarterAssetsInputs _inputs;
     public PlayerInput deadInput;
-    public GameObject playerArmature;
     public List<GameObject> toDisableOnDead;
     public List<GameObject> toEnableOnDead;
     public List<GameObject> toEnableMobileOnDead;
+    public GameObject EndScreen;
     public GameObject deadUI;
     
     private void RefreshPlayers()
@@ -28,7 +28,7 @@ public class Spectator : NetworkBehaviour
         var possiblePlayers = GameObject.FindGameObjectsWithTag("Player").ToList();
         foreach (var player in possiblePlayers)
         {
-            if (player.GetComponent<State>().isPlaying() && player != gameObject)
+            if (!player.GetComponent<Spectator>().IsDead && player != gameObject)
             {
                 players.Add(player);
             } 
@@ -59,10 +59,25 @@ public class Spectator : NetworkBehaviour
         if (IsDead && netID.hasAuthority)
         {
             RefreshAndCheck();
+            if (players.Count == 0)
+            {
+                CmdAllPlayersDead();
+            }
         }
         
     }
 
+    [Command]
+    private void CmdAllPlayersDead()
+    {
+        RpcTotalEndScreen();
+    }
+
+    [ClientRpc]
+    private void RpcTotalEndScreen()
+    {
+        EndScreen.SetActive(true);
+    }
 
     public void OnDead()
     {
@@ -78,7 +93,6 @@ public class Spectator : NetworkBehaviour
             toDisable.SetActive(false);
         }
 
-        CmdDisablePA();
         foreach (var toEnable in toEnableOnDead)
         {
             toEnable.SetActive(true);
@@ -98,19 +112,6 @@ public class Spectator : NetworkBehaviour
         spectating = gameObject;
         SwitchSpectatePlayer();
     }
-
-    [Command]
-    private void CmdDisablePA()
-    {
-        RpcDisablePA();
-    }
-
-    [ClientRpc]
-    private void RpcDisablePA()
-    {
-        this.playerArmature.SetActive(false);
-    }
-
 
     private void DisableCamera(GameObject gameObject)
     {
@@ -146,27 +147,14 @@ public class Spectator : NetworkBehaviour
         return ((a %= m) < 0) ? a + m : a;
     }
 
-    public void OnPhoneNextPlayer()
+    public void OnNextPlayer()
     {
-       SwitchSpectatePlayer(); 
-    }
-    
-    public void OnPhonePreviousPlayer()
-    {
-       SwitchSpectatePlayer(-1); 
-    }
-    
-    
-    public void OnNextPlayer(InputAction.CallbackContext callbackContext)
-    {
-        if (callbackContext.phase == InputActionPhase.Performed)
-            SwitchSpectatePlayer();
+        SwitchSpectatePlayer();
     }
 
-    public void OnPreviousPlayer(InputAction.CallbackContext callbackContext)
+    public void OnPreviousPlayer()
     {
-        if (callbackContext.phase == InputActionPhase.Performed)
-            SwitchSpectatePlayer(-1);
+        SwitchSpectatePlayer(-1);
     }
 
     public void OnPlayerDead()

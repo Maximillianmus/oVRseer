@@ -13,36 +13,11 @@ public class KeySpawnSystem : NetworkBehaviour
     private static List<Transform> keyPositions = new List<Transform>();
 
     public List<GameObject> keysInScene = new List<GameObject>();
-    public int numOfKeysToSpawn; // Hard coded for now
-    public int numOfKeysToCollect;
-    public int numOfPlayers;
+    public int numOfKeysToSpawn = 3; // Hard coded for now
 
     public override void OnStartServer()
     {
-
-    }
-
-    public void Start()
-    {
-        FindNumPlayers();
-        numOfKeysToCollect = numOfPlayers + 1;
-
-        // We have a maximum number of spawnpositions so if we have alot of players the number of keys needed to collect will reach a limit
-        if(numOfKeysToCollect >= keyPositions.Count / 2)
-        {
-            numOfKeysToCollect = (keyPositions.Count / 2); 
-        } 
-
-        numOfKeysToSpawn = 2 * numOfKeysToCollect;
         SpawnKeys();
-    }
-
-    private void FindNumPlayers()
-    {
-        foreach (GameObject k in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            numOfPlayers++;
-        }
     }
 
     public static void AddKeySpawnPoint(Transform keyPosition)

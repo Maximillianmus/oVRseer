@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "Next",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "c208f86e-1915-401a-bf03-27d8e896c9de",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -15,7 +15,7 @@
                 },
                 {
                     "name": "Previous",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "e5c78052-0b29-4816-90da-2966194b2c17",
                     "expectedControlType": "Button",
                     "processors": "",

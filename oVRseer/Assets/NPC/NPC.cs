@@ -17,11 +17,6 @@ public class NPC : MonoBehaviour
     [SerializeField] float minDecisionTime = 0.3f;
     [SerializeField] float maxDecisionTime = 2f;
 
-    [SerializeField] float minWaitTime = 2f;
-    [SerializeField] float maxWaitTime = 7f;
-
-    [SerializeField] bool wait = false;
-
 
     void Start()
     {
@@ -39,18 +34,10 @@ public class NPC : MonoBehaviour
     private void Update()
     {
         agent.nextPosition = transform.position;
-       
+
         Vector3 newDir = Vector3.RotateTowards(transform.forward, agent.desiredVelocity, Mathf.Deg2Rad * 1, 0.0f);
 
-        npcController.MoveNPC(newDir, wait);
-    }
-
-    IEnumerator StopAndWait(float timeToWait)
-    {
-        wait = true;
-        yield return new WaitForSeconds(timeToWait);
-        wait = false;
-        StartCoroutine(MakeDecision(0));
+        npcController.MoveNPC(newDir);
     }
 
 
@@ -60,7 +47,7 @@ public class NPC : MonoBehaviour
 
         float decision = Random.value; // Value between 0 - 1
 
-        // 10% chance of getting a new destination
+        // 20% chance of getting a new destination
         // If NPC has reached destination also assign new destination
         if (decision < 0.1 || agent.remainingDistance < 2f)
         {
@@ -68,15 +55,8 @@ public class NPC : MonoBehaviour
             agent.SetDestination(targetLocation.position);
         }
 
-        // 10% chance NPC waits for a bit before calling MakeDecision again
-        if(decision > 0.9)
-        {
-            StartCoroutine(StopAndWait(Random.Range(minWaitTime, maxWaitTime)));
-        }
-        else
-        {
-            StartCoroutine(MakeDecision(Random.Range(minDecisionTime, maxDecisionTime)));
-        }
+        StartCoroutine(MakeDecision(Random.Range(minDecisionTime, maxDecisionTime)));
+
     }
 
 }

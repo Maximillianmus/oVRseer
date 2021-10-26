@@ -12,9 +12,6 @@ TagManager:
   - Goal
   - PlayerNetwork
   - NPC
-  - PlayerArmature
-  - KeySpawnSystem
-  - DoorLight
   layers:
   - Default
   - TransparentFX

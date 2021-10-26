@@ -34,7 +34,6 @@ public class Despawn : NetworkBehaviour
     public float delayForSpectating;
     public UnityEvent spectatingEvent;
     private bool Dead = false;
-    private bool alreadySpectating = false;
 
 
 
@@ -49,15 +48,10 @@ public class Despawn : NetworkBehaviour
 
     private void Update()
     {
-        if (alreadySpectating)
-        {
-            return;
-        }
         if (Dead && Time.time - TimeDead > delayForSpectating)
         {
             textBackground.gameObject.SetActive(false);
             textComponent.gameObject.SetActive(false);
-            alreadySpectating = true;
             spectatingEvent.Invoke();
         }
         
@@ -95,7 +89,6 @@ public class Despawn : NetworkBehaviour
     public void EnableText()
     {
         textBackground.gameObject.SetActive(true);
-        textTransform.gameObject.SetActive(true);
     }
 
     //can be used to remove overlay and text when spectating
@@ -104,8 +97,15 @@ public class Despawn : NetworkBehaviour
         textTransform.gameObject.SetActive(false);
         textBackground.gameObject.SetActive(false);
     }
-    
-    
 
+    //depending on how the spectating works this migh have to be changed
+    [Command]
+    private void CmdDespawn()
+    {
+        //if the player should be destory, but currently the camera object is inside the player so that doesn't work if we want spectating
+        //if we spawn or move the camera when spectating then we can just despawn this object
+        //NetworkServer.Destroy(gameObject);
+        transform.Find("PlayerArmature").gameObject.SetActive(false);
+    }
 
 }

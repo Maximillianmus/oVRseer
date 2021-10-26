@@ -8,7 +8,7 @@ public class KillZone : MonoBehaviour
     {
         if (other.tag == "PlayerArmature")
         {
-            other.transform.root.GetComponent<State>().Squashed();
+            other.transform.root.GetComponent<Despawn>().Kill();
         }
     }
 }
