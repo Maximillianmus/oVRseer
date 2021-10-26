@@ -5,6 +5,11 @@ using UnityEngine;
 using Mirror;
 using Network;
 
+public struct KeyCollectedMsg : NetworkMessage
+{
+}
+
+
 public class Key : NetworkBehaviour
 {
     public NetworkIdentity keyNetId;
@@ -34,6 +39,7 @@ public class Key : NetworkBehaviour
     [Command(requiresAuthority = false)]
     void CmdUpdateKeyCollectedToServer() {
         isCollected = true;
+        NetworkServer.SendToAll(new KeyCollectedMsg());
     }
 
     // Key is collected
