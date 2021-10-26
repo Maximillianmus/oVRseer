@@ -9,7 +9,8 @@ public class KeyUI : NetworkBehaviour
 {
     public bool isVrPlayer;
     public List<GameObject> clientKeys = new List<GameObject>();
-    public int keysRemaining;
+    public int keysRemainingTotal;
+    public int keysRemaingToOpenDors;
     public float textFadeTime = 1.5f;
 
     public bool textFadeIn = false;
@@ -17,6 +18,7 @@ public class KeyUI : NetworkBehaviour
     public GameObject canvas;
     public Text keyCollectedMessage;
     public GameObject[] doors;
+    public GameObject[] doorLights;
 
     private void Start()
     {
@@ -24,12 +26,14 @@ public class KeyUI : NetworkBehaviour
 
         if (!isVrPlayer)
         {
-            //canvas = gameObject.GetComponent<checkLocalPlayer>().uiCanvas;
             CreateInfoText();
 
             doors = GameObject.FindGameObjectsWithTag("IsTheDoor");
+            doorLights = GameObject.FindGameObjectsWithTag("DoorLight");
+            HideDoorLights();
             CheckKeys();
-            keysRemaining = clientKeys.Count;
+            keysRemainingTotal = clientKeys.Count;
+            keysRemaingToOpenDors = (keysRemainingTotal / 2);
 
         }
     }
@@ -64,6 +68,14 @@ public class KeyUI : NetworkBehaviour
         foreach (GameObject k in GameObject.FindGameObjectsWithTag("IsAKey")) 
         {
             clientKeys.Add(k);
+        }
+    }
+
+    private void HideDoorLights()
+    {
+        foreach(GameObject dl in doorLights)
+        {
+            dl.SetActive(false);
         }
     }
 
@@ -118,23 +130,43 @@ public class KeyUI : NetworkBehaviour
 
     public void KeyCollected()
     {
-        keysRemaining -= 1;
+        keysRemainingTotal -= 1;
 
-        if (keysRemaining > 0)
-        {
-            keyCollectedMessage.text = "A key has been collected" + "\n" + keysRemaining + " keys remaining";
-        }
-        else
-        {
-            keyCollectedMessage.text = "The doors are unlocked. Go to either of them to escape";
-            OpenDoor();
+        if (keysRemaingToOpenDors > 0) { 
+
+        keysRemaingToOpenDors -= 1;
+
+            if (keysRemaingToOpenDors > 0)
+            {
+                keyCollectedMessage.text = "A key has been collected!" + "\nCollect " + keysRemaingToOpenDors + " more keys to unlock the doors";
+            }
+            else
+            {
+                keyCollectedMessage.text = "The doors are unlocked. Go to either of them to escape";
+                OpenDoor();
+            }
         }
     }
 
     private void OpenDoor()
     {
-        foreach (GameObject door in doors) { 
-            door.SetActive(false); // Hide doors for now
+        Animator doorLightAnimator;
+
+        foreach (GameObject dl in doorLights)
+        {
+            dl.SetActive(true);
+            doorLightAnimator = dl.transform.Find("LightBeamCylinder").GetComponent<Animator>();
+            doorLightAnimator.Play("DoorLightRise");
+            //dl.transform.Find("DoorLightParticles");
+        }
+
+        Animator doorAnimator;
+
+        foreach (GameObject door in doors) {
+            //door.SetActive(false); // Hide doors for now
+            doorAnimator = door.GetComponent<Animator>();
+            doorAnimator.Play("UnlockDoors");
+            //Destroy(door.GetComponent<BoxCollider>()); // Destroy to be able to actually get out
         }
     }
 }
