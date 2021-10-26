@@ -9,9 +9,10 @@ public class AuthorityCollider : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        print("colliding");
+        
         if (informer.released == true)
         {
+            print("releasing");
             informer.Release();
         }
     }
