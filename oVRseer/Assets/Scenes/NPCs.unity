@@ -603,6 +603,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: sceneId
+      value: 3826450238
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: maxWaitTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: minWaitTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
       propertyPath: locations.Array.size
       value: 5
@@ -675,7 +687,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7554038338078539132, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8860102247252996579, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 6484759864690230906, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
 --- !u!1 &326851652
 GameObject:
@@ -1297,6 +1316,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: sceneId
+      value: 3210397149
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: maxWaitTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: minWaitTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
       propertyPath: locations.Array.size
       value: 5
@@ -1369,7 +1400,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7554038338078539132, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8860102247252996579, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 6484759864690230906, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
 --- !u!1 &708363995
 GameObject:
@@ -1568,6 +1606,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: sceneId
+      value: 1082857842
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: maxWaitTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: minWaitTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
       propertyPath: locations.Array.size
       value: 5
@@ -1640,7 +1690,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7554038338078539132, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8860102247252996579, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 6484759864690230906, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
 --- !u!1 &870328750
 GameObject:
@@ -2124,6 +2181,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: sceneId
+      value: 2054091442
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: maxWaitTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: minWaitTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
       propertyPath: locations.Array.size
       value: 5
@@ -2200,7 +2269,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8860102247252996579, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 6484759864690230906, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
 --- !u!1 &1275516119
 GameObject:
@@ -2399,6 +2471,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: sceneId
+      value: 2975984847
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: maxWaitTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: minWaitTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
       propertyPath: locations.Array.size
       value: 5
@@ -2475,7 +2559,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8860102247252996579, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 6484759864690230906, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
 --- !u!1 &1339666957
 GameObject:
@@ -2579,6 +2666,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: sceneId
+      value: 2129265412
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: maxWaitTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: minWaitTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
       propertyPath: locations.Array.size
       value: 5
@@ -2651,7 +2750,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7554038338078539132, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8860102247252996579, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 6484759864690230906, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
 --- !u!1 &1509994949
 GameObject:
@@ -2755,6 +2861,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: sceneId
+      value: 1668305875
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: maxWaitTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: minWaitTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
       propertyPath: locations.Array.size
       value: 5
@@ -2827,7 +2945,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7554038338078539132, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8860102247252996579, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 6484759864690230906, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
 --- !u!1 &1581968251
 GameObject:
@@ -3822,6 +3947,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: sceneId
+      value: 3642461564
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: maxWaitTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+      propertyPath: minWaitTime
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6168039259783175017, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
       propertyPath: locations.Array.size
       value: 5
@@ -3894,5 +4031,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8860102247252996579, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 6484759864690230906, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
+    - {fileID: 3057071539939153887, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 996914415e4e849438428d23d33ccc4a, type: 3}
