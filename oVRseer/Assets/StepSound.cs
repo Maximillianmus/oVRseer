@@ -7,7 +7,9 @@ public enum StateMovementTiny
 {
     Idle,
     Walk,
-    Run
+    Run,
+    Jump,
+    Landing
 }
 
 public class StepSound : MonoBehaviour
@@ -16,18 +18,24 @@ public class StepSound : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AudioClip walkClip;
     [SerializeField] private AudioClip runClip;
+    [SerializeField] private AudioClip landingClip;
 
     private StateMovementTiny state;
     private bool paused = false;
+
 
     private static float runThresh = 4.0f;
     private static float walkThresh = 1.0f;
 
     private int _speedId;
+    private int _jumpId;
+    private int _groundedId;
 
     private void Start()
     {
         _speedId = Animator.StringToHash("Speed");
+        _jumpId = Animator.StringToHash("Jump");
+        _groundedId = Animator.StringToHash("Grounded");
         state = StateMovementTiny.Idle;
     }
 
@@ -36,13 +44,24 @@ public class StepSound : MonoBehaviour
     void Update()
     {
         var speed = animator.GetFloat(_speedId);
+        var jump = animator.GetBool(_jumpId);
+        var grounded = animator.GetBool(_groundedId);
         StateMovementTiny newState = StateMovementTiny.Idle;
-        if (speed >= runThresh)
+        if (speed >= runThresh && grounded)
         {
             newState = StateMovementTiny.Run;
-        } else if (speed >= walkThresh)
+        } else if (speed >= walkThresh && grounded)
         {
             newState = StateMovementTiny.Walk;
+        } 
+        if (state == StateMovementTiny.Jump && !jump)
+        {
+            newState = StateMovementTiny.Landing;
+        }
+
+        if (jump)
+        {
+            newState = StateMovementTiny.Jump;
         }
 
         if (newState != state)
@@ -51,55 +70,45 @@ public class StepSound : MonoBehaviour
         }
     }
 
-    private int justPause(StateMovementTiny oldState, StateMovementTiny newState)
-    {
-        if (oldState == StateMovementTiny.Idle && newState != StateMovementTiny.Idle)
-        {
-            return 1;
-        } else if (oldState != StateMovementTiny.Idle && newState == StateMovementTiny.Idle)
-        {
-            return 0;
-        }
-        else
-        {
-            return -1;
-        }
-    }
-
     private void UpdateState(StateMovementTiny newState)
     {
-        switch (justPause(state, newState))
+        print(state + " " + newState);
+        switch (newState)
         {
-            case 1:
-                if (paused)
-                {
-                    audioSource.UnPause();
-                    paused = false;
-                }
-                else
-                    audioSource.Play();
-                break;
-            case 0:
+            case StateMovementTiny.Idle:
                 audioSource.Pause();
                 paused = true;
                 break;
-            case -1:
-                if (newState == StateMovementTiny.Run)
-                {
-                    audioSource.clip = runClip;
-                    audioSource.Play();
-                }
-                else
-                {
-                    audioSource.clip = walkClip;
-                    audioSource.Play();
-                }
-
+            case StateMovementTiny.Walk:
+                PlayStateAudio(walkClip);
+                break;
+            case StateMovementTiny.Run:
+                PlayStateAudio(runClip);
+                break;
+            case StateMovementTiny.Jump:
+                audioSource.Pause();
+                paused = true;
+                break;
+            case StateMovementTiny.Landing:
+                audioSource.PlayOneShot(landingClip);
                 break;
             default:
-                break;
-
+                throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
         state = newState;
+    }
+
+    private void PlayStateAudio(AudioClip clip)
+    {
+        if (paused && audioSource.clip == clip)
+        {
+            audioSource.UnPause();
+            paused = false;
+        }
+        else
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
     }
 }

@@ -6118,6 +6118,7 @@ MonoBehaviour:
   animator: {fileID: 8103078131383232239}
   walkClip: {fileID: 8300000, guid: 7935febcaaa44984ab5d0f23f2f4c168, type: 3}
   runClip: {fileID: 8300000, guid: 82c0f8705e8e53040839b9678f40768d, type: 3}
+  landingClip: {fileID: 8300000, guid: 00e3b5c3369393c4c90a87e2499f198a, type: 3}
 --- !u!1 &7163940010037775334
 GameObject:
   m_ObjectHideFlags: 0
