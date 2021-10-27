@@ -8,6 +8,7 @@ using UnityEngine;
 using Unity.Services.Core;
 using Unity.Services.Vivox;
 using UnityEngine.Android;
+using UnityEngine.Events;
 using VivoxUnity;
 
 public class VivoxInit : MonoBehaviour
@@ -33,6 +34,10 @@ public class VivoxInit : MonoBehaviour
 
     private float nextPosUpdate = 0.0f;
     public Transform headPosition;
+
+
+    [SerializeField] private UnityEvent onLogged;
+    [SerializeField] private UnityEvent onUnLogged;
 
     void Start()
     {
@@ -100,6 +105,8 @@ public class VivoxInit : MonoBehaviour
         {
             loginSession.PropertyChanged += AutoJoinChannel;
         }
+
+        loginSession.PropertyChanged += ExternEventOnJoin;
         
         loginSession.BeginLogin(serverURI, loginSession.GetLoginToken(tokenKey, timeSpan), ar =>
         {
@@ -110,6 +117,7 @@ public class VivoxInit : MonoBehaviour
             catch (Exception e)
             {
                 Bind_Login_Callback_Listeners(false, loginSession);
+                loginSession.PropertyChanged -= ExternEventOnJoin;
                 Debug.Log(e.Message);
                 return;
             }
@@ -160,6 +168,23 @@ public class VivoxInit : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    private void ExternEventOnJoin(object sender, PropertyChangedEventArgs loginArgs)
+    {
+        var source = (ILoginSession) sender;
+        switch (source.State)
+        {
+           case LoginState.LoggedIn:
+               onLogged.Invoke();
+               break;
+           case LoginState.LoggedOut:
+               onUnLogged.Invoke();
+               loginSession.PropertyChanged -= ExternEventOnJoin;
+               break;
+           default:
+               break;
         }
     }
 

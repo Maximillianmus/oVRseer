@@ -37,7 +37,6 @@ public class StepSound : MonoBehaviour
     {
         var speed = animator.GetFloat(_speedId);
         StateMovementTiny newState = StateMovementTiny.Idle;
-        print(speed);
         if (speed >= runThresh)
         {
             newState = StateMovementTiny.Run;
