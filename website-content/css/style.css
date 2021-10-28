@@ -10,7 +10,8 @@
 body {
     /*background-image: linear-gradient(to right, rgba(255, 0, 0, 0.9) , rgba(0, 235, 255, 0.9));*/
 
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.25)), url("/website-content/img/ovrseer_website_backgroundxcf.png");
+    /*background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.25)), url("/website-content/img/ovrseer_website_backgroundxcf.png");*/
+    background-image: url("/website-content/img/ovrseer_website_background2.png");
     
 }
 
@@ -129,11 +130,12 @@ header {
   margin: auto;
   padding: 10px;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.75);
-  max-width: 450px;
+  max-width: 500px;
   color: white;
   background-color: var(--section-content-background);
   text-align: center;
   border-radius: 10px;
+  height: 100%;
 }
 
 .member-card:hover {
@@ -142,14 +144,16 @@ header {
 
 .team-member-img {
     border-style: solid;
-    border-color: #ff4d4d;
+    border-color: var(--text-color);
     border-width: 2px;
     max-width: 300px;
     margin: 10px;
+    width: 75%;
     
 }
 
 .team-member-img:hover {
+    border-color: #ff4d4d;
     box-shadow: 0px 2px 8px 0px #ff0000;  
 }
 
