@@ -1,19 +1,22 @@
 :root {
-  --main-nav-color: #1d1d1d;
+  --main-nav-color: #070707;
   --main-header-color: #3e3e3e;
   --section-title-background: black;
+  --heading-text-color: white;
+  --text-color: #f0f0f0;
+  --section-content-background: rgba(255, 255, 255, 0.15);
 }
 
 body {
     /*background-image: linear-gradient(to right, rgba(255, 0, 0, 0.9) , rgba(0, 235, 255, 0.9));*/
 
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(255, 0, 0, 0.25)), url("/website-content/img/ovrseer_website_backgroundxcf.png");
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.25)), url("/website-content/img/ovrseer_website_backgroundxcf.png");
     
 }
 
 .section-title {
     margin: auto;
-    padding-top: 10px;
+    padding-top: 40px;
     padding-bottom: 10px;
     font-size: 20px;
     text-align: center;
@@ -25,11 +28,11 @@ body {
 }
 
 .section-content {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: var(--section-content-background);
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     border-width: 1px;
-    color: #292929;
+    color: var(--text-color);
     margin: 0 auto;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -38,10 +41,43 @@ body {
     max-width: 1500px;
 }
 
+.section-content-transparent {
+    color: var(--text-color);
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 1500px;
+}
+
+.content-text {
+    text-align: justify;
+    font-size: 13px;
+}
+
+.heading {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.goals-card {
+  margin: auto;
+  padding: 10px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.75);
+  max-width: 300px;
+  color: white;
+  background-color: var(--section-content-background);
+  text-align: center;
+  border-radius: 10px;
+  font-size: 13px;
+  height: 100%;
+}
 
 .nav-bar {
     background-color: var(--main-nav-color);
-    color: white;
+    color: var(--text-color);
 }
 
 header {
@@ -58,6 +94,7 @@ header {
 
 .nav-button:hover {
     font-weight: bold;
+    color: var(--heading-text-color);
 }
 
 #nav-title {
@@ -79,6 +116,7 @@ header {
   justify-content: center;
 }
 
+
 @media screen and (max-width: 650px) {   
     .row {
       display: flex;
@@ -87,24 +125,13 @@ header {
     }
 }
 
-.goals-card {
-  margin: auto;
-  padding: 10px;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.75);
-  max-width: 400px;
-  color: white;
-  background-color: rgba(255, 255, 255, 0.25);
-  text-align: center;
-  border-radius: 10px;
-}
-
 .member-card {
   margin: auto;
   padding: 10px;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.75);
   max-width: 450px;
   color: white;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: var(--section-content-background);
   text-align: center;
   border-radius: 10px;
 }
@@ -115,11 +142,15 @@ header {
 
 .team-member-img {
     border-style: solid;
-    border-color: #60ffff;
-    box-shadow: 0px 2px 8px 0px cyan;
+    border-color: #ff4d4d;
+    border-width: 2px;
     max-width: 300px;
     margin: 10px;
     
+}
+
+.team-member-img:hover {
+    box-shadow: 0px 2px 8px 0px #ff0000;  
 }
 
 .section-about {
@@ -136,6 +167,15 @@ header {
     border-top-left-radius: 160px;
     max-width: 400px;
 
+
+}
+
+.gallery-image {
+    width: 100%;
+}
+
+.marker-gallery {
+    
 }
 
 /*

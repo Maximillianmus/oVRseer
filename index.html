@@ -34,10 +34,9 @@
             <a href="#team" onclick="clickSmallNavMenu()" class="w3-bar-item nav-button">Team</a>
             <a href="#gallery" onclick="clickSmallNavMenu()" class="w3-bar-item nav-button">Gallery</a>
         </div>
-        </div>  
+        </div>
+        
         <header class="w3-container">
-            <img src="website-content/img/overseerstuff.png" style="width: 60%; margin: auto">
-          <h1>oVRseer</h1>
         </header>
         
         <main>
@@ -46,14 +45,15 @@
             <div class="section-content">
                 <div class="section-about">
                 <div>
-                <p class="about-text">oVRseer is an asymetrical multiplayer prop hunt game. One player playse in Virtual reality (VR) and takes the role of the Overseer with the goal of finding and eliminating the other players... [add description]</p>
+                <p class="content-text">
+                oVRseer is an asymmetrical multiplayer prop hunt game. One player plays as the Overseer in virtual reality (VR) with the goal of finding and eliminating as many of the other players as possible by throwing them into the deadly lava pit. The other players play as tiny guys on either desktop or phone. Their goal is to hide from the Overseer while collecting keys that are hidden across the map. When enough keys are collected doors are opened that the tiny guys can escape though in order to escape. To hide from the Overseer the tiny guys can morph into several different props that are scattered across the map in order to try and blend into the environment. The game ends when for each of the tiny guys, they have either managed to escape or been caught and eliminated by the Overseer.</p>
                 </div>
                 
                 <!--<img src="website-content/img/team/blank-image.png" class="img-about-section">-->
                 </div>
             </div>
             
-            <div class="section-title" id="trailer">Goals and motivations</div>
+            <div class="section-title" id="trailer">Goals</div>
             <div class="section-content-goals">
             
                 <div class="row">
@@ -61,8 +61,8 @@
                         <div class="goals-card">
                           <div class="container-member-info">
                             <img src="website-content/img/team/blank-image.png" class="w3-circle" style="width: 50px">
-                            <h2>Create a more interactive prop hunt game.</h2>
-                            <p>text...</p>
+                            <div class="heading">Learning the basics of building a game in VR</div>
+                            <p>Since one of us had worked with VR before, one goal was to learn more about this interaction method through creating a VR game.</p>
                           </div>
                         </div>
                       </div>
@@ -70,8 +70,8 @@
                         <div class="goals-card">
                           <div class="container-member-info">
                             <img src="website-content/img/team/blank-image.png" class="w3-circle" style="width: 50px">
-                            <h2>Learn more about VR interaction and computer graphic programing</h2>
-                            <p>text...</p>
+                            <div class="heading">Creating a good asymmetrical experience</div>
+                            <p>Making an asymmetrical multiplayer game that is balanced in a way that it can be enjoyed by both the player in VR and the players playing on desktop and mobile.</p>
                           </div>
                         </div>
                       </div>
@@ -79,7 +79,7 @@
                         <div class="goals-card">
                           <div class="container-member-info">
                             <img src="website-content/img/team/blank-image.png" class="w3-circle" style="width: 50px">
-                            <h2>Goal/motivation 3</h2>
+                            <div class="heading">Learn more advanced methods of graphics programming</div>
                             <p>text...</p>
                           </div>
                         </div>
@@ -89,13 +89,13 @@
             </div>
 
             <div class="section-title" id="trailer">Trailer</div>
-            <div class="section-content">coming soon...[add trailer video]</div>
+            <div class="section-content-transparent">coming soon...[add trailer video]</div>
             
             <div class="section-title" id="learnings">Learnings</div>
-            <div class="section-content">coming soon...</div>
+            <div class="section-content"><div class="content-text"></div>coming soon...</div>
 
             <div class="section-title" id="the-maiking-of">The Making of oVRseer</div>
-            <div class="section-content">coming soon...</div>
+            <div class="section-content-transparent">coming soon...</div>
             
             <div class="section-title" id="team">Team</div>
             
@@ -153,22 +153,28 @@
                           </div>
                         </div>
                       </div>
-                        <div class="column">
-                            <div class="member-card">
-                              <img src="website-content/img/team/temp-profile-image.png" class="w3-circle team-member-img" style="width:100%">
-                              <div class="container-member-info">
-                                <h2>Empty</h2>
-                                <p class="title">Title</p>
-                                <p>individual contribution...</p>
-                              </div>
-                            </div>
-                          </div>
                     </div>
                     
                 </div>
 
             <div class="section-title" id="gallery">Gallery</div>
-            <div class="section-content">coming soon...</div>
+            <div class="section-content-transparent">
+            
+            <div class="w3-content w3-display-container" style="max-width:800px">
+              <img class="gallery-image galleryImageSlides" src="website-content/img/temp1.png">
+              <img class="gallery-image galleryImageSlides" src="website-content/img/temp2.png" style="display: none;">
+              <img class="gallery-image galleryImageSlides" src="website-content/img/temp3.png" style="display: none;">
+              <div class="w3-display-left w3-container w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+              <div class="w3-display-right w3-container w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+              
+              <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
+                <span class="marker-gallery" onclick="currentDiv(1)">o</span>
+                <span class="marker-gallery" onclick="currentDiv(2)">o</span>
+                <span class="marker-gallery" onclick="currentDiv(3)">o</span>
+              </div>
+            </div>
+            
+            </div>
         </main>
       
     </body>
