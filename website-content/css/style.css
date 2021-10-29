@@ -11,7 +11,7 @@ body {
     /*background-image: linear-gradient(to right, rgba(255, 0, 0, 0.9) , rgba(0, 235, 255, 0.9));*/
 
     /*background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.25)), url("/website-content/img/ovrseer_website_backgroundxcf.png");*/
-    background: url("/website-content/img/ovrseer_website_background2.png");
+    background: url("../website-content/img/ovrseer_website_background2.png");
     
 }
 
