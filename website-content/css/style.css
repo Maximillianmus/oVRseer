@@ -9,7 +9,7 @@
 
 body {
     /*background-image: linear-gradient(to right, rgba(255, 0, 0, 0.9) , rgba(0, 235, 255, 0.9));*/
-    background: linear-gradient(rgba(26, 26, 26, 0.6), rgba(255, 0, 0, 0.30)), url("../img/ovrseer_website_background2.png");
+    background: linear-gradient(rgba(26, 26, 26, 0.6), rgba(168, 0, 0, 0.2)), url("../img/ovrseer_website_background2.png");
     
     /*background: url("../img/ovrseer_website_background.png");*/
     
@@ -91,7 +91,7 @@ body {
 }
 
 header {
-    margin-top: 30px;
+    margin-top: 50px;
     text-align: center;
     height: 450px;
     color: white;
@@ -109,7 +109,7 @@ header h2 {
 }
 
 header h2:hover {
-    color: red;
+    color: #c30000;
       transition: 0.3s;
 }
 
@@ -228,10 +228,20 @@ footer {
 }
 
 .img-header {
+    animation: HeaderOVRseerAnimation 3s linear infinite;
     width: 50%;
     min-width: 400px;
-     max-width: 500px;
+    max-width: 500px;
     
+}
+
+@keyframes HeaderOVRseerAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 /*
