@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ecdb58348014ea41ab57716593c7c31
+guid: f7d0ff7a57d6fa24cab3858d69a43b66
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -8,12 +8,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Brick Wall
-    second: {fileID: 2100000, guid: e1c931ea6b4ce21478eb18e9161d74c2, type: 2}
+    second: {fileID: 2100000, guid: f8668ca43402627479176abbd0b4c98b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone
-    second: {fileID: 2100000, guid: 30ef7115da1b149438f2c06bdcc82ea8, type: 2}
+    second: {fileID: 2100000, guid: a49455e20f3eea14187dcc1a04b20fd4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
