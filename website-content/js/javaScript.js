@@ -41,3 +41,8 @@ function showImage(n) {
   galleryImage[currentImage-1].style.display = "block";  
   //dots[currentImage-1].className += " w3-white";
 }
+
+function onClickImage(element) {
+  document.getElementById("imgToShow").src = element.src;
+  document.getElementById("modalImageDisplay").style.display = "block";
+}

@@ -231,24 +231,23 @@
 
             <div class="section-title" id="gallery">Images</div>
             <div class="section-content-transparent">
-            
-            <div class="w3-content w3-display-container" style="max-width:900px">
-              <img class="gallery-image galleryImageSlides" src="website-content/img/temp1.png">
-              <img class="gallery-image galleryImageSlides" src="website-content/img/temp2.png" style="display: none;">
-              <img class="gallery-image galleryImageSlides" src="website-content/img/temp3.png" style="display: none;">
-              <div class="w3-display-left w3-container w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
-              <div class="w3-display-right w3-container w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
-              
-              <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
-                <span class="marker-gallery" onclick="currentDiv(1)">o</span>
-                <span class="marker-gallery" onclick="currentDiv(2)">o</span>
-                <span class="marker-gallery" onclick="currentDiv(3)">o</span>
-              </div>
+                
+            <div class="row">
+              <img class="gallery-image galleryImageSlides" src="website-content/img/temp1.png" onclick="onClickImage(this)">
+              <img class="gallery-image galleryImageSlides" src="website-content/img/temp2.png" onclick="onClickImage(this)">
+            </div>
+            </div>
+                        
+            <div id="modalImageDisplay" class="w3-modal" onclick="this.style.display='none'">
+            <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
+            <div class="w3-modal-content w3-animate-top">
+            <img id="imgToShow" style="width: 100%;">
+            </div>
             </div>
             
-            </div>
             
-            <footer></footer>
+            <footer>
+            </footer>
         </main>
       
     </body>

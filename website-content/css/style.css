@@ -142,6 +142,13 @@ header h2:hover {
   justify-content: center;
 }
 
+.gallery-image {
+    max-width: 600px;
+    width: 45%;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.75);
+}
 
 @media screen and (max-width: 650px) {   
     .row {
@@ -151,14 +158,16 @@ header h2:hover {
     }
     
     header {
-
-    line-height: 100px;
-
-}
+        line-height: 100px;
+    }
     .img-header {
     margin: auto;
+    }
     
-}
+    
+.gallery-image {
+        width: 90%;
+    }
     
 }
 
@@ -210,11 +219,7 @@ header h2:hover {
 
 }
 
-.gallery-image {
-    width: 100%;
-    border-radius: 10px;
-      box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.75);
-}
+
 
 .marker-gallery {
     
