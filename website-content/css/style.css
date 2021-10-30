@@ -9,9 +9,9 @@
 
 body {
     /*background-image: linear-gradient(to right, rgba(255, 0, 0, 0.9) , rgba(0, 235, 255, 0.9));*/
-    /*background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(255, 0, 0, 0.25)), url("../img/ovrseer_website_background2.png");*/
+    background: linear-gradient(rgba(26, 26, 26, 0.6), rgba(255, 0, 0, 0.30)), url("../img/ovrseer_website_background2.png");
     
-    background: url("../img/ovrseer_website_background2.png");
+    /*background: url("../img/ovrseer_website_background.png");*/
     
 }
 
@@ -91,12 +91,28 @@ body {
 }
 
 header {
+    margin-top: 30px;
     text-align: center;
-    line-height: 400px;
-    height: 400px;
+    height: 450px;
     color: white;
-    margin-bottom: 20px;
+    line-height: 300px;
+
 }
+
+header h2 {
+    font-size: 50px;
+    font-family: sans-serif;
+    color: var(--text-color);
+    text-shadow: 0px 0px 10px rgb(0, 0, 0);
+    height: 100px;
+     transition: 0.3s;
+}
+
+header h2:hover {
+    color: red;
+      transition: 0.3s;
+}
+
 
 .nav-button {
     text-decoration: none;
@@ -133,6 +149,17 @@ header {
       flex-direction: column;
       justify-content: center;
     }
+    
+    header {
+
+    line-height: 100px;
+
+}
+    .img-header {
+    margin: auto;
+    
+}
+    
 }
 
 .member-card {
@@ -198,6 +225,13 @@ footer {
     height: 30px;
     background-color: orange;
     width: 100%;
+}
+
+.img-header {
+    width: 50%;
+    min-width: 400px;
+     max-width: 500px;
+    
 }
 
 /*
