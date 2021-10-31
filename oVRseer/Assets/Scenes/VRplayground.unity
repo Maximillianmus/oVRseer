@@ -1051,6 +1051,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VR Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 6039014550233624782, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7190019339661652019, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1081,6 +1085,9 @@ PrefabInstance:
     - {fileID: 2729911467425303173, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
     - {fileID: 4030167082312007805, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
     - {fileID: 5930146413882414826, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
+    - {fileID: 5765110722466893704, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
+    - {fileID: 7561225503338937336, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
+    - {fileID: 3912317165015930415, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
 --- !u!1001 &8740025869956632881
 PrefabInstance:
