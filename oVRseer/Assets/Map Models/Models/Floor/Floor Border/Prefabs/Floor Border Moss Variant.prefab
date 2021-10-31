@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 898013515087634553, guid: 819994a98b817f542ad189ae93e04018, type: 3}
       propertyPath: m_Name
-      value: Floor Border Moss
+      value: Floor Border Moss Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1690713500477014444, guid: 819994a98b817f542ad189ae93e04018, type: 3}
       propertyPath: m_Materials.Array.data[0]

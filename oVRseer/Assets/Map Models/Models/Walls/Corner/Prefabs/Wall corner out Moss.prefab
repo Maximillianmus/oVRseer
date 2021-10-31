@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b656c9320aa79f54a98aa21726216329, type: 2}
     - target: {fileID: 1515231617458963585, guid: e03aceeaa4c70dd448f80472a5773417, type: 3}
       propertyPath: m_Name
-      value: Wall corner out (1)
+      value: Wall corner out Moss
       objectReference: {fileID: 0}
     - target: {fileID: 2183400897699470907, guid: e03aceeaa4c70dd448f80472a5773417, type: 3}
       propertyPath: m_RootOrder

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4393957301882462684
 Transform:
@@ -341,6 +341,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1796727765777097996, guid: 362ef2b23f98d6b4592e829b55c18c27, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 362ef2b23f98d6b4592e829b55c18c27, type: 3}
 --- !u!4 &6730985335778418884 stripped
@@ -402,6 +406,10 @@ PrefabInstance:
     - target: {fileID: 1796727765777097996, guid: 362ef2b23f98d6b4592e829b55c18c27, type: 3}
       propertyPath: m_Name
       value: Wall (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796727765777097996, guid: 362ef2b23f98d6b4592e829b55c18c27, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 362ef2b23f98d6b4592e829b55c18c27, type: 3}
@@ -465,6 +473,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1796727765777097996, guid: 362ef2b23f98d6b4592e829b55c18c27, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 362ef2b23f98d6b4592e829b55c18c27, type: 3}
 --- !u!4 &7633357469575146671 stripped
@@ -526,6 +538,10 @@ PrefabInstance:
     - target: {fileID: 1796727765777097996, guid: 362ef2b23f98d6b4592e829b55c18c27, type: 3}
       propertyPath: m_Name
       value: Wall (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1796727765777097996, guid: 362ef2b23f98d6b4592e829b55c18c27, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 362ef2b23f98d6b4592e829b55c18c27, type: 3}
