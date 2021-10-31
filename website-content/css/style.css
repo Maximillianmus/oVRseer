@@ -105,12 +105,14 @@ header h2 {
     color: var(--text-color);
     text-shadow: 0px 0px 10px rgb(0, 0, 0);
     height: 100px;
-     transition: 0.3s;
+    transition: 0.3s;
+    cursor: context-menu;
 }
 
 header h2:hover {
     color: #c30000;
-      transition: 0.3s;
+    transition: 0.3s;
+    cursor: context-menu;
 }
 
 
@@ -227,15 +229,15 @@ header h2:hover {
 
 footer {
     margin-top: 20px;
-    height: 30px;
-    background-color: orange;
+    height: 50px;
+    background-color: var(--main-nav-color);
     width: 100%;
 }
 
 .img-header {
     animation: HeaderOVRseerAnimation 3s linear infinite;
     width: 50%;
-    min-width: 400px;
+    min-width: 300px;
     max-width: 500px;
     
 }
