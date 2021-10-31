@@ -2993,10 +2993,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 866626294579444960, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
-      propertyPath: m_Intensity
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1687158854426416139, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3049,15 +3045,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2977353922304390826, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2977353923298218810, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2977353923470306409, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -3075,7 +3063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8126696866799168819, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
       propertyPath: sceneId
-      value: 3035188850
+      value: 969918421
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5836881355428016922, guid: 1ccb545d6eb77d44da3c0ec44dd239f4, type: 3}
