@@ -19,6 +19,7 @@ public class StepSound : MonoBehaviour
     [SerializeField] private AudioClip walkClip;
     [SerializeField] private AudioClip runClip;
     [SerializeField] private AudioClip landingClip;
+    [SerializeField] private AudioClip idleClip;
 
     private StateMovementTiny state;
     private bool paused = false;
@@ -76,8 +77,7 @@ public class StepSound : MonoBehaviour
         switch (newState)
         {
             case StateMovementTiny.Idle:
-                audioSource.Pause();
-                paused = true;
+                PlayStateAudio(idleClip);
                 break;
             case StateMovementTiny.Walk:
                 PlayStateAudio(walkClip);
