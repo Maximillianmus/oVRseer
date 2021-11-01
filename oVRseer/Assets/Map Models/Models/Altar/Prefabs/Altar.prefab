@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8534291041501632127}
   - component: {fileID: 4737857078298663386}
   - component: {fileID: 7360228284822400272}
+  - component: {fileID: 7199120836751028245}
+  - component: {fileID: 7006245077305947151}
   m_Layer: 0
   m_Name: Altar
   m_TagString: Untagged
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7199120836751028245
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017390425219042501}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.095067486, y: 0.062384594, z: 0.012339293}
+  m_Center: {x: 0, y: -3.8541723e-17, z: 0.0053509437}
+--- !u!65 &7006245077305947151
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017390425219042501}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06241429, y: 0.029643122, z: 0.014819586}
+  m_Center: {x: 0.00004468559, y: -0.0002728392, z: 0.019144401}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3185637672007861211}
   - component: {fileID: 1989028632918396030}
   - component: {fileID: 4359066939268430004}
+  - component: {fileID: 3188144273656948324}
   m_Layer: 0
   m_Name: ramp
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3188144273656948324
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845844200846645601}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -478882678752539408, guid: acc40143e54dbe045b97ed1b92a702e1, type: 3}
