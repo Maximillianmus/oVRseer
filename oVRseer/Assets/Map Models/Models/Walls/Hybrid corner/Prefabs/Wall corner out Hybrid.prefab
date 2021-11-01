@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2717137884376114237}
   - component: {fileID: 1304615728438160280}
   - component: {fileID: 3890576119927234386}
+  - component: {fileID: 2913718940441995723}
+  - component: {fileID: 660816493011447591}
   m_Layer: 0
   m_Name: Wall corner out Hybrid
   m_TagString: Untagged
@@ -82,3 +84,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2913718940441995723
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3386397055496683143}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06354897, y: 0.008291183, z: 0.02855391}
+  m_Center: {x: -0.025211629, y: -0.0021783623, z: 0.014300323}
+--- !u!65 &660816493011447591
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3386397055496683143}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.008530115, y: 0.06331004, z: 0.02855391}
+  m_Center: {x: 0.0022977893, y: 0.025331069, z: 0.014300323}
