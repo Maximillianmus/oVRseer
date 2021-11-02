@@ -87865,6 +87865,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1059628641976031228, guid: d8333571cabb19a4299ef3678ab268a6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059628641976031228, guid: d8333571cabb19a4299ef3678ab268a6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1059628641976031228, guid: d8333571cabb19a4299ef3678ab268a6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2478289004946238473, guid: d8333571cabb19a4299ef3678ab268a6, type: 3}
       propertyPath: m_Name
       value: Tree Prop (1)
@@ -87879,7 +87891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2478289004946238486, guid: d8333571cabb19a4299ef3678ab268a6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.18
+      value: 12.39
       objectReference: {fileID: 0}
     - target: {fileID: 2478289004946238486, guid: d8333571cabb19a4299ef3678ab268a6, type: 3}
       propertyPath: m_LocalPosition.z
