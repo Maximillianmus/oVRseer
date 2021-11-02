@@ -47,16 +47,15 @@ public class Spectator : NetworkBehaviour
         {
             return;
         }
-        if (!IsDead && _inputs.dead && hasAuthority)
+        if (!IsDead && _inputs.dead && GetComponent<checkLocalPlayer>().assignedAsLocalPlayer)
         {
             OnDead();
             return;
         }
 
         // local player 
-        NetworkIdentity netID = GetComponent<NetworkIdentity>();
 
-        if (IsDead && netID.hasAuthority)
+        if (IsDead && GetComponent<checkLocalPlayer>().assignedAsLocalPlayer)
         {
             RefreshAndCheck();
         }
@@ -66,7 +65,7 @@ public class Spectator : NetworkBehaviour
 
     public void OnDead()
     {
-        if (!hasAuthority)
+        if (!GetComponent<checkLocalPlayer>().assignedAsLocalPlayer)
         {
             return;
         }
