@@ -23,8 +23,7 @@ public class VrInformerNPC : NetworkBehaviour
 
     public void Awake()
     {
-        VrPlayer = GameObject.FindGameObjectWithTag("VR");
-        grabCommand = VrPlayer.GetComponent<GrabCommand>();
+  
         networkId = transform.GetComponent<NetworkIdentity>();
         Rigidbody = gameObject.GetComponentInChildren<Rigidbody>();
     }
