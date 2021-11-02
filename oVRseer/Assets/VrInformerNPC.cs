@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Gameplay;
 using Mirror;
 using Mirror.Experimental;
 using UnityEngine;
 using NetworkTransformChild = Mirror.NetworkTransformChild;
 
-public class VrInformerNPC : NetworkBehaviour, IVRInformer
+public class VrInformerNPC : NetworkBehaviour
 {
     // Start is called before the first frame update
 
@@ -79,10 +78,6 @@ public class VrInformerNPC : NetworkBehaviour, IVRInformer
         networkRigidbody.clientAuthority = false;
     }
 
-    public bool isReleased()
-    {
-        return released;
-    }
 
     [Command]
     public void CmdRelease()

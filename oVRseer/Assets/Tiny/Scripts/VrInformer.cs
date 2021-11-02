@@ -2,10 +2,9 @@ using Mirror;
 using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
-using Gameplay;
 using UnityEngine;
 
-public class VrInformer : NetworkBehaviour, IVRInformer
+public class VrInformer : NetworkBehaviour
 {
     // Start is called before the first frame update
 
@@ -76,10 +75,7 @@ public class VrInformer : NetworkBehaviour, IVRInformer
         CmdRelease();
     }
 
-    public bool isReleased()
-    {
-        return released;
-    }
+
 
     [Command]
     public void CmdRelease()
