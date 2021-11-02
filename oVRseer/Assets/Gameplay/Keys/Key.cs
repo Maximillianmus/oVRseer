@@ -38,14 +38,17 @@ public class Key : NetworkBehaviour
 
     [Command(requiresAuthority = false)]
     void CmdUpdateKeyCollectedToServer() {
-        isCollected = true;
-        NetworkServer.SendToAll(new KeyCollectedMsg());
+        if (!isCollected)
+        {
+            isCollected = true;
+            NetworkServer.SendToAll(new KeyCollectedMsg());
+        }
     }
 
     // Key is collected
     private void OnTriggerEnter(Collider other) {
         
-        if(other.CompareTag("PlayerArmature")) { 
+        if(other.CompareTag("PlayerArmature") && !isCollected) { 
 
             isCollected = true;
 

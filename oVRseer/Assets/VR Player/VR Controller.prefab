@@ -418,7 +418,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2977353922304390826}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &2977353922304390827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,6 +1161,7 @@ MonoBehaviour:
   EnableMobileTransforms: []
   isVr: 1
   assignedAsLocalPlayer: 0
+  listener: {fileID: 2977353922304390824}
   XR_Rig: {fileID: 2977353923470306409}
   ActionControllerLeft: {fileID: 2977353921888867446}
   ActionControllerRight: {fileID: 2977353923298218810}

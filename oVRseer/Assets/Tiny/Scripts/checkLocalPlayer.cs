@@ -16,6 +16,7 @@ public class checkLocalPlayer : NetworkBehaviour
     [SerializeField] Transform[] EnableMobileTransforms;
     public bool isVr;
     public bool assignedAsLocalPlayer = false;
+    public AudioListener listener;
 
 
 [Header("leave empty if NOT IN VR ")]
@@ -103,6 +104,8 @@ public class checkLocalPlayer : NetworkBehaviour
                 xRDirectInteractorLeft.enabled = true;
                 xRDirectInteractorRight.enabled = true;
             }
+
+            listener.enabled = true;
         }
        
         

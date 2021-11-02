@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
@@ -57,7 +58,7 @@ public class Progbar : NetworkBehaviour
         {
             return;
         }
-        var i = keysTotal - keysRemaining;
+        var i = Math.Min(keysTotal - keysRemaining, keysTotal - 1);
         var color = steps[i].GetComponent<Image>().color;
         steps[i].GetComponent<Image>().color = new Color(color.r, color.g, color.b, 255);
         keysRemaining--;

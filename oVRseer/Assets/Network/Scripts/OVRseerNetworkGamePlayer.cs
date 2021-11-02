@@ -31,6 +31,7 @@ public class OVRseerNetworkGamePlayer : NetworkBehaviour
 
     void OnGUI()
     {
+        /*
         if (GUI.Button(new Rect(Screen.width - 120, 40, 120, 20), "Disconnect"))
         {
             if (isServer && isClient)
@@ -49,5 +50,6 @@ public class OVRseerNetworkGamePlayer : NetworkBehaviour
                 Room.StopClient();
             }
         } 
+        */
     }
 }

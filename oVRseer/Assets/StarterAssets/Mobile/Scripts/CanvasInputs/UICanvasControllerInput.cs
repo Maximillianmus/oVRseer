@@ -50,6 +50,11 @@ namespace StarterAssets
         {
             starterAssetsInputs.DeadInput(virtualDeadState);
         }
+
+        public void VirtualVoiceInput(bool virtualMorphState)
+        {
+            starterAssetsInputs.ConnectInput();
+        }
     }
 
 }
