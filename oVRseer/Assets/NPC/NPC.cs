@@ -62,14 +62,14 @@ public class NPC : MonoBehaviour
 
         // 10% chance of getting a new destination
         // If NPC has reached destination also assign new destination
-        if (decision < 0.1 || agent.remainingDistance < 2f)
+        if (decision < 0.1 || agent.remainingDistance < 3f)
         {
             targetLocation = locations[Random.Range(0, numlocations - 1)];
             agent.SetDestination(targetLocation.position);
         }
 
         // 10% chance NPC waits for a bit before calling MakeDecision again
-        if(decision > 0.9)
+        if(decision > 0.95)
         {
             StartCoroutine(StopAndWait(Random.Range(minWaitTime, maxWaitTime)));
         }
