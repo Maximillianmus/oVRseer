@@ -20,10 +20,6 @@ public class KeySpawnSystem : NetworkBehaviour
     public override void OnStartServer()
     {
 
-    }
-
-    public void Start()
-    {
         FindNumPlayers();
         numOfKeysToCollect = numOfPlayers + 1;
 
@@ -35,6 +31,10 @@ public class KeySpawnSystem : NetworkBehaviour
 
         numOfKeysToSpawn = 2 * numOfKeysToCollect;
         SpawnKeys();
+    }
+
+    public void Start()
+    {
     }
 
     private void FindNumPlayers()
