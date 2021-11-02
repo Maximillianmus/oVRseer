@@ -15,8 +15,11 @@ public class Ending : NetworkBehaviour
     [SerializeField]
     private bool isVrPlayer;
 
-    public override void OnStartAuthority()
+
+    private void Start()
     {
+        if (!hasAuthority)
+            return;
         NetworkClient.RegisterHandler<PlayerCount>(OnEnd);
     }
 
