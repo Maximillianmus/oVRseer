@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Gameplay;
 using UnityEngine;
 
 public class AuthorityCollider : MonoBehaviour
 {
 
-    public VrInformer informer;
+    public IVRInformer informer;
 
     private void OnCollisionStay(Collision collision)
     {
         
-        if (informer.released == true)
+        if (informer.isReleased())
         {
             print("releasing");
             informer.Release();

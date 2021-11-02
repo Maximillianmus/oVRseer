@@ -1,11 +1,12 @@
-using Mirror;
-using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using Gameplay;
+using Mirror;
+using Mirror.Experimental;
 using UnityEngine;
+using NetworkTransformChild = Mirror.NetworkTransformChild;
 
-public class VrInformer : NetworkBehaviour, IVRInformer
+public class VrInformerNPC : NetworkBehaviour, IVRInformer
 {
     // Start is called before the first frame update
 
@@ -13,9 +14,9 @@ public class VrInformer : NetworkBehaviour, IVRInformer
     public GameObject VrPlayer;
     GrabCommand grabCommand;
     NetworkIdentity networkId;
-    NetworkConnectionToClient owner;
     Rigidbody Rigidbody;
     public NetworkTransformChild transformPlayer;
+    public NetworkRigidbody networkRigidbody;
     public Transform transformArmature;
 
     [HideInInspector]
@@ -26,7 +27,6 @@ public class VrInformer : NetworkBehaviour, IVRInformer
         VrPlayer = GameObject.FindGameObjectWithTag("VR");
         grabCommand = VrPlayer.GetComponent<GrabCommand>();
         networkId = transform.GetComponent<NetworkIdentity>();
-        owner = networkId.connectionToClient;
         Rigidbody = gameObject.GetComponentInChildren<Rigidbody>();
     }
 
@@ -40,7 +40,8 @@ public class VrInformer : NetworkBehaviour, IVRInformer
             grabCommand = VrPlayer.GetComponent<GrabCommand>();
         }
 
-        owner = networkId.connectionToClient;
+        transformPlayer.clientAuthority = true;
+        networkRigidbody.clientAuthority = true;
 
         grabCommand.Grab(networkId);
     }
@@ -74,6 +75,8 @@ public class VrInformer : NetworkBehaviour, IVRInformer
         Vector3 pos = transformArmature.position;
         transformPlayer.CmdTeleport(pos);
         CmdRelease();
+        transformPlayer.clientAuthority = false;
+        networkRigidbody.clientAuthority = false;
     }
 
     public bool isReleased()
@@ -85,7 +88,6 @@ public class VrInformer : NetworkBehaviour, IVRInformer
     public void CmdRelease()
     {
         networkId.RemoveClientAuthority();
-        networkId.AssignClientAuthority(owner);
     }
 
     public override void OnStartAuthority()
