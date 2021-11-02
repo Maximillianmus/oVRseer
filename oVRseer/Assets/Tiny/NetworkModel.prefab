@@ -2205,7 +2205,6 @@ GameObject:
   - component: {fileID: 1258274459254405715}
   - component: {fileID: 3303415447798998563}
   - component: {fileID: 7974580675942165510}
-  - component: {fileID: 6544687867925450220}
   - component: {fileID: 7826584692008671266}
   - component: {fileID: 2425922599029432192}
   m_Layer: 7
@@ -2420,19 +2419,6 @@ CapsuleCollider:
   m_Height: 1.4432831
   m_Direction: 1
   m_Center: {x: 0, y: 0.7749896, z: 0.07149646}
---- !u!65 &6544687867925450220
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3303415447798998575}
-  m_Material: {fileID: 13400000, guid: cc777b8fa89917f418329d3437312450, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.4479103, y: 0.4811921, z: 0.3170371}
-  m_Center: {x: -0.007171631, y: 0.25, z: -0.029143572}
 --- !u!54 &7826584692008671266
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4305,12 +4291,14 @@ MonoBehaviour:
   syncInterval: 0.1
   isVrPlayer: 0
   clientKeys: []
-  keysRemaining: 0
+  keysRemainingTotal: 0
+  keysRemaingToOpenDors: 0
   textFadeTime: 1.5
   textFadeIn: 0
   canvas: {fileID: 4926761045570027952}
   keyCollectedMessage: {fileID: 0}
   doors: []
+  doorLights: []
 --- !u!114 &240939406360088316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6160,7 +6148,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
+  m_TargetEye: 0
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
