@@ -81,6 +81,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pot2
       objectReference: {fileID: 0}
+    - target: {fileID: 5961828731893770042, guid: 8a2f6513aca382e41a39044af6cfb03e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6482785469801086336, guid: 8a2f6513aca382e41a39044af6cfb03e, type: 3}
       propertyPath: m_RootOrder
       value: 0
