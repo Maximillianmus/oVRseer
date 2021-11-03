@@ -14,7 +14,7 @@ public class TriggerLavaEffect : MonoBehaviour
         lavaSplash.Play();
         StartCoroutine(destroyParticleSystem(lavaSplash, 2));
 
-        if (other.tag == "Player")
+        if (other.tag == "PlayerArmature")
         {
             ParticleSystem playerDeath = Instantiate(playerDeathEffect, other.transform.position, Quaternion.Euler(-90, 0, 0));
             playerDeath.Play();
