@@ -73,7 +73,6 @@ public class StepSound : MonoBehaviour
 
     private void UpdateState(StateMovementTiny newState)
     {
-        print(state + " " + newState);
         switch (newState)
         {
             case StateMovementTiny.Idle:
