@@ -58,7 +58,7 @@ public class MorphControl : NetworkBehaviour
         }
 
         NetworkIdentity networkIdentity;
-        bool hasNetworkIdentity = hitInfo.transform.root.gameObject.TryGetComponent<NetworkIdentity>(out networkIdentity);
+        bool hasNetworkIdentity = hitInfo.transform.parent.gameObject.TryGetComponent<NetworkIdentity>(out networkIdentity);
         if (!hasNetworkIdentity)
         {
             Debug.Log("this object can not be morph through network");
