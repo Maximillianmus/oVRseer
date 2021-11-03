@@ -53,7 +53,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NoiseMap:
         m_Texture: {fileID: 2800000, guid: 732cf2f74d87cd4448caad46e4d5c106, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
+        m_Scale: {x: 0.2, y: 0.2}
         m_Offset: {x: 0, y: 0}
     - _NoiseMap2:
         m_Texture: {fileID: 2800000, guid: 094b7a0d5ad0c384080220c6ff0a2027, type: 3}
@@ -102,7 +102,7 @@ Material:
     - _VoronoiScale: 1.796
     - _VoronoiStrength: 0
     - _VoronoiTimeScale: 0.2
-    - _WaveHeight: 0.03
+    - _WaveHeight: 0.08
     - _WaveLength: 0.41
     - _WaveSpeed: 0.92
     - _ZWrite: 1

@@ -2771,7 +2771,7 @@ CapsuleCollider:
   m_Radius: 0.2454212
   m_Height: 1.521581
   m_Direction: 1
-  m_Center: {x: 0, y: 0.7358406, z: 0.07149646}
+  m_Center: {x: 0, y: 0.7749896, z: 0.07149646}
 --- !u!54 &7826584692008671266
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6968,7 +6968,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
+  m_TargetEye: 0
   m_HDR: 1
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0

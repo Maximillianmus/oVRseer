@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 521769000086813379}
   - component: {fileID: 3499976071077639526}
   - component: {fileID: 1690713500477014444}
+  - component: {fileID: 3856566570489531459}
   m_Layer: 0
   m_Name: Floor Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &521769000086813379
 Transform:
@@ -82,3 +83,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3856566570489531459
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898013515087634553}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.04, y: 0.03999999, z: 0.0016063598}
+  m_Center: {x: -0.00000005960464, y: -1.906056e-17, z: -0.00083437015}
