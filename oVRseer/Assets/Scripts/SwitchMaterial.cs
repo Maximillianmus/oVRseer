@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class SwitchMaterial : XRBaseInteractable
 {
-    public Material newmaterial = Resources.Load("Materials/BasicMaterials/Orange.mat", typeof(Material)) as Material;
+    public Material newmaterial;
     
 
     //Get the GameObjects mesh renderer to access the GameObjects material and color
