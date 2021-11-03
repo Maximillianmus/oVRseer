@@ -81,7 +81,7 @@ AudioMixerGroupController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ambient
+  m_Name: Music
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 6fd4735e72195544fb97de0262809c86
   m_Children: []
@@ -94,6 +94,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-2969182510542421869
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 24a74e17fff2b5040acaa5461d43f337
+  m_EffectName: Attenuation
+  m_MixLevel: a7fc9c035542368429f22fcba1e110c7
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &-1798218793854272078
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -135,6 +149,7 @@ AudioMixerController:
     - 6fd4735e72195544fb97de0262809c86
     - 41b35671592438f48869a2be81ce704a
     - 6452d3bc43f76894b822f087d2cae952
+    - 610b2644614c37946ad46f0de1935828
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -151,6 +166,7 @@ AudioMixerGroupController:
   - {fileID: -1798218793854272078}
   - {fileID: -4881904221493767118}
   - {fileID: -5630442254152986537}
+  - {fileID: 5700822402304869745}
   m_Volume: d187beb75b556d74194ae5af931faaa9
   m_Pitch: 1b8223102ccdf5a469394342e0a2e99f
   m_Send: 00000000000000000000000000000000
@@ -187,6 +203,7 @@ AudioMixerSnapshotController:
   m_FloatValues:
     b1e04900d0fed14479e808cb39ac37a8: -50.103996
     d447da605d866a64bb4a1670f5159a1a: 0.54000044
+    3be0fa7063802f3408b329ffb5c828be: -11.944499
     ff766ce0e47ef0d48a25282b453c3501: 0
     db7153f07f63dbb488b8578495ce48e8: 0.037
     263579a39c415c64ab665980c495f833: -7792
@@ -228,3 +245,22 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!243 &5700822402304869745
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Lava
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 610b2644614c37946ad46f0de1935828
+  m_Children: []
+  m_Volume: 3be0fa7063802f3408b329ffb5c828be
+  m_Pitch: ed38b5b55dae67848b8eca9ffbcac731
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: -2969182510542421869}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
