@@ -10,7 +10,6 @@
 body {
     /*background-image: linear-gradient(to right, rgba(255, 0, 0, 0.9) , rgba(0, 235, 255, 0.9));*/
     background: linear-gradient(rgba(26, 26, 26, 0.6), rgba(168, 0, 0, 0.2)), url("../img/ovrseer_website_background2.png");
-    
     /*background: url("../img/ovrseer_website_background.png");*/
     
 }
@@ -55,6 +54,8 @@ body {
 .content-text {
     text-align: justify;
     font-size: 13px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .heading {
@@ -82,7 +83,7 @@ body {
 }
 
 .info-card-img-width {
-    width: 50px;
+    width: 70px;
 }
 
 .nav-bar {
@@ -150,6 +151,10 @@ header h2:hover {
     margin: 10px;
     border-radius: 10px;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.75);
+}
+
+.gallery-image:hover {
+    opacity: 0.75;
 }
 
 @media screen and (max-width: 650px) {   
@@ -221,17 +226,12 @@ header h2:hover {
 
 }
 
-
-
-.marker-gallery {
-    
-}
-
 footer {
     margin-top: 20px;
     height: 50px;
     background-color: var(--main-nav-color);
     width: 100%;
+    color: white;
 }
 
 .img-header {
@@ -251,10 +251,13 @@ footer {
   }
 }
 
-/*
-.container-member-info::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
+.fa {
+    color: rgba(255, 255, 255, 0.6);
+    margin-right: 5px;
 }
-*/
+
+.fa:hover {
+    color: white;
+    transition: 0.2s;
+    
+}
