@@ -15,19 +15,24 @@ public class Ending : NetworkBehaviour
     [SerializeField]
     private bool isVrPlayer;
 
-    public override void OnStartAuthority()
+
+    private void Start()
     {
+        if (!hasAuthority)
+            return;
         NetworkClient.RegisterHandler<PlayerCount>(OnEnd);
     }
 
     public void OnEnd(PlayerCount msg)
     {
+        print("_______1");
         int outsides = msg.outsides;
         int squasheds = msg.squashed;
-        if (!hasAuthority)
+        if (!GetComponent<checkLocalPlayer>().assignedAsLocalPlayer)
         {
             return;
         }
+        print("_______2");
         countText.text = outsides + " players succeed to escape but " + squasheds + " players died suffering";
         bool win;
         if (isVrPlayer)

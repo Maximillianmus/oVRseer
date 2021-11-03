@@ -61,7 +61,7 @@ public class ListPlayers : NetworkBehaviour
         }
     }
 
-    [Command]
+    [Command(requiresAuthority = false)]
     private void CmdPlayerCount(PlayerCount playerCount)
     {
         NetworkServer.SendToAll(playerCount);

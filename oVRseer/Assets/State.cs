@@ -61,7 +61,8 @@ public class State : NetworkBehaviour
 
     private void OnPlayerChangeState(PlayerState oldState, PlayerState newState)
     {
-        if (oldState == newState || !hasAuthority)
+        
+        if (oldState == newState || !GetComponent<checkLocalPlayer>().assignedAsLocalPlayer)
         {
             return;
         }

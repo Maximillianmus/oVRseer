@@ -28,6 +28,9 @@ public class Progbar : NetworkBehaviour
         if (!hasAuthority)
             return;
         keysRemaining = keysTotal;
+         
+        NetworkClient.RegisterHandler<KeyCollectedMsg>(OnKeyRetrieved);
+        
         for (int i = 0; i < keysTotal; i++)
         {
             steps.Add(Instantiate(stepPrefab, panel.transform));
@@ -40,10 +43,6 @@ public class Progbar : NetworkBehaviour
         }
     }
 
-    public override void OnStartAuthority()
-    {
-        NetworkClient.RegisterHandler<KeyCollectedMsg>(OnKeyRetrieved);
-    }
 
     // Update is called once per frame
     void Update()
