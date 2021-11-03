@@ -24,7 +24,7 @@ public class Progbar : NetworkBehaviour
     {
         if (!hasAuthority)
             return;
-        keysTotal = GameObject.FindWithTag("KeySpawnSystem").GetComponent<KeySpawnSystem>().numOfKeysToSpawn;
+        keysTotal = GameObject.FindWithTag("KeySpawnSystem").GetComponent<KeySpawnSystem>().numOfKeysToCollect;
         if (!hasAuthority)
             return;
         keysRemaining = keysTotal;
