@@ -42,7 +42,11 @@ namespace Network
         [SerializeField] public Text serverAdress;
         [SerializeField] public GameObject alertStarted;
 
+
+
+
         public static event Action<NetworkConnection> onServerReadied;
+        public static event Action<int> onServerAllReadied;
 
         public List<OVRseerRoomPlayer> roomPlayers { get; } = new List<OVRseerRoomPlayer>();
         private List<RoomPlayersToDestroy> _roomPlayersToDestroys = new List<RoomPlayersToDestroy>();
@@ -208,8 +212,9 @@ namespace Network
         {
             base.OnServerReady(conn);
             onServerReadied?.Invoke(conn);
-            if (_roomPlayersToDestroys.Count == roomPlayers.Count)
+            if (_roomPlayersToDestroys.Count == roomPlayers.Count && IsSceneActive(gameScene))
             {
+                onServerAllReadied?.Invoke(roomPlayers.Count - 1);
                 DestroyAllRoomPlayers();
             }
         }
