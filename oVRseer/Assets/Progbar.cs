@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
@@ -27,6 +28,9 @@ public class Progbar : NetworkBehaviour
         if (!hasAuthority)
             return;
         keysRemaining = keysTotal;
+         
+        NetworkClient.RegisterHandler<KeyCollectedMsg>(OnKeyRetrieved);
+        
         for (int i = 0; i < keysTotal; i++)
         {
             steps.Add(Instantiate(stepPrefab, panel.transform));
@@ -39,10 +43,6 @@ public class Progbar : NetworkBehaviour
         }
     }
 
-    public override void OnStartAuthority()
-    {
-        NetworkClient.RegisterHandler<KeyCollectedMsg>(OnKeyRetrieved);
-    }
 
     // Update is called once per frame
     void Update()
@@ -57,7 +57,7 @@ public class Progbar : NetworkBehaviour
         {
             return;
         }
-        var i = keysTotal - keysRemaining;
+        var i = Math.Min(keysTotal - keysRemaining, keysTotal - 1);
         var color = steps[i].GetComponent<Image>().color;
         steps[i].GetComponent<Image>().color = new Color(color.r, color.g, color.b, 255);
         keysRemaining--;

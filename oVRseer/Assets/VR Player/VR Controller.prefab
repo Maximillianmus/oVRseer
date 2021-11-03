@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 2977353922166619962}
+  m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -419,7 +419,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2977353922304390826}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &2977353922304390827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -670,7 +670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 2977353922166619962}
+  m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1158,11 +1158,11 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   EnableTransforms:
-  - {fileID: 2977353922166619963}
   - {fileID: 2977353922304390822}
   EnableMobileTransforms: []
   isVr: 1
   assignedAsLocalPlayer: 0
+  listener: {fileID: 2977353922304390824}
   XR_Rig: {fileID: 2977353923470306409}
   ActionControllerLeft: {fileID: 2977353921888867446}
   ActionControllerRight: {fileID: 2977353923298218810}
