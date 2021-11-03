@@ -182,7 +182,7 @@ header h2:hover {
   margin: auto;
   padding: 10px;
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.75);
-  max-width: 500px;
+  max-width: 400px;
   color: white;
   background-color: var(--section-content-background);
   text-align: center;
@@ -227,7 +227,10 @@ header h2:hover {
 }
 
 footer {
+    font-size: 12px;
+    text-align: center;
     margin-top: 20px;
+    padding-top: 12px;
     height: 50px;
     background-color: var(--main-nav-color);
     width: 100%;
@@ -257,7 +260,12 @@ footer {
 }
 
 .fa:hover {
-    color: white;
+    color: #ff4d4d;
     transition: 0.2s;
     
+}
+
+.hover-red-link:hover {
+    color: #ff4d4d;
+    transition: 0.1s;
 }
