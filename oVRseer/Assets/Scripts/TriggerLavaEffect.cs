@@ -10,6 +10,7 @@ public class TriggerLavaEffect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        gameObject.GetComponent<AudioSource>().Play();
         ParticleSystem lavaSplash = Instantiate(lavaSplashEffect, other.transform.position, Quaternion.Euler(-90, 0, 0));
         lavaSplash.Play();
         StartCoroutine(destroyParticleSystem(lavaSplash, 2));
