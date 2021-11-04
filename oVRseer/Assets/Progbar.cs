@@ -24,12 +24,17 @@ public class Progbar : NetworkBehaviour
     {
         if (!hasAuthority)
             return;
-        keysTotal = GameObject.FindWithTag("KeySpawnSystem").GetComponent<KeySpawnSystem>().numOfKeysToCollect;
-        if (!hasAuthority)
-            return;
-        keysRemaining = keysTotal;
          
         NetworkClient.RegisterHandler<KeyCollectedMsg>(OnKeyRetrieved);
+        RefreshBar();
+        
+    }
+
+    void RefreshBar()
+    {
+        keysTotal = GameObject.FindWithTag("KeySpawnSystem").GetComponent<KeySpawnSystem>().numOfKeysToCollect;
+        keysRemaining = keysTotal;
+         
         
         for (int i = 0; i < keysTotal; i++)
         {
@@ -47,6 +52,10 @@ public class Progbar : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameObject.FindWithTag("KeySpawnSystem").GetComponent<KeySpawnSystem>().numOfKeysToCollect != keysTotal)
+        {
+            RefreshBar();
+        }
         numberRemainingText.text = "number of keys remaining : " + keysRemaining;
 
     }
