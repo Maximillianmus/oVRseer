@@ -61,6 +61,7 @@ public class MorphControl : NetworkBehaviour
         bool hasNetworkIdentity = hitInfo.transform.gameObject.TryGetComponent<NetworkIdentity>(out networkIdentity);
         if (!hasNetworkIdentity)
         {
+            print(hitInfo.transform);
             Debug.Log("this object can not be morph through network");
             return;
         }
@@ -81,9 +82,8 @@ public class MorphControl : NetworkBehaviour
          // Change meshFilter
          MeshFilter morphMeshFilter = morphMesh.GetComponent<MeshFilter>();
          
-         MeshFilter newMeshFilter;
-         var newObjectHasMeshFilter = newMeshObj.gameObject.TryGetComponent<MeshFilter>(out newMeshFilter);
-         if (!newObjectHasMeshFilter)
+         MeshFilter newMeshFilter = newMeshObj.gameObject.GetComponentInChildren<MeshFilter>();
+         if (newMeshFilter == null)
          {
              return;
          }
@@ -95,14 +95,13 @@ public class MorphControl : NetworkBehaviour
          morphCollider.convex = true;
          // Change transform of new morph mesh
          var morphTransform = morphMeshFilter.transform;
-         var newTransform = newMeshObj.transform;
+         var newTransform = newMeshFilter.gameObject.transform;
          morphTransform.rotation = newTransform.rotation;
          morphTransform.localScale = newTransform.localScale;
          // Change material
          var morphRenderer = morphMesh.GetComponent<MeshRenderer>();
-         MeshRenderer newmorphRenderer;
-         var newMorphHasRenderer = newMeshObj.TryGetComponent<MeshRenderer>(out newmorphRenderer);
-         if (!newMorphHasRenderer)
+         MeshRenderer newmorphRenderer = newMeshObj.GetComponentInChildren<MeshRenderer>();
+         if (newmorphRenderer == null)
          {
              return;
          }

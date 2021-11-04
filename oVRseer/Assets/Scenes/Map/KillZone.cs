@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
 public class KillZone : MonoBehaviour
@@ -8,7 +9,7 @@ public class KillZone : MonoBehaviour
     {
         if (other.tag == "PlayerArmature")
         {
-            other.transform.root.GetComponent<Despawn>().Kill();
+            other.transform.root.GetComponent<State>().Squashed();
         }
     }
 }
