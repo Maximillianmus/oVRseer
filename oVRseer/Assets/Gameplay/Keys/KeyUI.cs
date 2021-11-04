@@ -75,7 +75,9 @@ public class KeyUI : NetworkBehaviour
     {
         foreach(GameObject dl in doorLights)
         {
-            dl.SetActive(false);
+            GameObject doorParticlesGO = dl.transform.Find("DoorLightParticles").gameObject;
+            ParticleSystem doorParticles = doorParticlesGO.GetComponent<ParticleSystem>();
+            doorParticles.Stop();
         }
     }
 
@@ -158,6 +160,10 @@ public class KeyUI : NetworkBehaviour
             doorLightAnimator = dl.transform.Find("LightBeamCylinder").GetComponent<Animator>();
             doorLightAnimator.Play("DoorLightRise");
             //dl.transform.Find("DoorLightParticles");
+
+            GameObject doorParticlesGO = dl.transform.Find("DoorLightParticles").gameObject;
+            ParticleSystem doorParticles = doorParticlesGO.GetComponent<ParticleSystem>();
+            doorParticles.Play();
         }
 
         Animator doorAnimator;
