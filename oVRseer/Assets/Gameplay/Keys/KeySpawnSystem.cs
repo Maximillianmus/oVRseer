@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using Mirror;
 using Network;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
+
 
 public class KeySpawnSystem : NetworkBehaviour
 {
@@ -13,19 +16,43 @@ public class KeySpawnSystem : NetworkBehaviour
     private static List<Transform> keyPositions = new List<Transform>();
 
     public List<GameObject> keysInScene = new List<GameObject>();
-    public int numOfKeysToSpawn; // Hard coded for now
-    public int numOfKeysToCollect;
-    public int numOfPlayers;
+    [SyncVar] public int numOfKeysToSpawn; // Hard coded for now
+    [SyncVar] public int numOfKeysToCollect;
+    [SyncVar] public int numOfPlayers = 0;
+
+    private OVRseerNetworkManager room;
+    private OVRseerNetworkManager Room
+    {
+        get
+        {
+            if (room != null) { return room; }
+            return room = NetworkManager.singleton as OVRseerNetworkManager;
+        }
+    }
 
     public override void OnStartServer()
     {
-
+        OVRseerNetworkManager.onServerAllReadied += spawnKey;
     }
 
-    public void Start()
+    [ServerCallback]
+    private void OnDestroy()
+    {
+        OVRseerNetworkManager.onServerAllReadied -= spawnKey;
+    }
+
+
+    [Server]
+    public void spawnKey(int numberOfPlayersServer)
     {
 
-        FindNumPlayers();
+        if (SceneManager.GetActiveScene().name != Room.gameScene &&
+            SceneManager.GetActiveScene().path != Room.gameScene) return;
+        numOfPlayers = numberOfPlayersServer;
+        if (numOfPlayers == 0)
+        {
+            Debug.LogError("The number of players can not be 0");
+        }
         numOfKeysToCollect = numOfPlayers + 1;
 
         // We have a maximum number of spawnpositions so if we have alot of players the number of keys needed to collect will reach a limit
@@ -38,13 +65,6 @@ public class KeySpawnSystem : NetworkBehaviour
         SpawnKeys();
     }
 
-    private void FindNumPlayers()
-    {
-        foreach (GameObject k in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            numOfPlayers++;
-        }
-    }
 
     public static void AddKeySpawnPoint(Transform keyPosition)
     {
