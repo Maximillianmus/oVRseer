@@ -40,7 +40,7 @@ public class NPC : MonoBehaviour
     {
         agent.nextPosition = transform.position;
        
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, agent.desiredVelocity, Mathf.Deg2Rad * 1, 0.0f);
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, agent.desiredVelocity, Mathf.Deg2Rad * 3, 0.0f);
 
         npcController.MoveNPC(newDir, wait);
     }
