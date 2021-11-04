@@ -19,6 +19,7 @@ public class KeySpawnSystem : NetworkBehaviour
     [SyncVar] public int numOfKeysToSpawn; // Hard coded for now
     [SyncVar] public int numOfKeysToCollect;
     [SyncVar] public int numOfPlayers = 0;
+    [SyncVar] public bool loaded = false;
 
     private OVRseerNetworkManager room;
     private OVRseerNetworkManager Room
@@ -62,6 +63,7 @@ public class KeySpawnSystem : NetworkBehaviour
         }
 
         numOfKeysToSpawn = 2 * numOfKeysToCollect;
+        loaded = true;
         SpawnKeys();
     }
 

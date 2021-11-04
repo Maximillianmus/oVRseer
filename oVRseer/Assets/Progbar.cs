@@ -11,9 +11,9 @@ public class Progbar : NetworkBehaviour
     [SerializeField] private GameObject stepPrefab;
     [SerializeField] private Text numberRemainingText;
 
-    [SerializeField] private int keysTotal = 5;
+    [SerializeField] private int keysTotal = 0;
 
-    [SerializeField] private int keysRemaining = 5;
+    [SerializeField] private int keysRemaining = 0;
 
     private List<GameObject> steps = new List<GameObject>();
 
@@ -51,7 +51,7 @@ public class Progbar : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindWithTag("KeySpawnSystem").GetComponent<KeySpawnSystem>().numOfKeysToCollect != keysTotal)
+        if (keysTotal == 0 && GameObject.FindWithTag("KeySpawnSystem").GetComponent<KeySpawnSystem>().loaded)
         {
             RefreshBar();
         }
