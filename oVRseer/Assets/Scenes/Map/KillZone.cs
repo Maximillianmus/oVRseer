@@ -11,7 +11,5 @@ public class KillZone : MonoBehaviour
         {
             other.transform.root.GetComponent<State>().Squashed();
         }
-
-        Destroy(other.gameObject);
     }
 }
