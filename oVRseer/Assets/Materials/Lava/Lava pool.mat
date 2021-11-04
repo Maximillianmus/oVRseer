@@ -53,7 +53,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NoiseMap:
         m_Texture: {fileID: 2800000, guid: 732cf2f74d87cd4448caad46e4d5c106, type: 3}
-        m_Scale: {x: 0.2, y: 0.2}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseMap2:
         m_Texture: {fileID: 2800000, guid: 094b7a0d5ad0c384080220c6ff0a2027, type: 3}
@@ -70,7 +70,7 @@ Material:
     m_Floats:
     - _BaseColorStrength: 0.461
     - _BumpScale: 1
-    - _CellSize: 0.5
+    - _CellSize: 1.49
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
