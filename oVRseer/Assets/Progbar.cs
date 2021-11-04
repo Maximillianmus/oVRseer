@@ -26,8 +26,7 @@ public class Progbar : NetworkBehaviour
             return;
          
         NetworkClient.RegisterHandler<KeyCollectedMsg>(OnKeyRetrieved);
-        RefreshBar();
-        
+        keysTotal = 0;
     }
 
     void RefreshBar()
