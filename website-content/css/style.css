@@ -7,6 +7,10 @@
   --section-content-background: rgba(255, 255, 255, 0.15);
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     /*background-image: linear-gradient(to right, rgba(255, 0, 0, 0.9) , rgba(0, 235, 255, 0.9));*/
     background: linear-gradient(rgba(26, 26, 26, 0.6), rgba(168, 0, 0, 0.2)), url("../img/ovrseer_website_background2.png");
