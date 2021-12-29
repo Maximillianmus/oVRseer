@@ -96,8 +96,27 @@ header {
     text-align: center;
     height: 450px;
     color: white;
-    line-height: 300px;
+    /*line-height: 300px;*/
+}
 
+.download-button {
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    color: var(--text-color);
+    background-color: var(--section-content-background);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.download-button:hover {
+    transition: 0.3s;
+    color: #c30000;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.header-info {
+    padding-top: 100px;
 }
 
 header h2 {
@@ -157,18 +176,25 @@ header h2:hover {
     opacity: 0.75;
 }
 
-@media screen and (max-width: 650px) {   
+@media screen and (max-width: 650px) {
     .row {
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
-    
+
     header {
-        line-height: 100px;
+        /*line-height: 100px;*/
     }
+
+    .header-info {
+        padding-top: 50px;
+    }
+
     .img-header {
-    margin: auto;
+        margin: auto;
+        padding-top: 30px;
+        padding-right: 30px;
     }
     
     
